@@ -1,0 +1,36 @@
+.progress-bar, .progress-bar::before, .progress-bar::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+
+}
+
+.progress-bar{
+  width: 95%;
+  height: 1.5em;
+  background: #9d4454;
+  border-radius: 1.5em;
+  color: white; 
+  z-index: 2;
+  margin-left: 2.5%;
+  margin-top: 2%;
+}
+
+.progress-bar::before {
+  content: attr(data-label);
+  display: flex;
+  align-items: center;
+  position: relative;
+  left: 0.25em;
+  top: 0.2em;
+  bottom: 0.25em;
+  width: calc(var(--width, 0) * 1%);
+  min-width: 1rem;
+  max-width: calc(100% - .5em);
+  background: rgb(250,140,185);
+  background: linear-gradient(90deg, rgba(250,140,185,1) 0%, rgba(247,203,204,1) 100%);
+  border-radius: 1em;
+  padding-left: 1em;
+  /*overflow: hidden;
+  white-space: nowrap;*/
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+  <link rel="stylesheet" href="styles/style.css"/>
+  <link rel="stylesheet" type="text/css" href="styles/nezuko.css">
+  <link rel="stylesheet" href="styles/hero.css"/>
+  <link rel="stylesheet" href="styles/progress.css"/>
+  <link rel="stylesheet" href="styles/rewards.css"/>
+  
+  <title>Nodd</title>
+</head>
+<body>
+ 
+   
+<!-- Important Files   -->
+  <audio id="audioCorrect">
+    <source src="audio/correct.mp3" type="audio/mp3">
+  </audio>
+  <audio id="audioIncorrect">
+    <source src="audio/incorrect.mp3" type="audio/mp3">
+  </audio>
+  <div class="sleepy-nezuko">
+    <img src="img/Nezuko/sleepy-nezuko.png">
+  </div>
+  <div class="nezuko-in-basket">
+    <img src="img/Nezuko/nezuko-in-basket.png">
+  </div>
+
+  <div class="rewards" id = "rewards">
+    <img src="img/rewards/icon.png">
+  </div>
+
+
+<!-- Rewards shelf -->
+
+  <div class="container-rewards" id = "rewards-container">
+      <button class="close-rewards" id="close-rewards">Back</button>
+      <div class="rewards-shelf" id="rewards-shelf"> </div>
+  </div>
+  
+
+<!-- Quiz -->
+
+  <div class = "container">
+    <div class ="top-box">    
+      <p id = "level"></p>
+      <div class="progress-bar" id="progress-bar" data-label = "&nbsp;" ></div> 
+    </div>
+ 		<div class="image-box">
+       <img src="lelvel 1/../www/img/jug.png" id="question" />
+      <button id="speaker"><img src="../www/img/speaker.png" id="speaker" /></button>
+ 		</div>
+
+  	<div class="choice-box">
+ 	
+      <button id="a" class="hero-button"> <p></p></button>
+      <button id="b" class="hero-button"> <p></p></button>
+      <button id="c" class="hero-button"> 
+        <p></p>
+        <div class="check-box">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+            <path fill="transparent" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+          </svg>
+        </div>
+
+      </button>
+      
+    </div>
+
+  </div>
+ 
+</body>
+
+  <script src="scripts/main.js" ></script>
+  <script type="text/javascript" src="scripts/rewards.js"></script>
+</html>

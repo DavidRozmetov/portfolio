@@ -1,0 +1,73 @@
+@font-face {
+    font-family: 'demon';
+    src:url('../fonts/TF2-Build.ttf.woff') format('woff'),
+        url('../fonts/TF2-Build.ttf.svg#TF2-Build') format('svg'),
+        url('../fonts/TF2-Build.ttf.eot'),
+        url('../fonts/TF2-Build.ttf.eot?#iefix') format('embedded-opentype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+	margin: 0;
+}
+.container-nezuko{
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width (cover the whole page) */
+	height: 100%; /* Full height (cover the whole page) */
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 10000; 
+	background: white;
+	visibility: hidden;
+}
+.container-nezuko img{
+	position: absolute;
+	height: 100%;
+	bottom: 0;
+	right: 10px;
+	z-index: 10;		
+}
+
+.text-box-nezuko{
+	position: absolute;
+	z-index: 100;
+	border: pink 10px solid;
+	border-radius: 5vh;
+	margin: 2vh;
+	padding: 2vh; 
+	background: white;
+	top: 60%;
+
+}
+.text-box-nezuko p{
+	font-size: 4vh;
+	font-family: demon;
+	color: #f86692;
+	margin-bottom: 2vh;
+}
+
+.text-box-nezuko .btn{
+	border-radius: 6vh;
+	color: #f86692;
+	font-size: 4vh;
+	font-family: demon;
+	padding: 2vh;
+	padding-left: 6vh; 
+	padding-right: 6vh; 
+	align-self: center;
+	background: white;
+	border: solid pink 0.5vh;
+	float: right;
+}
+
+
+.text-box-nezuko .btn:focus {
+  outline: 0;
+  outline-color: transparent;
+  outline-style: none;
+}

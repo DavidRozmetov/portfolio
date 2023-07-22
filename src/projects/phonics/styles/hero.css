@@ -1,0 +1,82 @@
+.hero-button{
+	border: 0;
+	outline: none;
+	border-radius: 30px;
+	position: relative;
+	overflow: hidden;
+
+}
+
+
+.check-box{
+	height: 80px;
+	width: 80px;
+	position: absolute;
+	top: 10px;
+	right: -40px;
+	opacity: 0;	
+}
+
+
+svg path{
+	stroke-width: 3;
+	stroke: green;
+}
+svg polygon{
+	stroke-width: 5;
+	stroke: red;
+
+}
+
+
+.correct-button {
+  background: #e0fef8;
+  transition: 0.5s;
+} 
+
+.correct-button .check-box {
+	right: 6vh;
+	opacity: 1;
+	transition: 0.5s;
+
+}
+.incorrect-button .check-box {
+	right: 6vh;
+	opacity: 1;
+	transition: 0.5s;
+}
+
+.incorrect-button .check-box svg {
+	height: 6vh;
+	margin-top: 3vh;
+}
+
+.incorrect-button {
+  	background: #ff8282;
+  	transition: 0.5s;
+} 
+
+
+@media only screen and (orientation: landscape){
+
+.correct-button .check-box svg {
+	height: 16vh;
+	margin-top: 0vh;
+}
+.incorrect-button .check-box svg {
+	height: 6vh;
+	margin-top: 6vh;
+}
+
+.correct-button .check-box {
+	right: 3vh;
+	opacity: 1;
+	transition: 0.5s;
+
+}
+.incorrect-button .check-box {
+	right: 3vh;
+	opacity: 1;
+	transition: 0.5s;
+}
+}

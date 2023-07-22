@@ -1,0 +1,196 @@
+body{
+  margin: 0px;
+  background: pink;
+}
+
+button{
+  background: pink;
+}
+
+.nezuko-in-basket, .nezuko-in-basket img{
+    height: 0;
+    opacity: hidden;
+  }
+
+.sleepy-nezuko{
+  position: fixed;
+  top: 0;
+  bottom: 0vh
+  right: 2vh;
+  left: 15vh;  
+  z-index: 3;
+}
+
+.sleepy-nezuko img{
+  height: 14.8vh;
+  width: auto; 
+} 
+
+.container{
+  background: white;
+  height:87vh;
+  display: flex;
+  z-index: 1;
+  flex-direction: column; 
+  margin-bottom: 1vh;
+  margin-top: 12vh;
+  margin-right: 2vh;
+  margin-left: 2vh; 
+}
+
+.top-box{
+  display: flex;
+  margin: 1vh;
+
+}
+.top-box p{
+  color: #9d4454;
+  min-width: 10vh;
+  font-family: demon;
+  font-size: 3.6vh;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  flex-grow: 2;
+  flex-basis: 0;
+  margin-left: 1vh;
+  margin-top: 1vh;
+  margin-right: 1vh;
+}
+.top-box .progress-bar{
+   flex-grow: 3.5;
+  flex-basis: 0; 
+
+}
+
+.image-box{
+  /*background: blue;*/
+  flex-grow: 1;
+  flex-basis: 0;
+  max-height: 40vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.image-box img{
+  width: auto;
+  max-height: 90%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+
+}
+.image-box #speaker{
+  position: fixed;
+  height: 12vw;
+  width: 12vw;
+  top: 50vh;
+  bottom: 2vh;
+  left: 80vw;
+  z-index: 99;
+  background: transparent;
+  border: 0;
+}
+
+
+.choice-box{
+  /*background: green;*/
+  flex-grow: 1;
+  flex-basis: 0;
+  max-height: 48vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.choice-box button{
+  flex-grow: 1;
+  font-size: 3vh;
+  border: solid #9d4454 1px;
+  margin: 0.5vh;
+  margin-left: 1vh;
+  margin-right: 1vh;
+  font-family: demon;
+  color: #2c0f1d;
+
+}
+
+
+.choice-box button:focus, .image-box #speaker:focus {
+  outline: 0;
+  outline-color: transparent;
+  outline-style: none;
+}
+
+
+
+@media only screen and (orientation: landscape){
+  .sleepy-nezuko, .sleepy-nezuko img{
+    display: none;
+    opacity: hidden;
+  }
+.nezuko-in-basket{
+  position: fixed;
+  top: 60vh;  
+  bottom: 0vh
+  right: 2vh;
+  left: -6vh;  
+  z-index: 1;
+}
+
+
+.nezuko-in-basket img{
+  height: 50vh;
+  width: auto; 
+}
+
+
+  .container{
+    height:97vh;
+    margin-bottom: 1vh;
+    margin-top: 1vh;
+    margin-right: 2vh;
+    margin-left: 20vh; 
+    
+  }
+
+
+
+  .image-box img{
+    height: 100%;
+    margin: auto;
+  }
+
+.image-box #speaker{
+  position: fixed;
+  height: 12vh;
+  width: 12vh;
+  top: 10vh;
+  left: 80vw;
+}
+
+  .choice-box{
+    flex-direction: row;
+    align-items: center;
+
+  }
+
+  .choice-box button{
+    height: 50%;
+    margin: 2vh;
+    font-size: 6vh;
+  }
+
+  .top-box p{
+    font-size: 5vh;
+    margin-left: 5vh;
+    margin-top: 3vh;
+    flex-grow: 1;
+    flex-basis: 0;
+    
+  }
+  .top-box .progress-bar{
+    flex-grow: 4;
+    flex-basis: 0; 
+  }
+
+}

@@ -1,0 +1,136 @@
+.rewards{
+  position: fixed;
+  top: 1.5vh;
+  bottom: 0vh
+  right: 3vh;
+  left: 3vh;  
+  /*border: solid #9d4454 0.4vh;*/
+  border-radius: 2vh;
+  overflow: hidden;
+  /*background: rgba(200,200,200, 0.2);*/
+}
+
+.rewards img{
+  height: 10vh;
+  width: auto; 
+} 
+.hidden{
+  display: none;
+}
+
+.container-rewards{
+	position: fixed;
+	z-index: 100;
+	visibility: hidden;
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(255,255,255, 0.3 );
+  flex-flow: column;
+  backdrop-filter: blur(12px);
+}
+
+
+.close-rewards{
+  font-family: demon;
+  background: transparent;
+  text-align: right;
+  /*width: 5vh;*/
+  height: 15vh;
+  border: 0;
+  font-size: 5vh;
+}
+
+.rewards-shelf{
+  border: solid gold 2px;
+  width: 90vw;
+  margin: auto;
+  margin-top: 0px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  backdrop-filter: blur(12px);
+  
+}
+
+.rewards-shelf .trophie{
+  /*background: white;*/
+  max-height: 10vh;
+  max-width: 10vh;
+  flex-basis: 33%;
+  margin: 1.2vh;
+  border-radius: 5vh;
+ 
+}
+
+.trophie img{
+  height: 10vh;
+  width: auto;
+}
+
+.black-and-white{
+  filter: grayscale(100%);
+  z-index: 100;
+}
+
+.reward-text{
+  text-align: center;
+  font-size: 2.4vh;
+  position: relative;
+  top: -11vh;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  font-family: demon;
+  height: 7vh;
+  /*background: rgba(255,255,255,0.6);*/
+  border-radius: 5vh;
+  padding-top: 3vh;
+  color: gold;
+  text-shadow: 5px 1px 10px black;
+  filter: none;
+}
+  
+
+@media only screen and (orientation: landscape){
+  .rewards{
+    top: 5vh;
+  }
+
+  .rewards img{
+    height: 10vw; 
+  } 
+
+
+  .close-rewards{
+    width: 5vh;
+    height: 5vh;
+    border: 0;
+    font-size: 5vh;
+    margin-bottom: 5vh;
+  }
+
+  .rewards-shelf{
+    width: 90vw;
+    height: 80vh;
+  }
+
+  .rewards-shelf .trophie{
+    max-height: 10vw;
+    max-width: 10vw;
+    flex-basis: 33%;
+    margin: 1.2vh;
+    border-radius: 5vh;
+  }
+
+  .trophie img{
+    height: 10vw;
+    width: auto;
+  }
+
+  .reward-text{
+  font-size: 2.4vw;
+  top: -8vw;
+}
+  
+}
