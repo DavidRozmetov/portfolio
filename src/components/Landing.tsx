@@ -1,3 +1,3 @@
 export const Landing = () => {
-  return <div>landing</div>;
+  return <div className="landing-container">landing</div>;
 };

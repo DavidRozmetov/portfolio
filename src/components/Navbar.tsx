@@ -1,10 +1,14 @@
 import { BsLine } from "react-icons/bs";
 import { FaInstagram, FaLinkedinIn, FaFacebookF, FaLine } from "react-icons/fa";
-
+import Logo from "../assets/logo-white-text.png";
 export const Navbar = () => {
   return (
     <div className="navbar-container">
-      <div className="navbar-logo">[David]</div>
+      <div className="navbar-logo">
+        <a href="/">
+          <img src={Logo} alt="David logo" />
+        </a>
+      </div>
       <div className="navbar-items">
         <a
           href="/about"

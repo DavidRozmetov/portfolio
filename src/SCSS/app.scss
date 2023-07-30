@@ -18,6 +18,15 @@ body {
     height: 10vh;
 
     animation: fadeInDown 1s;
+
+    .navbar-logo {
+      max-height: 100%;
+
+      img {
+        max-height: 80%;
+        max-width: 40%;
+      }
+    }
     .navbar-items {
       display: flex;
       flex-direction: row;
@@ -96,6 +105,50 @@ body {
     }
     * {
       margin: auto;
+    }
+  }
+  .home-container {
+    min-height: 90vh;
+
+    .landing-container {
+      height: 80vh;
+    }
+    .latest-work-container {
+      padding: 5vw;
+      background-color: #fafafa;
+      width: 90vw;
+
+      .title-container {
+        border-bottom: solid 1px #bbb;
+
+        padding-bottom: -3em;
+        width: 80vw;
+        margin: auto;
+        margin-bottom: 3em;
+        height: 1em;
+
+        .title {
+          margin: auto;
+          margin-top: -1.2em;
+          background-color: #fafafa;
+
+          color: $color--dark-gray;
+          width: fit-content;
+          padding-left: 3em;
+          padding-right: 3em;
+          z-index: 970 !important;
+          font-size: 1.2em;
+          font-weight: 700;
+        }
+      }
+
+      .projects-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        width: 80vw;
+        margin: 0;
+        margin: auto;
+      }
     }
   }
 
