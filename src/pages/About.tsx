@@ -14,7 +14,6 @@ export const About = () => {
       <AboutMe></AboutMe>
       <Skills></Skills>
       <RandomFacts></RandomFacts>
-      <MyStory></MyStory>
     </div>
   );
 };

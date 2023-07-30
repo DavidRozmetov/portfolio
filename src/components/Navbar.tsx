@@ -1,5 +1,11 @@
 import { BsLine } from "react-icons/bs";
-import { FaInstagram, FaLinkedinIn, FaFacebookF, FaLine } from "react-icons/fa";
+import {
+  FaInstagram,
+  FaLinkedinIn,
+  FaFacebookF,
+  FaLine,
+  FaGithub,
+} from "react-icons/fa";
 import Logo from "../assets/logo-white-text.png";
 export const Navbar = () => {
   return (
@@ -28,14 +34,7 @@ export const Navbar = () => {
         >
           portfolio
         </a>
-        <a
-          href="/blog"
-          className={
-            window.location.pathname === "/blog" ? "navbar-item-active" : ""
-          }
-        >
-          blog
-        </a>
+
         <a
           href="/contact"
           className={
@@ -46,10 +45,23 @@ export const Navbar = () => {
         </a>
       </div>
       <div className="navbar-social-links">
-        <FaLinkedinIn />
-        <FaInstagram />
-        <FaFacebookF />
-        <BsLine />
+        <a
+          href="https://www.linkedin.com/in/davranbek-rozmetov-5a89301aa/"
+          target="_blank"
+        >
+          <FaLinkedinIn />
+        </a>
+
+        <a href="https://github.com/DavidRozmetov" target="_blank">
+          <FaGithub />
+        </a>
+
+        <a href="https://www.facebook.com/davrabekRozmetov1/ " target="_blank">
+          <FaFacebookF />
+        </a>
+        <a href="https://line.me/ti/p/Jq_GQiOr3e" target="_blank">
+          <BsLine />
+        </a>
       </div>
     </div>
   );

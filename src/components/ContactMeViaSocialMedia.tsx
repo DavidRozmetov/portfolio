@@ -11,32 +11,48 @@ export const ContactMeViaSocialMedia = () => {
         <h3>Get in touch with me via social media or email.</h3>
 
         <div className="social-links-container">
-          <div className="social-link social-link-linkedin">
+          <a
+            className="social-link social-link-linkedin"
+            href="https://www.linkedin.com/in/davranbek-rozmetov-5a89301aa/"
+            target="_blank"
+          >
             <div className="social-logo-container social-logo-linkedin">
               <FaLinkedinIn />
             </div>
 
             <p className="social-name-linkedin">LinkedIn</p>
-          </div>
+          </a>
 
-          <div className="social-link social-link-instagram ">
+          <a
+            className="social-link social-link-instagram "
+            href="https://www.instagram.com/teacherdvid/"
+            target="_blank"
+          >
             <div className="social-logo-container social-logo-instagram">
               <FaInstagram />
             </div>
             <p className="social-name-instagram">Instagram</p>
-          </div>
-          <div className="social-link social-link-facebook ">
+          </a>
+          <a
+            className="social-link social-link-facebook "
+            href="https://www.facebook.com/davrabekRozmetov1/"
+            target="_blank"
+          >
             <div className="social-logo-container social-logo-facebook">
               <FaFacebookF />
             </div>
             <p className="social-name-facebook">Facebook</p>
-          </div>
-          <div className="social-link social-link-line ">
+          </a>
+          <a
+            className="social-link social-link-line "
+            href="https://line.me/ti/p/Jq_GQiOr3e"
+            target="_blank"
+          >
             <div className="social-logo-container social-logo-line">
               <BsLine />
             </div>
             <p className="social-name-line">Line</p>
-          </div>
+          </a>
         </div>
       </div>
       <div className="contact-me-photo">[photo]</div>

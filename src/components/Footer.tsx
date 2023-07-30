@@ -11,7 +11,7 @@ export const Footer = () => {
     <div className="footer-container">
       <a className="all-rights-reserved">
         {" "}
-        &copy; All rights reserved. T-David, 2023
+        &copy; All rights reserved. <strong>Davranbek Rozmetov</strong>, 2023
       </a>
       <div>
         <button
@@ -25,7 +25,7 @@ export const Footer = () => {
       </div>
       <div className="footer-items">
         <a href="/about">About</a>
-        <a href="/blog">Blog</a>
+
         <a href="/contact">Contact Me</a>
         <a href="/portfolio">Portfolio</a>
       </div>
