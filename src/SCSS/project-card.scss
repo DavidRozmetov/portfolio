@@ -1,0 +1,74 @@
+@import "./theme.scss";
+
+.project-card-container {
+  background-color: white;
+  border: solid 1px rgba(0, 0, 0, 0.1);
+  border-radius: 0.4em;
+  padding: 0.4em;
+  margin: 1em;
+  height: 15em;
+  box-shadow: 0 0.1em 0.2em rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.7s; /* Adding a smooth transition for the box-shadow */
+  cursor: pointer;
+
+  text-decoration: none;
+  &:hover {
+    box-shadow: 0 0.4em 0.8em rgba(0, 0, 0, 0.4); /* Gray shadow for hover state */
+
+    .project-card-icon {
+      opacity: 0.4 !important;
+      transform: translateX(0.5em); /* Move the icon 5 pixels to the right */
+    }
+  }
+
+  .div-img {
+    height: 11em;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 0.4em;
+    .project-card-img {
+      width: 100%;
+      min-height: 12em;
+      height: auto;
+      min-width: 100%;
+      overflow: hidden;
+      margin: auto;
+    }
+  }
+
+  .project-card-bottom {
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    padding-left: 1em;
+    margin-top: 0.2em;
+    .project-card-title {
+      font-weight: 400;
+      text-align: left;
+      color: $color--very-dark-gray;
+      margin: 0;
+      margin-top: 0.4em;
+      font-size: 1.2em;
+    }
+    .project-card-subtitle {
+      font-weight: 300;
+      text-align: left;
+
+      margin: 0;
+      margin-top: 0.2em;
+      font-size: 0.9em;
+      color: $color--dark-gray;
+    }
+
+    .project-card-icon {
+      * {
+        color: $color--dark-gray;
+        margin: auto;
+        margin-top: 0.4em;
+        width: 70%;
+        height: 70%;
+      }
+      opacity: 0; /* Initially hide the icon */
+      transition: opacity 0.3s, transform 0.3s;
+    }
+  }
+}

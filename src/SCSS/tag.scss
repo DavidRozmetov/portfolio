@@ -1,0 +1,132 @@
+@import "../SCSS/theme.scss";
+
+$color--html: #ffa500;
+$color--react: #61dbfb;
+$color--css: #264de4;
+$color--firebase: #ffa611;
+$color--android: #a4c639;
+$color--wix: #d3d3d3;
+$color--js: #ffff00;
+$color--personal: #ff4d4d;
+$color--client: #15c39a;
+$color--university-project: #6a5acd;
+
+.tag-container {
+  display: flex;
+  height: 1em;
+  width: auto;
+  padding: 0.3em;
+  gap: 0.5em;
+  color: $color--dark-gray !important;
+  border: solid $color--dark-gray 1px;
+  border-radius: 0.3em;
+  opacity: 1;
+  background-color: white !important;
+
+  p {
+    margin: auto;
+    height: 100%;
+    font-size: 0.9em;
+    line-height: 0.9em;
+
+    text-align: right;
+    font-weight: 400;
+    margin-bottom: -0.2em;
+  }
+  span {
+    margin: auto;
+    width: auto;
+    font-size: 1em;
+  }
+}
+
+.html5 {
+  color: $color--html !important;
+  border: solid $color--html 1px;
+  p {
+    color: $color--html !important;
+  }
+}
+
+.css3 {
+  color: $color--css !important;
+  border: solid $color--css 1px;
+  p {
+    color: $color--css !important;
+  }
+}
+.android {
+  color: $color--android !important;
+  border: solid $color--android 1px;
+  p {
+    color: $color--android !important;
+  }
+}
+
+.js {
+  background-color: $color--js !important;
+  //   border: solid $color--js 1px;
+  p {
+    color: $color--black !important;
+  }
+  span {
+    color: $color--black !important;
+  }
+}
+
+.wix {
+  background-color: $color--wix !important;
+  //   border: solid $color--js 1px;
+  p {
+    color: $color--black !important;
+  }
+  span {
+    color: $color--black !important;
+  }
+}
+.react {
+  color: $color--react !important;
+  border: solid $color--react 1px;
+  background-color: white !important;
+  p {
+    color: $color--react !important;
+  }
+  span {
+    color: $color--react !important;
+  }
+}
+
+.firebase {
+  color: $color--firebase !important;
+  border: solid $color--firebase 1px;
+  background-color: white !important;
+  p {
+    color: $color--firebase !important;
+  }
+  span {
+    color: $color--firebase !important;
+  }
+}
+
+.personal {
+  color: $color--personal !important;
+  border: solid $color--personal 1px;
+  p {
+    color: $color--personal !important;
+  }
+}
+.client {
+  color: $color--client !important;
+  border: solid $color--client 1px;
+  p {
+    color: $color--client !important;
+  }
+}
+
+.university {
+  color: $color--university-project !important;
+  border: solid $color--university-project 1px;
+  p {
+    color: $color--university-project !important;
+  }
+}

@@ -1,0 +1,219 @@
+@import "./theme.scss";
+.project-container {
+  min-height: 85vh;
+  .project-main-container {
+    height: 90vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+    .main-div-left {
+      padding: 5em;
+      text-align: left;
+      h1 {
+        font-weight: 400;
+        font-size: 3em;
+        color: $color--very-dark-gray;
+        margin-bottom: 0;
+      }
+      .info-line {
+        opacity: 0.5;
+      }
+      .div-info {
+        color: $color--dark-gray;
+        display: flex;
+        justify-content: space-between;
+
+        .div-tags {
+          width: 80%;
+          display: flex;
+
+          flex-wrap: wrap;
+          .tag-container {
+            margin-right: 0.6em;
+            margin-bottom: 0.3em;
+          }
+        }
+      }
+      .project-description {
+        color: $color--very-dark-gray;
+        font-size: 1.1em;
+        line-height: 2em;
+        margin-top: 1.2em;
+      }
+      .link-buttons {
+        margin-top: 4em;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+
+        button {
+          background-color: $color--white;
+          border: solid $color--very-dark-gray 1px;
+          box-shadow: none;
+          height: 2.8em;
+          min-width: 40%;
+          border-radius: 0.2em;
+          font-size: 1.2em;
+          margin: auto;
+          transition: box-shadow 0.6s;
+          background-color: transparent;
+          cursor: pointer;
+          span {
+            font-size: 1.3em;
+            line-height: 1.2em;
+            height: 100%;
+
+            margin-left: 0.2em;
+            * {
+              margin-top: 0.11em;
+            }
+            // background-color: red;
+          }
+        }
+
+        button:hover {
+          box-shadow: 0.1em 0.1em 0.2em $color--dark-gray;
+        }
+        .btn-disabled {
+          cursor: not-allowed;
+          background-color: $color--light-gray;
+          color: $color--dark-gray;
+          border-color: $color--dark-gray;
+          box-shadow: none;
+        }
+        .btn-disabled {
+          box-shadow: none !important;
+        }
+        .btn-youtube {
+          background-color: $color--youtube-red;
+          color: $color--white;
+          border: none;
+        }
+        .btn-youtube:hover {
+          box-shadow: 0.1em 0.1em 0.2em $color--youtube-red;
+        }
+      }
+    }
+    .main-div-right {
+      height: 80vh;
+      margin: auto;
+
+      img {
+        max-height: 100%;
+        max-width: 100%;
+        margin: auto;
+      }
+    }
+  }
+
+  .overview-container {
+    background-color: $color--light-gray;
+    .screenshots {
+      padding: 5vw;
+
+      .div-grid {
+        max-width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 2em;
+        margin: 1em;
+      }
+
+      img {
+        max-height: 30em;
+      }
+    }
+    .overview-text {
+      font-size: 1.2em;
+      line-height: 2em;
+      text-align: left;
+      padding: 10em;
+      padding-top: 2em;
+      padding-bottom: 2em;
+
+      .table-status {
+        width: 60vw;
+        margin: auto;
+        .icon {
+          display: flex;
+          * {
+            margin: auto;
+          }
+        }
+      }
+    }
+    .overview-video {
+      width: 70vw;
+      height: 77.6vh;
+      margin: auto;
+      padding-bottom: 3em;
+    }
+  }
+
+  .btn-next-container {
+    background-color: $color--dark-gray;
+    opacity: 0.05;
+    width: 6em;
+    height: 6em;
+    border-radius: 100%;
+    position: fixed;
+    top: 45%;
+    right: -2em;
+    transition: opacity 0.5s;
+    border: none;
+    z-index: 10000;
+    cursor: pointer;
+    .icon {
+      width: 60%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition: transform 0.2s;
+
+      * {
+        font-size: 5em;
+        color: $color--white;
+      }
+    }
+  }
+  .btn-next-container:hover {
+    opacity: 0.4;
+    .icon {
+      transform: translateX(0.2em);
+    }
+  }
+  .btn-previous {
+    left: -2em !important;
+
+    .icon {
+      width: 100%;
+      margin-left: 1.2em;
+      * {
+        font-size: 5em;
+        color: $color--white;
+      }
+    }
+  }
+  .btn-previous:hover {
+    opacity: 0.4;
+    .icon {
+      transform: translateX(-0.2em);
+    }
+  }
+}
+.container-phonics-blue {
+  .project-main-container {
+  }
+  .overview-container {
+    .screenshots {
+      .div-grid {
+        width: 100%;
+        grid-template-columns: 1fr 1fr;
+        img {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+}
