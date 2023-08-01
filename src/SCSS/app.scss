@@ -501,7 +501,6 @@ body {
 
   .contact-via-email-container {
     display: grid;
-    // min-height: 60vh;
     background-color: $color--light-gray;
     width: 80vw;
     margin: 0;
@@ -515,29 +514,32 @@ body {
       margin: 2em 0;
     }
     .form-send-email {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      width: 80vw;
-      gap: 2em;
       margin: 0;
-      .row-1,
-      .row-2 {
+      .form-input {
         display: grid;
-        text-align: left;
-        gap: 0.5em;
-        input,
-        textarea {
-          min-height: 3.2em;
-          border: solid $color--cyan-bluish-gray 1px;
-          border-radius: 0.4em;
-          font-family: "M PLUS 1p", sans-serif;
-          font-size: 1em;
-          line-height: 0.7em;
-          padding-left: 1em;
-        }
-        textarea {
-          line-height: 1.2em;
-          padding: 0.5em;
+
+        width: 80vw;
+        grid-template-columns: 1fr 1fr;
+        gap: 2em;
+        .row-1,
+        .row-2 {
+          display: grid;
+          text-align: left;
+          gap: 0.5em;
+          input,
+          textarea {
+            min-height: 3.2em;
+            border: solid $color--cyan-bluish-gray 1px;
+            border-radius: 0.4em;
+            font-family: "M PLUS 1p", sans-serif;
+            font-size: 1em;
+            line-height: 0.7em;
+            padding-left: 1em;
+          }
+          textarea {
+            line-height: 1.2em;
+            padding: 0.5em;
+          }
         }
       }
     }
