@@ -25,9 +25,8 @@ export const Footer = () => {
       </div>
       <div className="footer-items">
         <a href="/about">About</a>
-
-        <a href="/contact">Contact Me</a>
         <a href="/portfolio">Portfolio</a>
+        <a href="/contact">Contact Me</a>
       </div>
     </div>
   );

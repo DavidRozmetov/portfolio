@@ -48,7 +48,7 @@ export const PhonicsBlue = () => {
           <div className="link-buttons">
             <OpenWebsiteButton
               title="Live View"
-              link="https://phonicsproject-9da80.web.app/"
+              link="https://phb.t-david.com/"
               icon={TbWorld}
             />
 

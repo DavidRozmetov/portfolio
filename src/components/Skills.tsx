@@ -19,7 +19,7 @@ export const Skills = () => {
       "Git",
       "Photoshop & Illustrator",
       "Problem Solving",
-      "Drinking Coffee",
+      "TypeScript",
     ],
     font: {
       size: 50,
@@ -27,7 +27,7 @@ export const Skills = () => {
     datasets: [
       {
         label: "",
-        data: [80, 70, 50, 90, 85, 100],
+        data: [80, 70, 50, 90, 85, 50],
         borderColor: "#BBBBBB",
         borderRadius: 3,
         backgroundColor: [

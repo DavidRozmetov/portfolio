@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import imgRegular from "../assets/img/david/landing-regular.png";
 import imgColor from "../assets/img/david/landing-color.png";
+import { CoderText } from "./CoderText";
 export const Landing = () => {
   const [mouseX, setMouseX] = useState<number>(0.5);
 
@@ -84,7 +85,8 @@ export const Landing = () => {
     <a className="landing-container" href="/about">
       <div className="jobs-container">
         <div className="job-container div-coder" style={opacityStyleCoder}>
-          <h1>{"<coder>"}</h1>
+          <CoderText />
+
           <p>Front end React Developer who tries to write elegant code</p>
         </div>
         <div className="job-container div-teacher" style={opacityStyleTeacher}>

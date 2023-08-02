@@ -55,7 +55,7 @@ export const TestWorms = () => {
           <div className="link-buttons">
             <OpenWebsiteButton
               title="Live View"
-              link="https://testworms-6af44.web.app/"
+              link="https://testworms.t-david.com/"
               icon={TbWorld}
             />
 

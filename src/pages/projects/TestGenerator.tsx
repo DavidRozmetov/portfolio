@@ -51,7 +51,7 @@ export const TestGenerator = () => {
           <div className="link-buttons">
             <OpenWebsiteButton
               title="Live View"
-              link="https://testgenerator-c862e.web.app/"
+              link="https://testgenerator.t-david.com/"
               icon={TbWorld}
             />
 

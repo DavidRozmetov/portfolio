@@ -10,8 +10,46 @@ export const ContactMeViaEmail = () => {
     e.preventDefault();
 
     if (form.current) {
-      emailjs
+      const messageTextarea = form.current.querySelector(
+        '[name="message"]'
+      ) as HTMLTextAreaElement | null;
+      const userNameInput = form.current.querySelector(
+        '[name="user_name"]'
+      ) as HTMLInputElement | null;
+      const userEmailInput = form.current.querySelector(
+        '[name="user_email"]'
+      ) as HTMLInputElement | null;
 
+      if (!messageTextarea || !userNameInput || !userEmailInput) {
+        console.error("Could not find one or more required elements.");
+        return; // Stop the function execution
+      }
+
+      if (!userNameInput.value.trim()) {
+        userNameInput.style.border = "2px solid red";
+        toast.error("Please enter your name.");
+        return;
+      } else {
+        userNameInput.style.border = "none";
+      }
+
+      if (!userEmailInput.value.trim()) {
+        userEmailInput.style.border = "2px solid red";
+        toast.error("Please enter your email.");
+        return;
+      } else {
+        userEmailInput.style.border = "none";
+      }
+
+      if (!messageTextarea.value.trim()) {
+        messageTextarea.style.border = "2px solid red"; // Highlighting the textarea
+        toast.error("Please enter your message.");
+        return; // Stop the function execution
+      } else {
+        messageTextarea.style.border = "none"; // Reset the border style
+      }
+
+      emailjs
         .sendForm(
           "service_v0sfv5v",
           "template_twvpqhu",
@@ -24,7 +62,7 @@ export const ContactMeViaEmail = () => {
           },
           (error) => {
             toast.error(
-              "Oops!Something went wrong! Please notify me via my other social media"
+              "Oops! Something went wrong! Please notify me via my other social media"
             );
           }
         );
