@@ -8,6 +8,7 @@ import { Portfolio } from "./pages/Portfolio";
 import { ContactMe } from "./pages/ContactMe";
 import { Footer } from "./components/Footer";
 import "./SCSS/app.scss";
+import "./SCSS/mobile.scss";
 import { PhonicsPink } from "./pages/projects/PhonicsPink";
 import { PhonicsBlue } from "./pages/projects/PhonicsBlue";
 import { SnappyLike } from "./pages/projects/SnappyLike";

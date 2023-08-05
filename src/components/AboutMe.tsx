@@ -2,7 +2,7 @@ export const AboutMe = () => {
   return (
     <div className="about-me-container" data-aos="fade-right">
       <div className="about-me-text">
-        <h1>about</h1>
+        <h1>about.</h1>
         <h2>
           I am a programmer from Turkmenistan and based in Bangkok, Thailand
         </h2>

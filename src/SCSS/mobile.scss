@@ -1,0 +1,412 @@
+@import url("https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@100;300;400;500;700;800&display=swap");
+@import "./theme.scss";
+// Define your theme variables here if needed
+
+body {
+  // Global styling for body
+
+  .navbar-container {
+    // Styles for navbar container
+    z-index: 9999;
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr; // Change to a single column layout
+      padding: 0;
+
+      height: auto;
+      width: 100vw;
+      background-color: #222;
+      .navbar-logo {
+        width: 80vw;
+        padding-left: 10vw;
+        padding-right: 10vw;
+        min-height: 10vh;
+        display: flex;
+        justify-content: space-between;
+        z-index: 1000;
+        a {
+          flex-grow: 0;
+          max-width: max-content;
+        }
+        .btn-menu {
+          display: block;
+          background-color: transparent;
+          color: $color--white;
+          border: none;
+          flex-grow: 1;
+          * {
+            font-size: 1.6em;
+            margin: auto;
+          }
+        }
+        .btn-menu-active {
+          opacity: 0.6;
+          transition: opacity 0.5s;
+        }
+      }
+
+      .navbar-social-links {
+        height: 0;
+        overflow-y: hidden;
+        transition: height 1s;
+        a {
+          opacity: 0;
+          transition: opacity 0.5s;
+        }
+      }
+      .navbar-social-links-active {
+        height: 12vh;
+        a {
+          opacity: 1;
+          transition: opacity 0.5s;
+        }
+      }
+      .navbar-items {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin: 0;
+        height: 0;
+        overflow-y: hidden;
+        transition: height 1s;
+        z-index: 10;
+        a {
+          opacity: 0;
+          transition: opacity 0.2s;
+          width: auto;
+          padding: 0;
+          padding-top: 1em;
+          padding-bottom: 1em;
+          border-bottom: solid #777 0.1px;
+          width: 100%;
+          font-size: 1.4em;
+        }
+      }
+      .navbar-items-active {
+        height: 16em;
+        a {
+          opacity: 1;
+        }
+      }
+    }
+  }
+  .close-menu-background {
+    background-color: transparent;
+
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    display: block;
+    top: 0;
+    left: 0;
+    z-index: 0;
+  }
+  .footer-container {
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      padding: 0;
+      background-color: $color--light-gray;
+      height: 16vh;
+      margin-bottom: 0;
+      //   background-color: red;
+      .button-go-up {
+        margin: 1em auto;
+        order: 1;
+        margin-top: -8vh;
+      }
+
+      .footer-items {
+        display: none;
+      }
+      .all-rights-reserved {
+        order: 2;
+        width: 80vw;
+        margin: auto;
+        margin-top: -5vh;
+      }
+    }
+  }
+
+  // Apply similar media queries for other sections like home, about, skills, etc.
+  .home-container {
+    min-height: 100vh;
+
+    .landing-container {
+      // Styles for landing container
+
+      @media (max-width: 768px) {
+        width: 100vw;
+
+        grid-template-columns: 1fr; // Change to a single column layout
+        padding: 0;
+        text-align: center;
+
+        .jobs-container {
+          display: none;
+        }
+        .image-container {
+          display: none;
+        }
+      }
+    }
+
+    .latest-work-container {
+      @media (max-width: 768px) {
+        // Styles for mobile version
+        max-width: 100vw;
+
+        text-align: center;
+        margin: auto;
+        padding-bottom: 20vw;
+        .title-container {
+          border-bottom: solid 1px #bbb;
+          text-align: center;
+
+          width: 70vw;
+          margin: auto;
+
+          height: 0.7em;
+          margin-bottom: 1em;
+
+          .title {
+            font-size: 1em;
+            padding-left: 1em;
+            padding-right: 1em;
+            margin: auto;
+          }
+        }
+
+        .projects-container {
+          // Styles for projects container in mobile version
+          grid-template-columns: 1fr; // Change to a single column layout
+          gap: 1em;
+        }
+      }
+    }
+  }
+
+  .about-container {
+    @media (max-width: 768px) {
+      .about-me-container {
+        grid-template-columns: 1fr; // Change to a single column layout
+        margin: 0;
+        width: 100vw;
+
+        .about-me-text {
+          // Styles for about me text in mobile version
+          padding-left: 2em;
+          padding-right: 1em;
+          margin-right: 0;
+
+          h1 {
+            font-size: 4em;
+          }
+
+          h2 {
+            font-size: 1.2em;
+            letter-spacing: -0.5px;
+          }
+
+          p {
+            font-size: 1em;
+            font-weight: 400;
+            line-height: 1.8em;
+            letter-spacing: 0.5px;
+          }
+        }
+      }
+
+      .skills-container {
+        display: none;
+      }
+      .random-facts-container {
+        grid-template-columns: 1fr;
+        width: 100vw;
+
+        padding: 0;
+        margin: 0;
+        margin-top: 10vh;
+        padding-bottom: 10vh;
+        .random-facts-image {
+          width: 100vw;
+          min-height: 30vh;
+          order: 2;
+        }
+        .random-facts-text {
+          order: 1;
+          width: 90vw;
+          margin: auto;
+          * {
+            padding: 0;
+            line-height: 2em;
+          }
+          h3 {
+            font-size: 1.6em;
+          }
+          li {
+            font-size: 0.8em;
+          }
+        }
+        * {
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  .portfolio-container {
+    .portfolio-main-container {
+      // Styles for portfolio main container
+
+      @media (max-width: 768px) {
+        // Styles for mobile version
+        padding: 0;
+        grid-template-columns: 1fr; // Change to a single column layout
+        width: 100vw;
+        * {
+          width: 90vw;
+          margin: auto;
+        }
+        .div-left {
+          // Styles for left column in mobile version
+          text-align: center;
+
+          h1 {
+            font-size: 4em;
+          }
+
+          h3 {
+            font-size: 1.2em;
+          }
+
+          p {
+            font-size: 1em;
+          }
+        }
+
+        .div-right {
+          margin-top: 3em;
+          .img {
+            // Adjust image styles for mobile version
+            max-width: 100%;
+            height: auto;
+
+            img {
+              // Adjust image styles for mobile version
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+
+    .projects-container {
+      // Styles for projects container
+
+      @media (max-width: 768px) {
+        // Styles for mobile version
+        grid-template-columns: 1fr; // Change to a single column layout
+        padding: 2em;
+        gap: 1em;
+        background-color: #fafafa;
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    .contact-me-page {
+      // Styles for contact me page
+
+      width: 100vw;
+
+      .social-media-container {
+        // Styles for social media container
+
+        // Styles for mobile version
+        grid-template-columns: 1fr; // Change to a single column layout
+        padding: 0;
+        margin: 0;
+        .contact-me-text {
+          // Styles for contact me text in mobile version
+          width: 80vw;
+
+          margin: auto;
+
+          h1 {
+            font-size: 4em;
+            margin: 0;
+          }
+
+          h3 {
+            font-size: 1.4em;
+          }
+
+          .social-links-container {
+            // Styles for social links container in mobile version
+            grid-template-columns: 1fr; // Change to a single column layout
+            gap: 2em;
+            width: 100%;
+            margin: 2em 0;
+
+            .social-link {
+              // Styles for individual social link in mobile version
+              width: 100%;
+              text-align: center;
+              .social-logo-container {
+                width: 3em;
+                height: 3em;
+              }
+              p {
+                font-size: 1.6em;
+              }
+            }
+          }
+        }
+
+        .contact-me-photo {
+          // Styles for contact me photo in mobile version
+          margin: 2em auto;
+
+          img {
+            // Adjust image styles for mobile version
+            max-width: 100%;
+            height: auto;
+          }
+        }
+      }
+    }
+
+    .contact-via-email-container {
+      // Styles for contact via email container
+
+      @media (max-width: 768px) {
+        // Styles for mobile version
+        padding: 2em;
+
+        .form-send-email {
+          // Styles for email form in mobile version
+          .form-input {
+            // Styles for form inputs in mobile version
+            grid-template-columns: 1fr !important; // Change to a single column layout
+
+            .row-1,
+            .row-2 {
+              // Styles for input rows in mobile version
+              text-align: center;
+
+              input,
+              textarea {
+              }
+            }
+          }
+        }
+
+        .send-email-button {
+          // Styles for send email button in mobile version
+          min-width: 60%;
+
+          margin: auto !important;
+          margin-top: 2em !important;
+        }
+      }
+    }
+  }
+}
