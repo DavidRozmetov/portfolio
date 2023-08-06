@@ -130,6 +130,10 @@ body {
       padding: 0;
       height: 600px;
       margin: auto;
+
+      .landing-image-mobile {
+        display: none;
+      }
       .jobs-container {
         height: 80vh;
         width: 85vw;
@@ -177,39 +181,13 @@ body {
           height: 100%;
 
           .div-img {
-            position: absolute;
-            top: 0;
-            left: -100px;
-
-            overflow-y: hidden;
-            overflow-y: visible;
-            height: 100%;
-
             margin: 0;
 
             img {
-              height: 600px;
-              left: -20px;
-            }
-          }
-
-          .div-regular {
-            width: 60vw;
-            overflow-x: visible;
-
-            img {
-              bottom: 0;
-              width: 60vw !important;
-            }
-          }
-
-          .div-color {
-            overflow-x: hidden;
-
-            img {
-              bottom: 0;
-              width: 60vw !important;
-              left: -10vw;
+              max-height: 100vh;
+              max-width: 50vw;
+              width: 100%;
+              height: auto;
             }
           }
         }

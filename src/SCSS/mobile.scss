@@ -135,11 +135,27 @@ body {
 
       @media (max-width: 768px) {
         width: 100vw;
-
+        min-height: auto;
         grid-template-columns: 1fr; // Change to a single column layout
         padding: 0;
         text-align: center;
+        height: auto;
 
+        .landing-image-mobile {
+          display: block;
+
+          padding: 0;
+          height: 50vw;
+          margin-top: 3em;
+          img {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+
+            margin: auto;
+          }
+        }
         .jobs-container {
           display: none;
         }
@@ -157,13 +173,14 @@ body {
         text-align: center;
         margin: auto;
         padding-bottom: 20vw;
+
         .title-container {
           border-bottom: solid 1px #bbb;
           text-align: center;
 
           width: 70vw;
           margin: auto;
-
+          margin-top: 3em;
           height: 0.7em;
           margin-bottom: 1em;
 

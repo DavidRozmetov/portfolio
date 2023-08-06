@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
-import imgRegular from "../assets/img/david/landing-regular.png";
-import imgColor from "../assets/img/david/landing-color.png";
+import { useState, useEffect } from "react";
+
 import { CoderText } from "./CoderText";
+import { SpinningPortfolio } from "./SpinningPortfolio";
+import landingImage from "../assets/img/david/landing.png";
 export const Landing = () => {
-  const [mouseX, setMouseX] = useState<number>(0.5);
+  const [mouseX, setMouseX] = useState<number>(0);
 
   const handleMouseMove = (event: MouseEvent) => {
     const windowWidth = window.innerWidth;
@@ -42,6 +43,12 @@ export const Landing = () => {
     return Math.min(Math.max(distance, 0), 1);
   };
 
+  const calculateImageIndex = (x: number) => {
+    const scaledValue = (x - 0.3) / 0.3;
+    const imageIndex = Math.floor(scaledValue * 17);
+    return imageIndex;
+  };
+
   const calculateImagePosition = (x: number): string => {
     const minValue = 13;
     const maxValue = 23;
@@ -58,24 +65,6 @@ export const Landing = () => {
     transition: "opacity 1s", // Add the transition property for 1 second
   };
 
-  const returnPercentage = (x: number): string => {
-    if (x >= 0 && x <= 0.35) {
-      return "0%";
-    } else if (x <= 0.5) {
-      const percentage = ((x - 0.35) / (0.5 - 0.35)) * 60;
-      return `${percentage}%`;
-    } else if (x <= 0.7) {
-      const percentage = ((x - 0.5) / (0.7 - 0.5)) * 60 + 6;
-      return `${percentage}%`;
-    } else {
-      return "120%";
-    }
-  };
-  const imgColorStyle = {
-    width: returnPercentage(calculateOpacity(mouseX)),
-    transition: "width 2s",
-  };
-
   const imgPostionStyle = {
     left: calculateImagePosition(calculateOpacity(mouseX)),
     transition: "left 2s",
@@ -83,25 +72,41 @@ export const Landing = () => {
 
   return (
     <a className="landing-container" href="/about">
+      <div className="landing-image-mobile">
+        <img src={landingImage} alt="landing image for mobile devices" />
+      </div>
       <div className="jobs-container">
-        <div className="job-container div-coder" style={opacityStyleCoder}>
+        <div
+          className="job-container div-coder"
+          style={opacityStyleCoder}
+          data-aos="fade-up"
+          data-aos-duration="3s"
+          data-aos-delay="2s"
+        >
           <CoderText />
 
-          <p>Front end React Developer who tries to write elegant code</p>
+          <p>Entry-level Front-end React Developer who's open for more </p>
         </div>
-        <div className="job-container div-teacher" style={opacityStyleTeacher}>
+        <div
+          className="job-container div-teacher"
+          style={opacityStyleTeacher}
+          data-aos="fade-right"
+          data-aos-duration="250"
+          data-aos-delay="500"
+        >
           <h1>teacher</h1>
           <p>Over 5 years of teaching experience in English and IT</p>
-          {/* <p>{returnPercentage(calculateOpacity(mouseX))}</p> */}
         </div>
       </div>
       <div className="image-container" style={imgPostionStyle}>
         <div className="div-cover">
-          <div className="div-img div-regular">
-            <img className=" img-regular" src={imgRegular} alt="" />
-          </div>
-          <div className="div-img div-color" style={imgColorStyle}>
-            <img className=" img-color" src={imgColor} alt="" />
+          <div
+            className="div-img div-regular"
+            data-aos="fade-right"
+            data-aos-duration="750"
+            data-aos-delay="1000"
+          >
+            <SpinningPortfolio i={calculateImageIndex(mouseX)} />
           </div>
         </div>
       </div>
