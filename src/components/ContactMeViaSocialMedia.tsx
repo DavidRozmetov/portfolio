@@ -3,10 +3,16 @@ import { AiFillInstagram, AiFillFacebook } from "react-icons/ai";
 import { BsLine } from "react-icons/bs";
 import { FaInstagram, FaLinkedinIn, FaFacebookF, FaLine } from "react-icons/fa";
 import { BsLinkedin } from "react-icons/bs";
+import { LinkedInBanger } from "./LinkedInBanger";
+import { useEffect } from "react";
+import AOS from "aos";
 export const ContactMeViaSocialMedia = () => {
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
   return (
     <div className="social-media-container">
-      <div className="contact-me-text">
+      <div className="contact-me-text" data-aos="fade-right">
         <h1>contact.</h1>
         <h3>Get in touch with me via social media or email.</h3>
 
@@ -55,7 +61,9 @@ export const ContactMeViaSocialMedia = () => {
           </a>
         </div>
       </div>
-      <div className="contact-me-photo">[photo]</div>
+      <div className="contact-me-photo">
+        <LinkedInBanger />
+      </div>
     </div>
   );
 };
