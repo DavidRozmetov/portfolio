@@ -1,4 +1,4 @@
-import BeachPhoto from "../assets/img/david/beach.jpeg";
+import photoPortfolio from "../assets/img/portfolio.png";
 export const PortfolioMain = () => {
   return (
     <div className="portfolio-main-container ">
@@ -14,9 +14,14 @@ export const PortfolioMain = () => {
           of the structure is not up with the industry standards.
         </p>
       </div>
-      <div className="div-right">
+      <div
+        className="div-right"
+        data-aos="fade-left"
+        data-aos-duration="500"
+        data-aos-delay="750"
+      >
         <div className="img">
-          <img src={BeachPhoto} alt="David at da beach" />
+          <img src={photoPortfolio} alt="David at da beach" />
         </div>
       </div>
     </div>

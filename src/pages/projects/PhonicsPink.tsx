@@ -41,8 +41,8 @@ export const PhonicsPink = () => {
           </div>
           <p className="project-description">
             Back in 2021, I created a lovely HTML5 and VanillaJs app, where
-            students can play a basic MCQ hame with top 100 phonics words. My
-            goal was to create my first app.
+            students can play a basic MCQ game with the top 100 phonics words.
+            My goal was to create my first app.
           </p>
 
           <div className="link-buttons">

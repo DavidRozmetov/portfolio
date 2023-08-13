@@ -234,6 +234,7 @@ body {
 
   .about-container {
     margin-top: -10vh;
+
     .about-me-container {
       width: 80vw;
       margin: auto;
@@ -266,6 +267,46 @@ body {
           font-size: $font-size-p;
           font-weight: 300;
           line-height: 2em;
+        }
+      }
+      .about-me-image {
+        height: 60vh;
+
+        width: 100%;
+        // overflow: hidden;
+
+        display: flex;
+        justify-content: center;
+        img {
+          height: 60vh;
+          margin: auto;
+          margin-top: 10vh;
+        }
+      }
+    }
+    .about-me-images {
+      width: 100%;
+
+      .img-grid {
+        margin: auto;
+        width: 80%;
+        height: 8em;
+        display: flex;
+        justify-content: space-between;
+
+        padding-bottom: 5em;
+        img {
+          cursor: pointer;
+          height: 7.5em;
+          transition: height 0.25s;
+          transition: box-shadow 0.25s;
+          box-shadow: 0em 0em 10px $color--dark-gray;
+          border-radius: 5px;
+          border: solid $color--white 3px;
+        }
+        img:hover {
+          height: 7.55em;
+          box-shadow: 0em 0em 12px $color--very-dark-gray;
         }
       }
     }
@@ -558,6 +599,7 @@ body {
     width: 80%;
     margin: auto;
     .div-left {
+      width: 40vw;
       h1 {
         font-size: 6em;
         font-weight: 900;
@@ -585,14 +627,16 @@ body {
     .div-right {
       .img {
         margin: auto;
-        max-width: 80%;
+        width: 50vw;
         max-height: 70vh;
         overflow: hidden;
 
         img {
-          min-width: 70%;
+          min-width: 40vw;
           min-height: 70%;
+          width: 40vw;
           margin: auto;
+          overflow: hidden;
         }
       }
     }
