@@ -140,6 +140,8 @@ body {
         margin: auto;
         display: grid;
         grid-template-columns: 1fr 1fr;
+        position: absolute;
+        z-index: 100;
         .job-container {
           width: 50%;
           text-align: justify;
@@ -165,7 +167,7 @@ body {
       }
       .image-container {
         position: absolute;
-
+        z-index: 1;
         bottom: 0;
         width: 50vw;
         height: 100%;

@@ -7,7 +7,7 @@ export const LatestWork = () => {
   return (
     <div className="latest-work-container">
       <div className="title-container">
-        <p className="title">Some of my latest works</p>
+        <p className="title">Some of my latest work</p>
       </div>
 
       <div className="projects-container">
