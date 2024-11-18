@@ -18,7 +18,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
       data-aos="fade-right"
       data-aos-duration="150"
       data-aos-delay={index * 50 + ""}
-      href={"portfolio/" + title.replaceAll(" ", "-").toLocaleLowerCase()}
+      href={"courses/" + title.replaceAll(" ", "-").toLocaleLowerCase()}
       className="project-card-container"
     >
       <div className="div-img">

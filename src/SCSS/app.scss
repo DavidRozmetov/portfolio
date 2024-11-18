@@ -142,11 +142,13 @@ body {
         grid-template-columns: 1fr 1fr;
         position: absolute;
         z-index: 100;
+
         .job-container {
           width: 50%;
           text-align: justify;
           margin: auto;
           color: $color--black;
+          position: relative;
           h1 {
             font-size: 4.8em;
             margin: 0;
@@ -163,6 +165,7 @@ body {
         }
         .div-teacher {
           margin-right: 0;
+          position: relative;
         }
       }
       .image-container {
@@ -216,8 +219,8 @@ body {
 
           color: $color--dark-gray;
           width: fit-content;
-          padding-left: 3em;
-          padding-right: 3em;
+          padding-left: 1em;
+          padding-right: 1em;
           z-index: 970 !important;
           font-size: 1.2em;
           font-weight: 700;
@@ -230,6 +233,33 @@ body {
         width: 80vw;
         margin: 0;
         margin: auto;
+      }
+
+      .it-course-cards-container {
+        .project-card-title {
+          color: #f7a028;
+          font-weight: 600;
+        }
+
+        .project-card-subtitle {
+          color: #d78008;
+        }
+      }
+    }
+
+    .popular-it-lessons-container {
+      background-color: #f7a028;
+
+      .title-container {
+        border-bottom: solid 1px #fff !important;
+        background-color: transparent;
+      }
+
+      .title {
+        margin: auto;
+        margin-top: -1.2em;
+        background-color: #f7a028 !important;
+        color: white !important;
       }
     }
   }
@@ -651,5 +681,562 @@ body {
     margin: 0;
     padding: 10vw;
     background-color: #fafafa;
+  }
+}
+.div-english-courses,
+.div-it-courses {
+  min-height: fit-content;
+  min-width: fit-content;
+  width: 100vw !important;
+  height: 60vh !important;
+  position: absolute;
+  top: -20vh;
+  left: 0;
+  padding: 0;
+  display: flex;
+}
+
+.div-courses-container {
+  width: 80%;
+  height: 100%;
+  margin: 0;
+  position: relative;
+}
+
+.div-course {
+  position: absolute;
+  font-size: 1.2em;
+  opacity: 0.7;
+  h3 {
+    font-weight: 500;
+  }
+}
+
+.div-course-1 {
+  top: 20%;
+  rotate: -6deg;
+  left: 40%;
+  color: #050505;
+
+  animation: div-course-1 0.5s;
+}
+@keyframes div-course-1 {
+  from {
+    left: 0%;
+    rotate: -150deg;
+    font-size: 0.8em;
+    top: 0;
+    opacity: 0;
+  }
+}
+
+.div-course-2 {
+  top: 10%;
+  rotate: 0deg;
+  left: 15%;
+  color: #550055;
+
+  animation: div-course-2 0.5s;
+}
+
+@keyframes div-course-2 {
+  from {
+    left: 20%;
+    rotate: 180deg;
+    font-size: 0.8em;
+    opacity: 0;
+  }
+}
+
+.div-course-3 {
+  top: 40vh;
+  rotate: 15deg;
+  right: 30%;
+  animation: div-course-3 0.5s;
+
+  color: #005500;
+  width: fit-content !important;
+
+  text-wrap: nowrap;
+}
+
+@keyframes div-course-3 {
+  from {
+    right: 50%;
+    rotate: -120deg;
+    font-size: 0.8em;
+    opacity: 0;
+  }
+  to {
+  }
+}
+
+.div-course-4 {
+  top: 90%;
+  rotate: 0;
+  left: 35%;
+  color: #ff5555;
+  animation: div-course-4 0.5s;
+  word-wrap: break-word;
+  max-width: 20vw;
+}
+
+@keyframes div-course-4 {
+  from {
+    left: 0%;
+    rotate: -210deg;
+    font-size: 0.8em;
+    opacity: 0;
+  }
+}
+
+.div-course-5 {
+  top: 40%;
+  rotate: -14deg;
+  left: 10%;
+  max-width: 25vw;
+  color: #00367d !important;
+  animation: div-course-5 0.5s;
+}
+
+@keyframes div-course-5 {
+  from {
+    left: -20%;
+    rotate: -190deg;
+    font-size: 0.8em;
+    opacity: 0;
+  }
+  to {
+  }
+}
+
+.div-icons-container {
+  width: 80%;
+  height: 100%;
+  margin: 0;
+  position: relative;
+}
+
+.div-course-icon {
+  position: absolute;
+  opacity: 0.4;
+  img {
+    max-height: 2em;
+
+    position: relative;
+  }
+}
+
+.div-course-icon-1 {
+  left: 40%;
+  rotate: 30deg;
+  top: 45vh;
+  animation: div-icon-1 0.75s;
+}
+
+@keyframes div-icon-1 {
+  from {
+    left: 70%;
+    rotate: -190deg;
+    top: 40vh;
+    opacity: 0;
+  }
+}
+.div-course-icon-2 {
+  left: 50%;
+  rotate: -30deg;
+  animation: div-icon-2 0.75s;
+  img {
+    max-height: 7vh;
+  }
+}
+
+@keyframes div-icon-2 {
+  from {
+    left: 70%;
+    rotate: -190deg;
+    top: 20vh;
+    opacity: 0;
+  }
+}
+.div-course-icon-3 {
+  left: 20%;
+  top: 10vh;
+  rotate: -30deg;
+  animation: div-icon-3 0.75s;
+}
+
+@keyframes div-icon-3 {
+  from {
+    left: 50%;
+    rotate: -190deg;
+    top: 20vh;
+    opacity: 0;
+  }
+}
+
+.div-course-icon-4 {
+  left: 50%;
+  top: 30vh;
+  rotate: -30deg;
+  animation: div-icon-4 0.75s;
+}
+
+@keyframes div-icon-4 {
+  from {
+    left: 70%;
+    rotate: -190deg;
+    top: 20vh;
+    opacity: 0;
+  }
+}
+
+.div-course-icon-5 {
+  left: 20%;
+  top: 70vh;
+  rotate: -20deg;
+  animation: div-icon-5 0.75s;
+}
+
+@keyframes div-icon-5 {
+  from {
+    left: 40%;
+    rotate: -190deg;
+    top: 60vh;
+    opacity: 0;
+  }
+}
+
+.div-course-icon-6 {
+  left: 0%;
+  top: 0;
+  rotate: -5deg;
+  animation: div-icon-6 0.75s;
+  img {
+    max-height: 4em;
+  }
+}
+
+@keyframes div-icon-6 {
+  from {
+    left: 60%;
+    rotate: -190deg;
+    top: 20vh;
+    opacity: 0;
+  }
+}
+
+.div-course-icon-7 {
+  left: 0%;
+  top: 60vh;
+  rotate: -20deg;
+  animation: div-icon-7 0.75s;
+}
+
+@keyframes div-icon-7 {
+  from {
+    left: 10%;
+    rotate: -190deg;
+    top: 65vh;
+    opacity: 0;
+  }
+}
+.div-it-courses {
+  left: -300%;
+  width: 100vw;
+  flex-direction: row-reverse;
+}
+.div-it-icons-container {
+  height: 200%;
+
+  .div-it-course-icon-1 {
+    top: 15%;
+    left: 45%;
+    rotate: 90deg;
+    animation: div-it-course-icon-1 0.75s;
+  }
+  @keyframes div-it-course-icon-1 {
+    from {
+      top: 25%;
+      left: 0%;
+      rotate: 290deg;
+      opacity: 0;
+    }
+  }
+
+  .div-it-course-icon-2 {
+    top: 1%;
+    left: 55%;
+    rotate: 9deg;
+    animation: div-it-course-icon-2 0.75s;
+  }
+  @keyframes div-it-course-icon-2 {
+    from {
+      top: 25%;
+      left: 0%;
+      rotate: 290deg;
+      opacity: 0;
+    }
+  }
+
+  .div-it-course-icon-3 {
+    top: 55%;
+    left: 45%;
+    rotate: -15deg;
+    animation: div-it-course-icon-3 0.75s;
+    img {
+      min-height: 3em;
+      min-width: 3em;
+    }
+  }
+  @keyframes div-it-course-icon-3 {
+    from {
+      top: 25%;
+      left: 0%;
+      rotate: 290deg;
+      opacity: 0;
+    }
+  }
+  .div-it-course-icon-4 {
+    top: 20%;
+    left: 5%;
+    rotate: 9deg;
+    animation: div-it-course-icon-4 0.75s;
+  }
+  @keyframes div-it-course-icon-4 {
+    from {
+      top: 35%;
+      left: -5%;
+      rotate: 290deg;
+      opacity: 0;
+    }
+  }
+
+  .div-it-course-icon-5 {
+    top: 40%;
+    left: 65%;
+    rotate: 20deg;
+    animation: div-it-course-icon-5 0.75s;
+  }
+  @keyframes div-it-course-icon-5 {
+    from {
+      top: 35%;
+      left: 0%;
+      rotate: 290deg;
+      opacity: 0;
+    }
+  }
+  .div-it-course-icon-6 {
+    top: 1%;
+    left: 5%;
+    rotate: -29deg;
+    animation: div-it-course-icon-6 0.75s;
+    img {
+      min-height: 3em;
+      min-width: 3em;
+    }
+  }
+  @keyframes div-it-course-icon-6 {
+    from {
+      top: 25%;
+      left: 0%;
+      rotate: 290deg;
+      opacity: 0;
+    }
+  }
+
+  .div-it-course-icon-7 {
+    top: 50%;
+    left: 25%;
+    rotate: 9deg;
+    animation: div-it-course-icon-7 0.75s;
+    img {
+      min-height: 3em;
+      min-width: 3em;
+      opacity: 0.3;
+    }
+  }
+  @keyframes div-it-course-icon-7 {
+    from {
+      top: 25%;
+      left: 0%;
+      rotate: 290deg;
+      opacity: 0;
+    }
+  }
+
+  .div-it-course-icon-8 {
+    top: 5%;
+    left: 35%;
+    rotate: 9deg;
+    animation: div-it-course-icon-8 0.75s;
+  }
+  @keyframes div-it-course-icon-8 {
+    from {
+      top: 25%;
+      left: 0%;
+      rotate: 290deg;
+      opacity: 0;
+    }
+  }
+  .div-it-course-icon-9 {
+    top: 57%;
+    left: 75%;
+    rotate: 9deg;
+    animation: div-it-course-icon-9 0.75s;
+  }
+  @keyframes div-it-course-icon-9 {
+    from {
+      top: 25%;
+      left: 0%;
+      rotate: 290deg;
+      opacity: 0;
+    }
+  }
+
+  .div-it-course-icon-10 {
+    top: 55%;
+    left: -90%;
+    rotate: 0;
+    animation: div-it-course-icon-10 0.75s;
+    width: fit-content;
+    height: fit-content;
+    img {
+      min-width: 4em;
+      min-height: 4em;
+    }
+  }
+  @keyframes div-it-course-icon-10 {
+    from {
+      top: 25%;
+      left: 0%;
+      rotate: 290deg;
+      opacity: 0;
+    }
+  }
+
+  .div-it-course-icon-11 {
+    top: 15%;
+    left: 60%;
+    rotate: -2deg;
+    animation: div-it-course-icon-11 0.75s;
+    img {
+      min-width: 5em;
+      min-height: 5em;
+    }
+  }
+  @keyframes div-it-course-icon-11 {
+    from {
+      top: 25%;
+      left: 0%;
+      rotate: 290deg;
+      opacity: 0;
+    }
+  }
+
+  .div-it-course-icon-12 {
+    top: 5%;
+    left: -95%;
+    rotate: 9deg;
+    animation: div-it-course-icon-12 0.75s;
+    img {
+      min-width: 5em;
+      min-height: 5em;
+    }
+  }
+  @keyframes div-it-course-icon-12 {
+    from {
+      top: 25%;
+      left: 0%;
+      rotate: 290deg;
+      opacity: 0;
+    }
+  }
+}
+
+.div-it-courses-container .div-course {
+  width: fit-content;
+  h3 {
+    font-size: 1.4em;
+    font-weight: 900;
+  }
+}
+.div-it-course-1 {
+  top: 20%;
+  left: 20%;
+  rotate: -20deg;
+  animation: div-it-course-1 0.75s;
+  color: #f7a028 !important;
+}
+@keyframes div-it-course-1 {
+  from {
+    top: 30%;
+    left: 50%;
+    rotate: -200deg;
+  }
+}
+.div-it-course-2 {
+  top: 40%;
+  left: 30%;
+  rotate: -2deg;
+
+  animation: div-it-course-2 0.75s;
+  color: #00367d !important;
+}
+@keyframes div-it-course-2 {
+  from {
+    top: 50%;
+    left: 50%;
+    rotate: 100deg;
+  }
+}
+
+.div-it-course-3 {
+  top: 40%;
+  left: 0%;
+  rotate: 20deg;
+
+  animation: div-it-course-3 0.75s;
+  color: #550055 !important;
+}
+@keyframes div-it-course-3 {
+  from {
+    top: 50%;
+    left: 50%;
+    rotate: 100deg;
+  }
+}
+
+.div-it-course-4 {
+  top: 60%;
+  left: 0%;
+  rotate: -15deg;
+  animation: div-it-course-4 0.75s;
+  color: #005500 !important;
+}
+@keyframes div-it-course-4 {
+  from {
+    top: 50%;
+    left: 50%;
+    rotate: 100deg;
+  }
+}
+
+.div-it-course-5 {
+  top: 85%;
+  left: 0%;
+  rotate: 0;
+  max-width: 35%;
+  line-height: 1.8em;
+
+  animation: div-it-course-5 0.75s;
+  color: #050505 !important;
+  font-size: 1em !important;
+}
+@keyframes div-it-course-5 {
+  from {
+    top: 50%;
+    left: 50%;
+    rotate: 100deg;
   }
 }

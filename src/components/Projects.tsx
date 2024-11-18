@@ -1,4 +1,4 @@
-import { ProjectCard } from "./ProjectCard";
+import { ProjectCard } from "./Card";
 
 import PhonicsPinkOnPhone from "../assets/img/phonics-pink/phonics-pink-on-phone.png";
 import PhonicsBlue from "../assets/img/phonics-blue/phonics-blue-monitor-yellow-bg.png";

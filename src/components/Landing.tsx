@@ -1,6 +1,25 @@
 import { useState, useEffect } from "react";
+import EnglishIcon1 from "../assets/svg/book-closed.svg";
+import EnglishIcon2 from "../assets/svg/chat-chat.svg";
+import EnglishIcon3 from "../assets/svg/chinese-noodles-2.svg";
+import EnglishIcon4 from "../assets/svg/thai-baht-thai-baht-coin-finance-money.svg";
+import EnglishIcon5 from "../assets/svg/google-meet.svg";
+import EnglishIcon6 from "../assets/svg/online-interview.svg";
+import EnglishIcon7 from "../assets/svg/thai-pattern-architecture.svg";
 
-import { CoderText } from "./CoderText";
+import ItIcon1 from "../assets/svg/game-controller.svg";
+import ItIcon2 from "../assets/svg/js.svg";
+import ItIcon3 from "../assets/svg/online-arcade-pc-game-pacman.svg";
+import ItIcon4 from "../assets/svg/programming-code-signs.svg";
+import ItIcon5 from "../assets/svg/programming-code.svg";
+import ItIcon6 from "../assets/svg/programming-monitor.svg";
+import ItIcon7 from "../assets/svg/programming-process.svg";
+import ItIcon8 from "../assets/svg/python.svg";
+import ItIcon9 from "../assets/svg/roblox-svgrepo-com.svg";
+import ItIcon10 from "../assets/svg/robot-arm.svg";
+import ItIcon11 from "../assets/svg/scratch-cat.svg";
+import ItIcon12 from "../assets/svg/robot.svg";
+
 import { SpinningPortfolio } from "./SpinningPortfolio";
 import landingImage from "../assets/img/david/landing.png";
 export const Landing = () => {
@@ -83,9 +102,58 @@ export const Landing = () => {
           data-aos-duration="3s"
           data-aos-delay="2s"
         >
-          <CoderText />
+          <h1>English</h1>
+          <p>
+            Guiding students to{" "}
+            <span style={{ color: "#0693e3", fontWeight: 800 }}>English </span>{" "}
+            fluency with a proven track record of success over{" "}
+            <span style={{ color: "#0693e3", fontWeight: 800 }}>7 years</span>.
+          </p>
+          {calculateImageIndex(mouseX) < 3 && (
+            <div className="div-english-courses">
+              <div className="div-icons-container">
+                <div className="div-course-icon div-course-icon-1">
+                  <img src={EnglishIcon1} alt="svg icon" />
+                </div>
+                <div className="div-course-icon div-course-icon-2">
+                  <img src={EnglishIcon2} alt="svg icon" />
+                </div>
+                <div className="div-course-icon div-course-icon-3">
+                  <img src={EnglishIcon3} alt="svg icon" />
+                </div>
+                <div className="div-course-icon div-course-icon-4">
+                  <img src={EnglishIcon4} alt="svg icon" />
+                </div>
+                <div className="div-course-icon div-course-icon-5">
+                  <img src={EnglishIcon5} alt="svg icon" />
+                </div>
+                <div className="div-course-icon div-course-icon-6">
+                  <img src={EnglishIcon6} alt="svg icon" />
+                </div>
+                <div className="div-course-icon div-course-icon-7">
+                  <img src={EnglishIcon7} alt="svg icon" />
+                </div>{" "}
+              </div>
+              <div className="div-courses-container">
+                <div className="div-course div-course-1">
+                  <h3>Exam Preperation</h3>
+                </div>
+                <div className="div-course div-course-2">
+                  <h3>English for Daily Life</h3>
+                </div>
+                <div className="div-course div-course-3">
+                  <h3>Business English Essentials</h3>
+                </div>
+                <div className="div-course div-course-4">
+                  <h3>Conversational English Practice</h3>
+                </div>
 
-          <p>Entry-level Front-end React Developer who's open for more </p>
+                <div className="div-course div-course-5">
+                  <h3>Reading & Phonics for Young Learners</h3>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
         <div
           className="job-container div-teacher"
@@ -94,8 +162,71 @@ export const Landing = () => {
           data-aos-duration="250"
           data-aos-delay="500"
         >
-          <h1>teacher</h1>
-          <p>Over 5 years of teaching experience in English and IT</p>
+          <h1>IT</h1>
+          <p>
+            From Scratch to Python, empowering young learners with essential IT
+            skills.
+          </p>
+          {calculateImageIndex(mouseX) > 17 && (
+            <div className="div-it-courses">
+              <div className="div-icons-container div-it-icons-container">
+                <div className="div-course-icon div-it-course-icon-1">
+                  <img src={ItIcon1} alt="svg icon" />
+                </div>
+                <div className="div-course-icon div-it-course-icon-2">
+                  <img src={ItIcon2} alt="svg icon" />
+                </div>
+                <div className="div-course-icon div-it-course-icon-3">
+                  <img src={ItIcon3} alt="svg icon" />
+                </div>
+                <div className="div-course-icon div-it-course-icon-4">
+                  <img src={ItIcon4} alt="svg icon" />
+                </div>
+                <div className="div-course-icon div-it-course-icon-5">
+                  <img src={ItIcon5} alt="svg icon" />
+                </div>
+                <div className="div-course-icon div-it-course-icon-6">
+                  <img src={ItIcon6} alt="svg icon" />
+                </div>
+                <div className="div-course-icon div-it-course-icon-7">
+                  <img src={ItIcon7} alt="svg icon" />
+                </div>
+                <div className="div-course-icon div-it-course-icon-8">
+                  <img src={ItIcon8} alt="svg icon" />
+                </div>
+                <div className="div-course-icon div-it-course-icon-9">
+                  <img src={ItIcon9} alt="svg icon" />
+                </div>
+                <div className="div-course-icon div-it-course-icon-10">
+                  <img src={ItIcon10} alt="svg icon" />
+                </div>
+                <div className="div-course-icon div-it-course-icon-11">
+                  <img src={ItIcon11} alt="svg icon" />
+                </div>
+                <div className="div-course-icon div-it-course-icon-12">
+                  <img src={ItIcon12} alt="svg icon" />
+                </div>
+              </div>
+              <div className="div-courses-container div-it-courses-container">
+                <div className="div-course div-it-course-1">
+                  <h3>Scratch</h3>
+                </div>
+                <div className="div-course div-it-course-2">
+                  <h3>Robotics</h3>
+                </div>
+                <div className="div-course div-it-course-3">
+                  <h3>Python</h3>
+                </div>
+                <div className="div-course div-it-course-4">
+                  <h3>Web Design</h3>
+                </div>
+
+                <div className="div-course div-it-course-5">
+                  <h3>Roblox Game Development</h3>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
       <div className="image-container" style={imgPostionStyle}>
