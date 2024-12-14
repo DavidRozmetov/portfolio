@@ -31,7 +31,7 @@ export const ContactMeViaSocialMedia = () => {
 
           <a
             className="social-link social-link-instagram "
-            href="https://www.instagram.com/teacherdvid/"
+            href="https://www.instagram.com/englishwithteacherdavid/"
             target="_blank"
           >
             <div className="social-logo-container social-logo-instagram">

@@ -30,6 +30,7 @@ export const ITLessons = () => {
           subtitle="Learn to create your own games using Scratch! Perfect for beginners, this course teaches coding basics through fun, interactive projects."
           imageSource={scratchCat}
           index={1}
+          isDisabled={true}
         />
 
         <ProjectCard
@@ -37,6 +38,7 @@ export const ITLessons = () => {
           subtitle="Dive into the world of robotics with hands-on projects! Kids will learn to design, build, and program robots, sparking their curiosity in STEM while having fun."
           imageSource={Robotics}
           index={2}
+          isDisabled={true}
         />
 
         <ProjectCard
@@ -44,6 +46,7 @@ export const ITLessons = () => {
           subtitle="Designed for teens, this course covers essential coding concepts through engaging projects, preparing them for more advanced challenges."
           imageSource={python}
           index={4}
+          isDisabled={true}
         />
         {/* <ProjectCard
           title="English for Teenagers"

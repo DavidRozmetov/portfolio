@@ -21,7 +21,7 @@ import ItIcon11 from "../assets/svg/scratch-cat.svg";
 import ItIcon12 from "../assets/svg/robot.svg";
 
 import { SpinningPortfolio } from "./SpinningPortfolio";
-import landingImage from "../assets/img/david/landing.png";
+import landingImage from "../assets/img/10.png";
 export const Landing = () => {
   const [mouseX, setMouseX] = useState<number>(0);
 
@@ -229,6 +229,9 @@ export const Landing = () => {
           )}
         </div>
       </div>
+      {window.innerWidth > 768 && (
+        <SpinningPortfolio i={calculateImageIndex(mouseX)} />
+      )}
       <div className="image-container" style={imgPostionStyle}>
         <div className="div-cover">
           <div

@@ -332,6 +332,7 @@
 .landing-reviews-container h2 {
   font-size: 18px;
   font-weight: 500;
+  max-width: 95vw;
 }
 @keyframes slideIn {
   from {
@@ -528,4 +529,52 @@
   z-index: 970 !important;
   font-size: 1.2em;
   font-weight: 700;
+}
+@media (max-width: 768px) {
+  .review-cards-scroller {
+    width: 95%;
+  }
+  .review-cards-container {
+    padding: 0.5em 1em;
+    min-width: unset;
+    width: 90%;
+  }
+  .review-cards-container .review-card-container {
+    max-width: 120px !important;
+    min-width: 230px;
+    min-height: 280px;
+    height: fit-content !important;
+  }
+  .div-img-review-student {
+    width: 60px !important;
+    height: 60px !important;
+  }
+  .div-img-review-student img {
+    width: 65px !important;
+    height: 65px !important;
+  }
+
+  .review-card-author {
+    font-size: 0.8em;
+  }
+  .review-card-message p {
+    font-size: 0.8em;
+  }
+}
+@media (max-width: 768px) {
+  .landing-reviews-container {
+    max-width: 100vw !important;
+    width: 100vw !important;
+    padding: 0 !important;
+  }
+
+  .btn-horizontal-scroll {
+    display: none;
+  }
+  .review-cards-scroller {
+    width: 100% !important;
+  }
+  .review-cards-container {
+    width: 100%;
+  }
 }

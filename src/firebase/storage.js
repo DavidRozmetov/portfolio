@@ -74,20 +74,15 @@ export const listFolderFiles = async (path) => {
 };
 
 export const getFile = async (path) => {
-  console.log("getFile called with path:", path); // Log the start of the function
   try {
     if (!path) {
       console.error("Invalid path provided.");
       return { success: false, message: "Invalid path provided." };
     }
 
-    console.log("Creating file reference...");
     const fileRef = ref(storage, path); // File reference
-    console.log("File reference created:", fileRef);
 
-    console.log("Fetching download URL...");
     const url = await getDownloadURL(fileRef); // Download URL
-    console.log("File URL fetched successfully:", url);
 
     return { success: true, message: url }; // Return URL on success
   } catch (error) {

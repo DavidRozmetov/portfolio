@@ -4,14 +4,14 @@ import { getFile } from "../firebase/storage";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-export const LatestWork = () => {
+export const LatestWork = (props: { title: string }) => {
   const [businessEnglishHeader, setBusinessEnglishHeader] =
     useState<string>("");
-  // const [englishFileHeader, setEnglishFileHeader] = useState<string>("");
+  const [englishFileHeader, setEnglishFileHeader] = useState<string>("");
   const [kidsEnglishHeader, setKidsEnglishHeader] = useState<string>("");
-  // const [discoverHeader, setDiscoverHeader] = useState<string>("");
+  const [discoverHeader, setDiscoverHeader] = useState<string>("");
   const [refreshEnglishHeader, setRefreshEnglishHeader] = useState<string>("");
-  // const [grammarHeader, setGrammarHeader] = useState<string>("");
+  const [grammarHeader, setGrammarHeader] = useState<string>("");
 
   useEffect(() => {
     getFile("courses/15.png").then((res) => {
@@ -22,21 +22,21 @@ export const LatestWork = () => {
       setBusinessEnglishHeader(res?.message);
     });
 
-    // getFile("courses/16.png").then((res) => {
-    //   if (!res.success) {
-    //     toast.error("couldn't load an image");
-    //     return;
-    //   }
-    //   setDiscoverHeader(res?.message);
-    // });
+    getFile("courses/16.png").then((res) => {
+      if (!res.success) {
+        toast.error("couldn't load an image");
+        return;
+      }
+      setDiscoverHeader(res?.message);
+    });
 
-    // getFile("courses/17.png").then((res) => {
-    //   if (!res.success) {
-    //     toast.error("couldn't load an image");
-    //     return;
-    //   }
-    //   setEnglishFileHeader(res?.message);
-    // });
+    getFile("courses/17.png").then((res) => {
+      if (!res.success) {
+        toast.error("couldn't load an image");
+        return;
+      }
+      setEnglishFileHeader(res?.message);
+    });
 
     getFile("courses/18.png").then((res) => {
       if (!res.success) {
@@ -54,18 +54,18 @@ export const LatestWork = () => {
       setRefreshEnglishHeader(res?.message);
     });
 
-    // getFile("courses/20.png").then((res) => {
-    //   if (!res.success) {
-    //     toast.error("couldn't load an image");
-    //     return;
-    //   }
-    //   setGrammarHeader(res?.message);
-    // });
+    getFile("courses/20.png").then((res) => {
+      if (!res.success) {
+        toast.error("couldn't load an image");
+        return;
+      }
+      setGrammarHeader(res?.message);
+    });
   }, []);
   return (
     <div className="latest-work-container">
       <div className="title-container">
-        <p className="title">Popular English Lessons</p>
+        <p className="title">{props.title}</p>
       </div>
 
       <div className="projects-container">
@@ -74,19 +74,22 @@ export const LatestWork = () => {
           subtitle="Perfect for those who’ve studied English but need a boost. Refresh your vocabulary, polish speaking skills, and regain fluency."
           imageSource={refreshEnglishHeader}
           index={1}
+          isDisabled={false}
         />
-        {/* <ProjectCard
+        <ProjectCard
           title="English for Daily Life"
           subtitle="Learning tools for every situation. Build confidence in everyday conversations, from ordering food to making new friends!"
           imageSource={englishFileHeader}
           index={1}
-        /> */}
+          isDisabled={false}
+        />
 
         <ProjectCard
           title="Business English Essentials"
           subtitle="Practice language that is relevant to your work context, so you can use what you learn in real work situations."
           imageSource={businessEnglishHeader}
           index={2}
+          isDisabled={false}
         />
 
         <ProjectCard
@@ -94,22 +97,23 @@ export const LatestWork = () => {
           subtitle="Fun, foundational English lessons using various tools to build core language skills through stories, activities, and exercises."
           imageSource={kidsEnglishHeader}
           index={4}
+          isDisabled={false}
         />
-        {/* <ProjectCard
+        <ProjectCard
           title="English for Teenagers"
           subtitle="Engaging, relevant conversations using Oxford Discover Futures to boost confidence and critical thinking for real-world English skills."
           imageSource={discoverHeader}
           index={4}
+          isDisabled={false}
         />
-
-        
 
         <ProjectCard
           title="Grammar Essentials"
           subtitle="Strengthen your English from the ground up with this focused course. Learn essential grammar rules, fix common mistakes, and gain confidence in writing."
           imageSource={grammarHeader}
           index={6}
-        /> */}
+          isDisabled={false}
+        />
       </div>
     </div>
   );

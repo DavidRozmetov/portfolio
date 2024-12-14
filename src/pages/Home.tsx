@@ -4,6 +4,7 @@ import { LatestWork } from "../components/LatestWork";
 import AOS from "aos";
 import { ITLessons } from "../components/ITLessons";
 import { Testimonials } from "../components/landing/Testimonials";
+import { PopularCourses } from "../components/PopularCourses";
 
 export const Home = () => {
   useEffect(() => {
@@ -12,9 +13,14 @@ export const Home = () => {
   return (
     <div className="home-container">
       <Landing />
-      <LatestWork />
+      <LatestWork title="Popular English Lessons" />
+      <div className="quote-button-container wordle-button-container">
+        <h3>Freshen up Your Vocabulary</h3>
+        <a href="/wordle">Play Wordle</a>
+      </div>
       <ITLessons />
       <Testimonials />
+      <PopularCourses />
     </div>
   );
 };

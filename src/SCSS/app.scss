@@ -128,7 +128,7 @@ body {
       position: relative;
       display: block;
       padding: 0;
-      height: 600px;
+      height: fi;
       margin: auto;
 
       .landing-image-mobile {
@@ -266,7 +266,7 @@ body {
 
   .about-container {
     margin-top: -10vh;
-
+    background-color: #f5f5f5;
     .about-me-container {
       width: 80vw;
       margin: auto;
@@ -300,11 +300,18 @@ body {
           font-weight: 300;
           line-height: 2em;
         }
+
+        .what-i-do {
+          font-size: 1.2em;
+          color: #050505;
+          font-weight: 300;
+        }
       }
       .about-me-image {
         height: 60vh;
 
         width: 100%;
+        margin: 10vh 5vh;
         // overflow: hidden;
 
         display: flex;
@@ -313,6 +320,30 @@ body {
           height: 60vh;
           margin: auto;
           margin-top: 10vh;
+        }
+      }
+
+      .img-what-i-do {
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 35vw;
+        height: 30vw;
+        margin-top: 10vh;
+        margin-right: 5vw;
+        rotate: -10deg;
+        animation: rotate-img 0.5s 0.5s;
+        img {
+          max-height: unset !important;
+          height: 100%;
+          width: auto;
+          margin: auto;
+        }
+      }
+      @keyframes rotate-img {
+        from {
+          rotate: -120deg;
         }
       }
     }
@@ -344,6 +375,51 @@ body {
     }
   }
 
+  .philosophy-container {
+    height: 50vh;
+    margin: 2em 0;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1em;
+    color: #082134;
+    margin-bottom: 0;
+
+    * {
+      margin: 0 auto;
+    }
+    p {
+      font-weight: 300;
+      font-size: 1.3em;
+    }
+    h2 {
+      font-size: 3em;
+      font-weight: 200;
+    }
+  }
+
+  .count-figures-container {
+    min-height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    color: white;
+
+    .count-figures-grid {
+      padding: 5vh 5vw;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1em;
+
+      .div-count-figure {
+        background-color: #3981b7;
+        color: white;
+      }
+    }
+  }
+
   .random-facts-container {
     width: 80vw;
     margin: auto;
@@ -352,15 +428,6 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
 
-    .random-facts-image {
-      height: 100%;
-      width: auto;
-      overflow: hidden;
-      background-image: url("../assets/southpark-avatar.png");
-      background-position: center;
-      background-size: 100%;
-      background-repeat: no-repeat;
-    }
     .random-facts-text {
       text-align: left;
       margin-left: 2em;
@@ -1239,4 +1306,18 @@ body {
     left: 50%;
     rotate: 100deg;
   }
+}
+.div-my-style-img {
+  height: fit-content;
+  position: relative;
+  margin-top: -20vh;
+  min-height: 100%;
+}
+.div-my-style-img img:nth-child(1) {
+  rotate: 20deg;
+}
+.div-my-style-img img:nth-child(2) {
+  rotate: -20deg;
+  margin: 0;
+  margin-left: -10vw;
 }

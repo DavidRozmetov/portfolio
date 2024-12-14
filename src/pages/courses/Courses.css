@@ -1,0 +1,91 @@
+.course-container {
+  padding: 5vh 5vw;
+  width: 90vw;
+  margin: 0 auto;
+}
+.section-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+}
+.section-secondary {
+  grid-template-columns: 2fr 1fr;
+}
+.section-1-line {
+  grid-template-columns: 1fr;
+}
+
+.section-main div {
+}
+
+.section-main .div-text {
+  width: 80%;
+  padding: 5%;
+  text-align: left;
+}
+.section-main .div-text h1 {
+  font-size: 2em;
+
+  font-weight: 900;
+  color: #333333;
+  text-align: left;
+  letter-spacing: -0.06em;
+  margin: auto;
+  margin-top: 1em;
+}
+
+.section-main .div-text h2 {
+  font-size: 1.6em;
+  color: #757575;
+  font-weight: 400;
+  margin: 0;
+  text-align: left;
+}
+
+.section-main .div-text p,
+.section-main .div-text li {
+  color: #000000;
+  font-size: 1.2em;
+  font-weight: 300;
+  line-height: 2em;
+}
+.div-img-main {
+  width: 100%;
+}
+.div-secondary-img {
+  width: 80%;
+
+  margin: auto;
+}
+.div-fifth-img {
+  width: 70%;
+  margin: auto;
+}
+.div-img-main img {
+  width: 100%;
+  height: auto;
+  margin: auto;
+}
+.projects-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: auto;
+
+  width: fit-content;
+  padding: 0;
+  justify-content: center;
+  width: 80vw;
+}
+.projects-container div {
+}
+@media (max-width: 768px) {
+  .section-main {
+    grid-template-columns: 1fr;
+  }
+  .section-main h1 {
+    width: 100%;
+  }
+  .projects-container {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,154 @@
+.get-quote-container {
+  min-height: 90vh;
+  padding: 2vh 5vw;
+}
+.div-quote {
+  text-align: left;
+}
+.get-quote-header {
+  display: flex;
+  justify-content: space-between;
+}
+.form {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  width: 100%;
+
+  gap: 1em;
+  margin: 2em;
+}
+
+.form label {
+  width: fit-content;
+  text-wrap: nowrap;
+}
+.form-options {
+  display: grid;
+  width: 100%;
+  gap: 1em;
+}
+.form-option {
+  text-align: left;
+  height: 100%;
+
+  cursor: pointer;
+
+  display: flex;
+  gap: 1em;
+}
+.option-selected {
+  background-color: #ccc;
+}
+.form-option * {
+  cursor: pointer;
+  padding: 0.2em;
+}
+.form-option p {
+  display: block;
+  margin: 0;
+  font-size: 0.8em;
+  text-wrap: wrap;
+}
+.option-p-main {
+  font-size: 1em !important;
+}
+.form-grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.form-grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.form-grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.form-grid-5 {
+  grid-template-columns: repeat(5, 1fr);
+}
+.form-grid-6 {
+}
+.step-tracker-container {
+  width: 80%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  gap: 2em;
+  padding: 0 10%;
+  border-bottom: solid 1px #ccc;
+}
+.step-tracker-inner {
+  display: grid;
+  width: 50%;
+  margin: auto;
+  grid-template-columns: repeat(3, 1fr);
+}
+.div-step {
+  margin: auto;
+  cursor: pointer;
+}
+.div-step svg {
+  font-size: 2em;
+}
+.div-contact a {
+  background-color: #06c755;
+  color: white;
+  font-weight: 900;
+  text-decoration: none;
+  padding: 8px;
+  display: flex;
+
+  justify-content: center;
+  border-radius: 4px;
+}
+.div-contact a * {
+  margin: auto;
+}
+
+@media (max-width: 876px) {
+  .get-quote-container {
+    padding: 10vh 1vw;
+    padding-top: 0;
+    position: relative;
+    margin-bottom: 10vh;
+  }
+  .div-quote {
+    margin: auto;
+  }
+
+  .get-quote-header-title {
+    display: none;
+  }
+  .get-quote-header .div-contact {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+  }
+  .div-contact a {
+    max-width: 60vw;
+    margin: auto;
+  }
+  .step-tracker-container {
+    width: 90%;
+    padding: 5%;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 0.5em;
+  }
+
+  .step-tracker-container * {
+    width: 100%;
+  }
+  .step-tracker-inner {
+    width: 100%;
+  }
+  .form {
+    max-width: 90%;
+    grid-template-columns: 1fr;
+  }
+
+  .form-options {
+    grid-template-columns: 1fr 1fr;
+  }
+}

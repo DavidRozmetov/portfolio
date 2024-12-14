@@ -48,14 +48,12 @@ export const Navbar = () => {
           about
         </a>
         <a
-          href="/portfolio"
+          href="/wordle"
           className={
-            window.location.pathname === "/portfolio"
-              ? "navbar-item-active"
-              : ""
+            window.location.pathname === "/wordle" ? "navbar-item-active" : ""
           }
         >
-          portfolio
+          Wordle
         </a>
 
         <a

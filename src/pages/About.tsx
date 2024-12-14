@@ -1,10 +1,12 @@
 import { useEffect } from "react";
-import { AboutMe } from "../components/AboutMe";
-import { MyStory } from "../components/MyStory";
-import { RandomFacts } from "../components/RandomFacts";
-import { Skills } from "../components/Skills";
+import { AboutMe } from "../components/about/AboutMe";
+
 import AOS from "aos";
-import { AboutMeImages } from "../components/AboutMeImages";
+
+import { Philosophy } from "../components/about/Philosophy";
+import { CountFigures } from "../components/about/CountFigures";
+import { MyTeachingStyle } from "../components/about/MyTeachingStyle";
+import { Prices } from "../components/about/Prices";
 
 export const About = () => {
   useEffect(() => {
@@ -13,9 +15,11 @@ export const About = () => {
   return (
     <div className="about-container">
       <AboutMe></AboutMe>
-      <AboutMeImages></AboutMeImages>
-      <Skills></Skills>
-      <RandomFacts></RandomFacts>
+
+      <Philosophy />
+      <CountFigures />
+      <MyTeachingStyle />
+      <Prices />
     </div>
   );
 };

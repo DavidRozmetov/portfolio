@@ -5,6 +5,7 @@ interface ProjectCardProps {
   subtitle: string;
   imageSource: string;
   index: number;
+  isDisabled: boolean;
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -12,13 +13,18 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   subtitle,
   imageSource,
   index,
+  isDisabled,
 }) => {
   return (
     <a
       data-aos="fade-right"
       data-aos-duration="150"
       data-aos-delay={index * 50 + ""}
-      href={"courses/" + title.replaceAll(" ", "-").toLocaleLowerCase()}
+      href={
+        isDisabled
+          ? "https://line.me/ti/p/Jq_GQiOr3e"
+          : `/courses/${title.replaceAll(" ", "-").toLocaleLowerCase()}`
+      }
       className="project-card-container"
     >
       <div className="div-img">
