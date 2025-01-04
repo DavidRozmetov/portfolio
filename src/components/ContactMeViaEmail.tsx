@@ -3,6 +3,7 @@ import emailjs from "@emailjs/browser";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { translation } from "../utils/translation";
 
 export const ContactMeViaEmail = () => {
   const form = useRef<HTMLFormElement>(null);
@@ -71,26 +72,30 @@ export const ContactMeViaEmail = () => {
   return (
     <div className="contact-via-email-container">
       <ToastContainer></ToastContainer>
-      <h2>Send me an email</h2>
+      <h2>{translation.tr_send_me_an.en}</h2>
 
       <form ref={form} onSubmit={sendEmail} className="form-send-email">
         <div className="form-input">
           <div className="row-1">
             <label htmlFor="user_name" className="text-input">
-              Name
+              {translation.tr_name.en}
             </label>
             <input type="text" name="user_name" />
-            <label htmlFor="user_email">Email</label>
+            <label htmlFor="user_email">{translation.tr_email.en}</label>
             <input type="email" name="user_email" className="text-input" />
           </div>
 
           <div className="row-2">
-            <label htmlFor="message">Message</label>
+            <label htmlFor="message">{translation.tr_message.en}</label>
             <textarea name="message" id="message" cols={30} rows={10} />
           </div>
         </div>
 
-        <input type="submit" value="Send Email" className="send-email-button" />
+        <input
+          type="submit"
+          value={translation.tr_send_email.en}
+          className="send-email-button"
+        />
       </form>
     </div>
   );

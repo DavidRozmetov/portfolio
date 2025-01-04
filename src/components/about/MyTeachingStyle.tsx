@@ -1,50 +1,46 @@
 import img3 from "../../assets/img/about/7.jpeg";
 import img4 from "../../assets/img/about/8.jpeg";
+import { translation } from "../../utils/translation";
 
 export const MyTeachingStyle = () => {
   return (
     <div className="about-me-container">
       <div className="about-me-text" data-aos="fade-right">
-        <h2>My Teaching Style</h2>
-        <p>
-          I believe learning should be engaging, practical, and tailored to each
-          student’s needs. My teaching style focuses on creating an environment
-          where students feel the <b>need</b> to speak, making language a
-          natural part of their daily lives.
-        </p>
+        <h2>{translation.tr_my_teaching_style.en}</h2>
+        <p
+          dangerouslySetInnerHTML={{
+            __html: translation.tr_i_believe_learning.en,
+          }}
+        ></p>
         <div className="what-i-do">
           <ul>
             <li>
-              <b>Creating a Need to Communicate:</b> I design lessons that
-              encourage students to actively use English, focusing on real-world
-              scenarios and meaningful interactions.
+              <b>{translation.tr_creating_a_need.en}:</b>{" "}
+              {translation.tr_i_design_lessons.en}
             </li>
             <li>
-              <b>Custom Materials and Methods:</b> I develop personalized
-              materials and adapt my teaching style to suit each student’s
-              goals, pace, and learning preferences.
+              <b>{translation.tr_custom_materials_and.en}:</b>{" "}
+              {translation.tr_i_develop_personalized.en}
             </li>
             <li>
-              <b>Bilingual Support:</b> For Thai-speaking learners, I offer
-              bilingual assistance to build confidence and bridge language gaps.
+              <b>{translation.tr_bilingual_support.en}:</b>{" "}
+              {translation.tr_for_thai_speaking_learners.en}
             </li>
             <li>
-              <b>Child-Centered Learning:</b> For young learners, I prioritize
-              building a strong foundation in vocabulary, listening, and
-              speaking over traditional grammar and reading-heavy methods.
+              <b>{translation.tr_child_centered_learning.en}:</b>{" "}
+              {translation.tr_for_young_learners.en}
             </li>
             <li>
-              <b>Integrating Technology:</b> I incorporate modern tools and
-              resources to make lessons interactive, engaging, and effective.
+              <b>{translation.tr_integrating_technology.en}:</b>{" "}
+              {translation.tr_i_incorporate_modern.en}
             </li>
             <li>
-              <b>Cultural Connection:</b> My lessons link language to culture,
-              offering deeper understanding and practical context.
+              <b>{translation.tr_cultural_connection.en}:</b>{" "}
+              {translation.tr_my_lessons_link.en}
             </li>
             <li>
-              <b>Supportive Coaching:</b> I provide clear explanations,
-              constructive feedback, and ongoing encouragement to keep students
-              motivated and progressing.
+              <b>{translation.tr_supportive_coaching.en}:</b>{" "}
+              {translation.tr_i_provide_clear.en}
             </li>
           </ul>
         </div>

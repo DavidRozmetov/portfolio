@@ -4,12 +4,13 @@ import { getFile } from "../firebase/storage";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { PriceBox } from "./about/Prices";
+import { translation } from "../utils/translation";
 
 export const PopularCourses = () => {
   return (
     <div className="latest-work-container popular-courses-container">
       <div className="title-container">
-        <p className="title">Popular Courses</p>
+        <p className="title">{translation.tr_popular_courses.en}</p>
       </div>
 
       <div className="price-box-grid">
@@ -18,10 +19,10 @@ export const PopularCourses = () => {
           hours={10}
           color="#545454"
           pointers={[
-            "1 hour free trial",
-            "Pay on Salary",
-            "Free Digital Book",
-            "Postpone up to 3 times",
+            translation.tr_1_hour_free.en,
+            translation.tr_pay_on_salary.en,
+            translation.tr_free_digital_book.en,
+            translation.tr_postpone_up_to.en,
           ]}
         />
 
@@ -30,10 +31,10 @@ export const PopularCourses = () => {
           hours={20}
           color="#6257e3"
           pointers={[
-            "1 hour free trial",
-            "Pay on Salary",
-            "2 payment installments",
-            "Postpone up to 3 times",
+            translation.tr_1_hour_free.en,
+            translation.tr_pay_on_salary.en,
+            translation.tr_2_payment_installments.en,
+            translation.tr_postpone_up_to.en,
           ]}
         />
 
@@ -42,10 +43,10 @@ export const PopularCourses = () => {
           hours={40}
           color="#a359a0"
           pointers={[
-            "1 hour free trial",
-            "Pay on Salary",
-            "Postpone up to 3 times",
-            "2 payment installments",
+            translation.tr_1_hour_free.en,
+            translation.tr_pay_on_salary.en,
+            translation.tr_postpone_up_to.en,
+            translation.tr_2_payment_installments.en,
           ]}
         />
 
@@ -54,16 +55,16 @@ export const PopularCourses = () => {
           hours={100}
           color="#c6b79b"
           pointers={[
-            "1 hour free trial",
-            "Pay on Salary",
-            "Free Digital Book",
-            "3 payment installments",
+            translation.tr_1_hour_free.en,
+            translation.tr_pay_on_salary.en,
+            translation.tr_free_digital_book.en,
+            translation.tr_3_payment_installments.en,
           ]}
         />
       </div>
       <div className="quote-button-container">
-        <h3>Looking for something else?</h3>
-        <a href="/quote">Get a Quote</a>
+        <h3>{translation.tr_looking_for_something.en}</h3>
+        <a href="/quote">{translation.tr_get_a_quote.en}</a>
       </div>
     </div>
   );

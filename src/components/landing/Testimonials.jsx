@@ -13,6 +13,7 @@ import khim from "../../assets/img/students/khim.png";
 import kwan from "../../assets/img/students/kwan.jpg";
 import ploy from "../../assets/img/students/ploy.png";
 import pukan from "../../assets/img/students/pukan.png";
+import { translation } from "../../utils/translation";
 
 export const Testimonials = (props) => {
   const containerRef = useRef(null); // Ref for the product-cards-container
@@ -67,7 +68,7 @@ export const Testimonials = (props) => {
     {
       name: "Nodd",
       img: "Nodd",
-      job: "student",
+      job: "Student",
       review:
         "Teacher David has been my teacher for the past 5 years, and I’ve learned so much! He makes every lesson fun and exciting. I really like how he explains things clearly and helps me improve step by step.",
       rating: 5,
@@ -127,7 +128,7 @@ export const Testimonials = (props) => {
   return (
     <div className="landing-categories-container landing-reviews-container">
       <div className="title-container">
-        <p className="title">What People Say About Teacher David</p>
+        <p className="title">{translation.tr_what_people_say.en}</p>
       </div>
       <div className="btn-horizontal-scroll left-scroll">
         <FaAngleLeft

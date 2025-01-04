@@ -1,4 +1,4 @@
-import { SetStateAction, useEffect, useState } from "react";
+import React, { SetStateAction, useEffect, useState } from "react";
 import { FaAngleDown } from "react-icons/fa";
 import { toast } from "react-toastify";
 
@@ -7,6 +7,22 @@ interface SettingsProps {
   filterBooks: string[];
   filterLevels: string[];
   filterUnits: string[];
+  db: {
+    word: string;
+    definition: string;
+    book: string;
+    level: string;
+    unit: string;
+  }[];
+}
+
+interface ChallengeSettingsProps {
+  filterBooks: string[];
+  filterLevels: string[];
+  filterUnits: string[];
+  setFilterBooks: React.Dispatch<SetStateAction<string[] | undefined>>;
+  setFilterLevels: React.Dispatch<SetStateAction<string[] | undefined>>;
+  setFilterUnits: React.Dispatch<SetStateAction<string[] | undefined>>;
   db: {
     word: string;
     definition: string;
@@ -41,6 +57,13 @@ const SelectableDropdown: React.FC<SelectableDropdownProps> = ({
   setSelectedItems,
 }) => {
   const [toggleDropdown, setDropdown] = useState<boolean>(false);
+
+  const helpers = {
+    "Business Result": "Business English",
+    "Oxford Discover Futures": "English for Teenagers",
+    Cambridge: "Basic words for kids",
+    "English File": "Everyday English for Adults",
+  };
   const handleCheckboxChange = (option: string) => {
     if (option === "All") {
       // Select or deselect all options
@@ -51,6 +74,7 @@ const SelectableDropdown: React.FC<SelectableDropdownProps> = ({
       }
     } else {
       // Handle individual option
+
       if (selectedItems.includes(option)) {
         setSelectedItems(selectedItems.filter((item) => item !== option));
       } else {
@@ -90,7 +114,15 @@ const SelectableDropdown: React.FC<SelectableDropdownProps> = ({
                   checked={selectedItems.includes(option)}
                   onChange={() => handleCheckboxChange(option)}
                 />
-                <span>{option}</span>
+                <span className="check-box-option-text">
+                  {option}
+
+                  <span className="check-box-option-text-helper">
+                    {helpers[option as keyof typeof helpers] && (
+                      <p>({helpers[option as keyof typeof helpers]})</p>
+                    )}
+                  </span>
+                </span>
               </label>
             ))}
           </div>
@@ -173,9 +205,11 @@ export const Settings: React.FC<SettingsProps> = ({
     let unitArray: string[] = [];
     if (levels.length !== 0) {
       db.map((word) => {
-        if (levels.includes(word.level)) {
-          if (!unitArray.includes(word.unit)) {
-            unitArray.push(word.unit);
+        if (books.includes(word.book)) {
+          if (levels.includes(word.level)) {
+            if (!unitArray.includes(word.unit)) {
+              unitArray.push(word.unit);
+            }
           }
         }
       });
@@ -257,6 +291,148 @@ export const Settings: React.FC<SettingsProps> = ({
           </button>
         </div>
       </div>
+    </div>
+  );
+};
+
+export const ChallengeSettings: React.FC<ChallengeSettingsProps> = ({
+  db,
+  filterBooks,
+  filterLevels,
+  filterUnits,
+  setFilterBooks,
+  setFilterLevels,
+  setFilterUnits,
+}) => {
+  const [bookOptions, setBookOptions] = useState<string[]>([]);
+  const [levelOptions, setLevelOptions] = useState<string[]>([]);
+  const [unitOptions, setUnitOptions] = useState<string[]>([]);
+
+  const [books, setBooks] = useState<string[]>([]);
+  const [levels, setLevels] = useState<string[]>([]);
+  const [units, setUnits] = useState<string[]>([]);
+
+  useEffect(() => {
+    db?.map((word) => {
+      setBookOptions((oldOpt) => {
+        if (!oldOpt.includes(word.book)) {
+          return [...oldOpt, word.book];
+        }
+
+        return oldOpt;
+      });
+
+      setLevelOptions((oldOpt) => {
+        if (!oldOpt.includes(word.level)) {
+          return [...oldOpt, word.level];
+        }
+
+        return oldOpt;
+      });
+
+      setUnitOptions((oldOpt) => {
+        if (!oldOpt.includes(word.unit)) {
+          return [...oldOpt, word.unit];
+        }
+
+        return oldOpt;
+      });
+    });
+  }, []);
+
+  useEffect(() => {
+    let levelArray: string[] = [];
+
+    if (books.length !== 0) {
+      db.map((word) => {
+        if (books.includes(word.book)) {
+          if (!levelArray.includes(word.level)) {
+            levelArray.push(word.level);
+          }
+        }
+      });
+    } else {
+      db.map((word) => {
+        if (!levelArray.includes(word.level)) {
+          levelArray.push(word.level);
+        }
+      });
+    }
+    setLevelOptions(levelArray);
+
+    setFilterBooks(books);
+  }, [books]);
+
+  const updateFilters = () => {
+    const params = new URLSearchParams(window.location.search);
+
+    const tempBooks = params.get("books")?.split(",") || [];
+    const tempLevels = params.get("levels")?.split(",") || [];
+    const tempUnits = params.get("units")?.split(",") || [];
+
+    setFilterBooks(tempBooks);
+    setBooks(tempBooks);
+
+    setFilterLevels(tempLevels);
+    setFilterUnits(tempUnits);
+  };
+
+  useEffect(() => {
+    updateFilters();
+  }, []);
+
+  useEffect(() => {
+    let unitArray: string[] = [];
+    if (levels.length !== 0) {
+      db.map((word) => {
+        if (books.includes(word.book)) {
+          if (levels.includes(word.level)) {
+            if (!unitArray.includes(word.unit)) {
+              unitArray.push(word.unit);
+            }
+          }
+        }
+      });
+    } else {
+      db.map((word) => {
+        if (!unitArray.includes(word.unit)) {
+          unitArray.push(word.unit);
+        }
+      });
+    }
+    setUnitOptions(unitArray);
+    setFilterLevels(levels);
+  }, [levels]);
+
+  useEffect(() => {
+    setFilterUnits(units);
+  }, [units]);
+
+  return (
+    <div className="wordle-settings-main">
+      <SelectableDropdown
+        options={bookOptions}
+        setSelectedItems={setBooks}
+        selectedItems={books}
+        label="Books"
+      />
+
+      {books.length > 0 && (
+        <SelectableDropdown
+          options={levelOptions}
+          setSelectedItems={setLevels}
+          selectedItems={levels}
+          label="Levels"
+        />
+      )}
+      {levels.length > 0 && (
+        <SelectableDropdown
+          options={unitOptions}
+          setSelectedItems={setUnits}
+          selectedItems={units}
+          label="Units"
+        />
+      )}
     </div>
   );
 };

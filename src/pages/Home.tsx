@@ -5,6 +5,7 @@ import AOS from "aos";
 import { ITLessons } from "../components/ITLessons";
 import { Testimonials } from "../components/landing/Testimonials";
 import { PopularCourses } from "../components/PopularCourses";
+import { translation } from "../utils/translation";
 
 export const Home = () => {
   useEffect(() => {
@@ -13,10 +14,10 @@ export const Home = () => {
   return (
     <div className="home-container">
       <Landing />
-      <LatestWork title="Popular English Lessons" />
+      <LatestWork title={translation.tr_popular_courses.en} />
       <div className="quote-button-container wordle-button-container">
-        <h3>Freshen up Your Vocabulary</h3>
-        <a href="/wordle">Play Wordle</a>
+        <h3>{translation.tr_freshen_up_your.en}</h3>
+        <a href="/wordle">{translation.tr_play_wordle.en}</a>
       </div>
       <ITLessons />
       <Testimonials />

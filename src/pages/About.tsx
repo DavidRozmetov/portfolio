@@ -14,7 +14,7 @@ export const About = () => {
   }, []);
   return (
     <div className="about-container">
-      <AboutMe></AboutMe>
+      <AboutMe />
 
       <Philosophy />
       <CountFigures />

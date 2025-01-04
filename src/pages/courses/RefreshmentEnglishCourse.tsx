@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import "./Courses.css";
 import { PriceBox, Prices } from "../../components/about/Prices";
 import { LatestWork } from "../../components/LatestWork";
+import { translation } from "../../utils/translation";
 
 const RefreshmentEnglishCourse: React.FC = () => {
   const [img1, setImg1] = useState<string>("");
@@ -55,16 +56,9 @@ const RefreshmentEnglishCourse: React.FC = () => {
     <div className="course-container">
       <section className="section-main">
         <div className="div-text">
-          <h1>Refreshment English</h1>
-          <h2>Overview</h2>
-          <p>
-            The Refreshment English Course is designed for individuals who
-            already have a foundation in English but seek to enhance their
-            skills, refresh their knowledge, and regain confidence in everyday
-            communication. Whether you’ve been out of practice or simply want to
-            polish your abilities, this course is tailored to meet your needs in
-            a structured yet flexible way.
-          </p>
+          <h1>{translation.tr_refreshment_english.en}</h1>
+          <h2>{translation.tr_overview.en}</h2>
+          <p>{translation.tr_the_refreshment_english.en}</p>
         </div>
         <div className="div-img-main">
           <img src={img1} alt="Refreshment Course Main Image" />
@@ -76,64 +70,45 @@ const RefreshmentEnglishCourse: React.FC = () => {
           <img src={img2} alt="Refreshment Course Secondary Image" />
         </div>
         <div className="div-text">
-          <h2>Who is it for?</h2>
+          <h2>{translation.tr_who_is_it.en}</h2>
           <ul>
-            <li>
-              Professionals looking to improve their workplace communication.
-            </li>
-            <li>
-              Individuals preparing for international travel or relocation.
-            </li>
-            <li>
-              Students returning to academic studies that require English
-              proficiency.
-            </li>
-            <li>
-              Anyone who wants to brush up on grammar, vocabulary, and
-              conversational skills.
-            </li>
+            <li>{translation.tr_professionals_looking_to.en}</li>
+            <li>{translation.tr_individuals_preparing_for.en}</li>
+            <li>{translation.tr_students_returning_to.en}</li>
+            <li>{translation.tr_anyone_who_wants_brush.en}</li>
           </ul>
         </div>
       </section>
 
       <section className="section-main section-secondary">
         <div className="div-text">
-          <h2>Key Features</h2>
+          <h2>{translation.tr_key_features.en}</h2>
 
           <ul>
             <li>
-              <strong>Customized Lessons:</strong> Each lesson is tailored to
-              suit your current skill level and goals, ensuring a personalized
-              learning experience.
+              <strong>{translation.tr_customized_lessons.en}:</strong>{" "}
+              {translation.tr_each_lesson_is.en}
             </li>
             <li>
-              <strong>Practical Topics:</strong> The course focuses on real-life
-              scenarios, such as:
+              <strong>{translation.tr_practical_topics.en}:</strong>{" "}
+              {translation.tr_the_course_focuses.en}:
               <ul>
-                <li>
-                  Professional communication (emails, presentations, meetings).
-                </li>
-                <li>
-                  Travel and daily interactions (asking for directions, dining
-                  out, small talk).
-                </li>
-                <li>Academic writing and speaking.</li>
+                <li>{translation.tr_professional_communication_emails.en}</li>
+                <li>{translation.tr_travel_and_daily.en}</li>
+                <li>{translation.tr_academic_writing_and.en}</li>
               </ul>
             </li>
             <li>
-              <strong>Skill Integration:</strong> Each session integrates
-              speaking, listening, reading, and writing activities to reinforce
-              your skills holistically.
+              <strong>{translation.tr_skill_integration.en}:</strong>{" "}
+              {translation.tr_each_session_integrates.en}
             </li>
             <li>
-              <strong>Flexible Scheduling:</strong> Choose class timings that
-              fit your busy lifestyle, with options for both fixed and dynamic
-              schedules.
+              <strong>{translation.tr_flexible_scheduling.en}:</strong>{" "}
+              {translation.tr_choose_class_timings.en}
             </li>
             <li>
-              <strong>Interactive Sessions:</strong> Engage in role-playing,
-              group discussions, and interactive exercises to make learning
-              enjoyable and practical.
+              <strong>Interactive Sessions:</strong>
+              {translation.tr_engage_in_role_playing.en}
             </li>
           </ul>
         </div>
@@ -148,39 +123,25 @@ const RefreshmentEnglishCourse: React.FC = () => {
           <img src={img4} alt="Refreshment Course Secondary Image" />
         </div>
         <div className="div-text">
-          <h2>What You’ll Learn</h2>
+          <h2>{translation.tr_what_youll_learn.en}</h2>
           <ul>
-            <li>Refresh and refine your grammar skills.</li>
-            <li>
-              Expand your vocabulary with relevant and modern expressions.
-            </li>
-            <li>Enhance fluency in speaking and listening.</li>
-            <li>
-              Build confidence for public speaking, interviews, and social
-              interactions.
-            </li>
-            <li>Master clear and effective written communication.</li>
+            <li>{translation.tr_refresh_and_refine.en}</li>
+            <li>{translation.tr_expand_your_vocabulary.en}</li>
+            <li>{translation.tr_enhance_fluency_in.en}</li>
+            <li>{translation.tr_build_confidence_for.en}</li>
+            <li>{translation.tr_master_clear_and.en}</li>
           </ul>
         </div>
       </section>
 
       <section className="section-main ">
         <div className="div-text">
-          <h2>Why Choose the Refreshment English Course?</h2>
+          <h2>{translation.tr_why_choose_the.en}</h2>
           <ul>
-            <li>
-              Personalized teaching methods to target specific areas of
-              improvement.
-            </li>
-            <li>
-              Interactive and fun learning environment to make progress feel
-              effortless.
-            </li>
-            <li>
-              Expert instructors with years of experience in teaching English to
-              non-native speakers.
-            </li>
-            <li>A focus on building confidence and real-world application.</li>
+            <li>{translation.tr_personalized_teaching_methods.en}</li>
+            <li>{translation.tr_interactive_and_fun.en}</li>
+            <li>{translation.tr_expert_instructors_with.en}</li>
+            <li>{translation.tr_a_focus_on.en}</li>
           </ul>
         </div>
         <div className="div-img-main div-fifth-img ">
@@ -189,17 +150,17 @@ const RefreshmentEnglishCourse: React.FC = () => {
       </section>
 
       <div className="prices-container">
-        <h1>Custom Courses</h1>
+        <h1>{translation.tr_custom_courses.en}</h1>
         <div className="price-box-grid">
           <PriceBox
             price={"3,500"}
             hours={10}
             color="#545454"
             pointers={[
-              "1 hour free trial",
-              "Pay on Salary",
-              "Free Digital Book",
-              "Postpone up to 3 times",
+              translation.tr_1_hour_free.en,
+              translation.tr_pay_on_salary.en,
+              translation.tr_free_digital_book.en,
+              translation.tr_postpone_up_to.en,
             ]}
           />
 
@@ -208,10 +169,10 @@ const RefreshmentEnglishCourse: React.FC = () => {
             hours={20}
             color="#6257e3"
             pointers={[
-              "1 hour free trial",
-              "Pay on Salary",
-              "2 payment installments",
-              "Postpone up to 3 times",
+              translation.tr_1_hour_free.en,
+              translation.tr_pay_on_salary.en,
+              translation.tr_2_payment_installments.en,
+              translation.tr_postpone_up_to.en,
             ]}
           />
 
@@ -220,22 +181,22 @@ const RefreshmentEnglishCourse: React.FC = () => {
             hours={40}
             color="#a359a0"
             pointers={[
-              "1 hour free trial",
-              "Pay on Salary",
-              "Postpone up to 3 times",
-              "2 payment installments",
+              translation.tr_1_hour_free.en,
+              translation.tr_pay_on_salary.en,
+              translation.tr_postpone_up_to.en,
+              translation.tr_2_payment_installments.en,
             ]}
           />
 
           <PriceBox
-            price={"25,000"}
+            price={"22,500"}
             hours={100}
             color="#c6b79b"
             pointers={[
-              "1 hour free trial",
-              "Pay on Salary",
-              "Free Digital Book",
-              "3 payment installments",
+              translation.tr_1_hour_free.en,
+              translation.tr_pay_on_salary.en,
+              translation.tr_free_digital_book.en,
+              translation.tr_3_payment_installments.en,
             ]}
           />
         </div>
@@ -243,20 +204,15 @@ const RefreshmentEnglishCourse: React.FC = () => {
 
       <section className="section-main section-1-line">
         <div className="div-text">
-          <h2>Take the Next Step</h2>
+          <h2>{translation.tr_take_the_next.en}</h2>
+          <p>{translation.tr_join_the_refreshment.en}</p>
           <p>
-            Join the Refreshment English Course today and regain your edge in
-            English communication. Whether for personal growth, career
-            advancement, or preparing for a new adventure, this course will
-            equip you with the skills you need to thrive.
-          </p>
-          <p>
-            <strong>Contact us now to book a free trial class!</strong>
+            <strong>{translation.tr_contact_us_now.en}</strong>
           </p>
         </div>
       </section>
 
-      <LatestWork title="More Courses" />
+      <LatestWork title={translation.tr_more_courses.en} />
     </div>
   );
 };

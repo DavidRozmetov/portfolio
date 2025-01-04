@@ -6,6 +6,7 @@ import { BsLinkedin } from "react-icons/bs";
 import { LinkedInBanger } from "./LinkedInBanger";
 import { useEffect } from "react";
 import AOS from "aos";
+import { translation } from "../utils/translation";
 export const ContactMeViaSocialMedia = () => {
   useEffect(() => {
     AOS.init({ duration: 1000 });
@@ -13,8 +14,8 @@ export const ContactMeViaSocialMedia = () => {
   return (
     <div className="social-media-container">
       <div className="contact-me-text" data-aos="fade-right">
-        <h1>contact.</h1>
-        <h3>Get in touch with me via social media or email.</h3>
+        <h1>{translation.tr_contact.en}.</h1>
+        <h3>{translation.tr_get_in_touch.en}</h3>
 
         <div className="social-links-container">
           <a
@@ -41,7 +42,7 @@ export const ContactMeViaSocialMedia = () => {
           </a>
           <a
             className="social-link social-link-facebook "
-            href="https://www.facebook.com/davrabekRozmetov1/"
+            href="https://www.facebook.com/profile.php?id=61571017861526"
             target="_blank"
           >
             <div className="social-logo-container social-logo-facebook">

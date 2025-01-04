@@ -1,0 +1,95 @@
+.schedule-container {
+  margin-bottom: 3em;
+}
+.schedule-title {
+  margin-top: 2em !important;
+
+  font-size: 3.5em !important;
+}
+.schedule-container .about-me-container {
+  min-height: 95vh !important;
+}
+.schedule-table-container {
+  background-color: white;
+  max-width: 95vw;
+  margin: auto;
+  padding: 5vh 5vw;
+
+  cursor: pointer;
+}
+.schedule-grid-header {
+}
+.schedule-grid {
+  display: grid;
+  text-align: center;
+  width: fit-content;
+  min-width: 80%;
+  margin: auto;
+}
+.schedule-grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.schedule-grid-6 {
+  grid-template-columns: repeat(6, 1fr);
+}
+.schedule-grid-8 {
+  grid-template-columns: repeat(8, 1fr);
+}
+.schedule-tile {
+  border: solid 0.05px #ccc5;
+
+  padding: 0.2em;
+}
+.price-schedule-tile-250 {
+  background-color: #ccffcc;
+  color: #005500;
+}
+.price-schedule-tile-300 {
+  background-color: #ffffcc;
+  color: #555500;
+}
+.schedule-tile-taken {
+  background-color: #eee;
+  color: #999;
+}
+.special-h2 {
+  font-size: 1.6em;
+  color: #757575;
+  font-weight: 400;
+  margin: 0;
+  text-align: left;
+  text-align: center;
+  margin-bottom: 2em;
+}
+.requirements-terms {
+  background-color: white;
+  text-align: left;
+  width: 90vw;
+  padding: 5vh 5vw;
+
+  margin-top: -2em;
+}
+.requirements-terms li {
+  line-height: 2em;
+  font-size: 1em;
+}
+
+.requirements-terms li strong {
+  font-weight: 500;
+}
+.schedule-prices-container {
+  width: 90vw;
+  padding: 5vh 5vw;
+  margin: auto;
+}
+.price-box-grid {
+  margin-top: 3em;
+}
+@media (max-width: 768px) {
+  .schedule-title {
+    padding-top: 1em;
+  }
+  .schedule-grid {
+    width: 100%;
+  }
+}

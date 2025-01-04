@@ -1,11 +1,19 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Wordle.css";
 import { IoSettingsOutline } from "react-icons/io5";
+
+import { GiFrankensteinCreature } from "react-icons/gi";
+
 import { IoMdShare } from "react-icons/io";
 
 import { GiRank3 } from "react-icons/gi";
 
-import { FaChevronCircleDown, FaRegLightbulb } from "react-icons/fa";
+import {
+  FaChevronCircleDown,
+  FaPlay,
+  FaRegLightbulb,
+  FaShareAlt,
+} from "react-icons/fa";
 import { v4 as uuidv4 } from "uuid";
 
 import KeystrokeKeyboard from "./KeystrokeKeyboard";
@@ -16,13 +24,24 @@ import { db } from "./db";
 import { Settings } from "./Settings";
 import SearchParamWatcher from "./SearchParamWatcher";
 import PexelsSearch from "./PexelsSearch";
-import { getDocument, updateScoreBoard } from "../../firebase/database";
+import {
+  getDocument,
+  updateChallenges,
+  updateDocument,
+  updateScoreBoard,
+} from "../../firebase/database";
 
 import CountUp from "react-countup";
 import { LeaderBoard } from "./Leaderboard";
 import LongdoSearch from "./ThaiTranslation";
 import { fetchWordDetails } from "../../firebase/fetchWordDetails";
 import { PopularCourses } from "../PopularCourses";
+import { WordleAuth } from "./WordleAuth";
+import { Password } from "./Password";
+import { ChallengeData, CreateChallengeForm, Player } from "./WordleChallenge";
+import { useParams } from "react-router-dom";
+import { BiSolidJoystick } from "react-icons/bi";
+import { BunnyRace } from "./bunnyRace/BunnyRace";
 
 // Define types for the tile states
 type TileState = "empty" | "green" | "yellow" | "gray" | "white" | "hidden";
@@ -110,6 +129,11 @@ interface ScoreBoardProps {
     unit: string;
   };
 }
+interface UserProps {
+  userName: string;
+  password: string;
+  uid: string;
+}
 
 const Tile: React.FC<TileProps> = ({ letter, state }) => {
   return (
@@ -120,7 +144,6 @@ const Tile: React.FC<TileProps> = ({ letter, state }) => {
 };
 
 const WordleGame: React.FC = () => {
-  let wordPicked = false;
   const [word, setWord] = useState<string>("");
   const [definition, setDefinition] = useState<string>("");
   const [guesses, setGuesses] = useState<string[]>([]);
@@ -134,22 +157,31 @@ const WordleGame: React.FC = () => {
   const [toggleViewExample, setViewExample] = useState<boolean>(false);
   const [toggleLeaderboard, setLeaderboard] = useState<boolean>(false);
   const [toggleThai, setToggleThai] = useState<boolean>(false);
+  const [toggleAuth, setToggleAuth] = useState(false);
   const [toggleViewConnectedWords, setViewConnectedWords] =
     useState<boolean>(false);
   const wordInitialized = useRef(false);
+  const [toggleViewChallengeForm, setViewChallengeForm] =
+    useState<boolean>(false);
+
   const [moreMeanings, setMoreMeanings] = useState<boolean>(false);
 
+  const [toggleChallengeIntro, setChallengeIntro] = useState<boolean>(false);
+  const [toggleJoinChallenge, setJoinChallenge] = useState<boolean>(false);
+  const [isChallengeOver, setChallengeOver] = useState<boolean>(false);
+
+  const [globalUid, setGlobalUid] = useState<string | undefined>();
   let uid: string | null;
-  uid = window.localStorage.getItem("WordleUID");
+  uid = window.sessionStorage.getItem("WordleUID");
 
   const [keyStatus, setKeyStatus] = React.useState<{ [key: string]: string }>(
     {}
   );
   const [revealedIndices, setRevealedIndices] = useState<number[]>([]);
 
-  const [filterBooks, setFilterBooks] = useState<string[]>([]);
-  const [filterLevels, setFilterLevels] = useState<string[]>([]);
-  const [filterUnits, setFilterUnits] = useState<string[]>([]);
+  const [filterBooks, setFilterBooks] = useState<string[]>();
+  const [filterLevels, setFilterLevels] = useState<string[]>();
+  const [filterUnits, setFilterUnits] = useState<string[]>();
 
   const [wordAPIData, setWordAPIData] = React.useState<WordApiData[]>();
   const [similarTo, setSimilarTo] = React.useState<string[]>([]);
@@ -162,6 +194,11 @@ const WordleGame: React.FC = () => {
   const [name, setName] = useState<string>("");
   const [score, setScore] = useState<number>(10);
   const [scoreboard, setScoreBoard] = useState<ScoreBoardProps[]>([]);
+  const [users, setUsers] = useState<UserProps[]>([]);
+  const [password, setPassword] = useState<string>();
+
+  const { challengeId } = useParams();
+  const [challengeInfo, setChallengeInfo] = useState<ChallengeData>();
 
   const updateKeyStatus = (guess: string[], feedback: string[]) => {
     setKeyStatus((prevStatus) => {
@@ -208,12 +245,14 @@ const WordleGame: React.FC = () => {
 
     // Handle win/lose or move to the next row
     if (currentGuess === word) {
-      toast.success("Congratulations, you guessed correctly!");
-
       setIsGameOver(true);
 
       if (uid) {
         handleAddToScoreBoard();
+      }
+
+      if (challengeId) {
+        handleWinChallenge();
       }
       setToggleFeedback(false);
       setTimeout(() => {
@@ -222,6 +261,7 @@ const WordleGame: React.FC = () => {
     } else if (guesses.length === 5) {
       toast.error(`Game over! The correct word was ${word}`);
       setIsGameOver(true);
+      handleLoseChallenge();
       setToggleFeedback(true);
     }
   };
@@ -242,51 +282,6 @@ const WordleGame: React.FC = () => {
       return "empty";
     }
     return "gray";
-  };
-
-  const fetchWordData = async (word: string): Promise<ProcessedData> => {
-    const response = await fetch(
-      `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
-    );
-    const data: WordData[] = await response.json();
-
-    if (data && data.length > 0) {
-      return processWordData(data[0]);
-    } else {
-      toast.error("No data found for the given word");
-      return {
-        meanings: [""],
-        synonyms: [""],
-        antonyms: [""],
-        examples: [""],
-      };
-    }
-  };
-
-  const processWordData = (data: WordData): ProcessedData => {
-    const meanings: string[] = [];
-    const synonyms: string[] = [];
-    const antonyms: string[] = [];
-    const examples: string[] = [];
-
-    data.meanings.forEach((meaning) => {
-      meaning.definitions.forEach((definition) => {
-        meanings.push(definition.definition);
-        if (definition.example) examples.push(definition.example);
-        synonyms.push(...definition.synonyms);
-        antonyms.push(...definition.antonyms);
-      });
-
-      synonyms.push(...meaning.synonyms);
-      antonyms.push(...meaning.antonyms);
-    });
-
-    return {
-      meanings,
-      synonyms: Array.from(new Set(synonyms)), // Remove duplicates
-      antonyms: Array.from(new Set(antonyms)), // Remove duplicates
-      examples,
-    };
   };
 
   const generateFeedback = (guess: string, correctWord: string): string[] => {
@@ -333,11 +328,17 @@ const WordleGame: React.FC = () => {
     // Filter words based on optional parameters
     const filteredWords = db.filter((word) => {
       const matchesBook =
-        filterBooks.length > 0 ? filterBooks.includes(word.book) : true;
+        filterBooks && filterBooks.length > 0
+          ? filterBooks.includes(word.book)
+          : true;
       const matchesLevel =
-        filterLevels.length > 0 ? filterLevels.includes(word.level) : true;
+        filterLevels && filterLevels.length > 0
+          ? filterLevels.includes(word.level)
+          : true;
       const matchesUnit =
-        filterUnits.length > 0 ? filterUnits.includes(word.unit) : true;
+        filterUnits && filterUnits.length > 0
+          ? filterUnits.includes(word.unit)
+          : true;
       const matchesLength =
         window.innerWidth < 500 ? word.word.length <= 9 : true;
       return matchesBook && matchesUnit && matchesLevel && matchesLength;
@@ -370,17 +371,6 @@ const WordleGame: React.FC = () => {
     const newWord = chooseRandomWord();
     setWord(newWord.word);
     setDefinition(newWord.definition);
-
-    try {
-      const res = await getDocument("wordle", "scoreboard");
-      if (res.success) {
-        setScoreBoard(res.data.scoreboard);
-      } else {
-        toast.error("Couldn't load the scoreboard");
-      }
-    } catch (error) {
-      toast.error("Failed to fetch the scoreboard.");
-    }
   };
 
   const fetchAndSetWordDetails = async (currentWord: string) => {
@@ -396,6 +386,7 @@ const WordleGame: React.FC = () => {
 
   useEffect(() => {
     // Call API when `word` changes
+
     if (word) {
       fetchAndSetWordDetails(word);
     }
@@ -411,10 +402,104 @@ const WordleGame: React.FC = () => {
   //   }
   // }, [filterBooks, filterLevels, filterUnits]);
 
+  const loadLeaderboard = async () => {
+    try {
+      const res = await getDocument("wordle", "scoreboard");
+      if (res.success) {
+        setScoreBoard(res.data.scoreboard);
+        setUsers(res.data.users);
+      } else {
+        toast.error("Couldn't load the scoreboard");
+      }
+    } catch (error) {
+      toast.error("Failed to fetch the scoreboard.");
+    }
+  };
+
+  useEffect(() => {
+    loadLeaderboard();
+  }, []);
+
   useEffect(() => {
     // Initialize the word strictly once
-    initializeWord();
-  }, []);
+    if (challengeId) {
+      if (!uid) {
+        toast.error("Please Log in first");
+        return;
+      }
+
+      getDocument("wordle", "challenges").then((res) => {
+        if (!res.success) {
+          toast.error("Couldn't load the previous challenges");
+          return;
+        }
+        const challengeData = res.data.challenges.find(
+          (ch: ChallengeData) => ch.id === challengeId
+        );
+
+        if (!challengeData) {
+          toast.error("This challenge doesn't exist!");
+          return;
+        }
+        setChallengeInfo(challengeData);
+
+        const playerData = challengeData.players.find(
+          (player: Player) => player.uid === uid
+        );
+
+        if (!playerData) {
+          setHint(false);
+
+          setJoinChallenge(true);
+          return;
+        }
+
+        if (playerData.timeline.length === 0) {
+          setChallengeIntro(true);
+          setHint(false);
+          return;
+        }
+
+        const questionIndex = playerData.timeline.length - 1;
+
+        let tempWord;
+
+        if (playerData.timeline.length === challengeData.words.length + 1) {
+          setIsGameOver(true);
+          setHint(false);
+          setToggleFeedback(true);
+          setChallengeOver(true);
+          return;
+        } else if (
+          playerData.fails.includes(challengeData.words[questionIndex].word)
+        ) {
+          tempWord = challengeData.backupWords[playerData.fails.length - 1];
+        } else {
+          tempWord = challengeData.words[questionIndex];
+        }
+
+        setWord(tempWord.word);
+        setDefinition(tempWord.definition);
+        setOriginInfo({
+          book: tempWord.book,
+          level: tempWord.level,
+          unit: tempWord.unit,
+        });
+
+        // setWord(newWord.word);
+      });
+    } else {
+      if (filterBooks && filterLevels && filterUnits) {
+        initializeWord();
+        setHint(true);
+
+        setViewSettings(false);
+      } else {
+        setHint(false);
+        setViewSettings(true);
+      }
+    }
+  }, [filterBooks, filterLevels, filterUnits]);
 
   useEffect(() => {
     let tempSimilarTo: string[] = [];
@@ -493,10 +578,12 @@ const WordleGame: React.FC = () => {
     setAntonyms(tempAntonyms);
     setExamples(tempExamples);
   }, [wordAPIData]);
+
   const handleAddToScoreBoard = () => {
     const scrbrd: any = [...scoreboard];
 
     let newData = {};
+    let newUserArray = [...users];
     if (uid) {
       const userData = scrbrd.find((a: any) => a.uid === uid);
       newData = {
@@ -508,9 +595,13 @@ const WordleGame: React.FC = () => {
         source: originInfo,
       };
     } else {
+      if (!password || (password && password?.length < 3)) {
+        toast.warning("Password is Required! Please select 1-3 icons");
+        return;
+      }
       const randomUid = uuidv4();
       uid = randomUid;
-      window.localStorage.setItem("WordleUID", randomUid);
+      window.sessionStorage.setItem("WordleUID", randomUid);
       newData = {
         uid: uid,
         name: name,
@@ -519,6 +610,13 @@ const WordleGame: React.FC = () => {
         date: new Date(),
         source: originInfo,
       };
+      const newUserData: UserProps = {
+        userName: name,
+        uid: uid,
+        password: password || "",
+      };
+
+      newUserArray.push(newUserData);
     }
 
     scrbrd.push(newData);
@@ -526,13 +624,29 @@ const WordleGame: React.FC = () => {
 
     updateScoreBoard({
       scoreboard: scrbrd,
+      users: newUserArray,
     }).then((res) => {
       if (!res.success) {
         toast.error("Couldn't update the document");
         return;
       }
-      toast.success("Record added successfully");
     });
+  };
+
+  const handleLogin = () => {
+    const newUserData = users.find((usr) => usr.uid === globalUid);
+
+    if (newUserData?.password === password) {
+      if (newUserData?.uid) {
+        window.sessionStorage.setItem("WordleUID", newUserData?.uid);
+        toast.success("Successfully Logged in");
+        setTimeout(() => {
+          window.location.reload();
+        }, 1500);
+      }
+    } else {
+      toast.error("Sorry, wrong Username or Password");
+    }
   };
 
   const handleDeductionUpdate = (score: -1 | 1, name: string) => {
@@ -556,13 +670,290 @@ const WordleGame: React.FC = () => {
     setScore(10 - deductions.length - guesses.length);
   }, [deductions, guesses]);
 
+  const handleJoinChallenge = () => {
+    getDocument("wordle", "challenges").then((res) => {
+      if (!res.success) {
+        toast.error("Couldn't load the previous challenges");
+        return;
+      }
+      let challengeArray = res.data.challenges;
+      const challengeData = challengeArray.find(
+        (ch: ChallengeData) => ch.id === challengeId
+      );
+
+      const newPlayerData = {
+        uid: uid,
+        score: 0,
+        timeline: [],
+        fails: [],
+        userName: users.find((usr) => usr.uid === uid)?.userName || "",
+      };
+
+      let removedBot: Player;
+
+      if (challengeData.players.length < 5) {
+        challengeData.players.push(newPlayerData);
+      } else if (
+        challengeData.players.filter((a: Player) => !a.difficulty).length >= 5
+      ) {
+        toast.error("Sorry the challenge is full");
+      } else {
+        removedBot = challengeData.players.findLast(
+          (a: Player) => a.difficulty
+        );
+        challengeData.players = challengeData.players.filter(
+          (a: Player) => a.uid !== removedBot.uid
+        );
+        challengeData.players.push(newPlayerData);
+      }
+
+      let newChallengeArray: ChallengeData[] = [];
+
+      challengeArray.map((ch: ChallengeData) => {
+        if (ch.id === challengeId) {
+          newChallengeArray.push(challengeData);
+        } else {
+          newChallengeArray.push(ch);
+        }
+      });
+
+      challengeArray = newChallengeArray;
+      setChallengeInfo(challengeData);
+
+      if (!res.success) {
+        toast.error("Couldn't get started");
+        return;
+      }
+      updateChallenges({ challenges: challengeArray }).then((resUpdate) => {
+        if (!resUpdate.success) {
+          toast.error("Couldn't  join challenge");
+          return;
+        }
+        setTimeout(() => {
+          window.location.reload();
+        }, 300);
+      });
+    });
+  };
+
+  const handleQuitChallenge = () => {
+    getDocument("wordle", "challenges").then((res) => {
+      if (!res.success) {
+        toast.error("Couldn't load the previous challenges");
+        return;
+      }
+      let challengeArray = res.data.challenges;
+      const challengeData = challengeArray.find(
+        (ch: ChallengeData) => ch.id === challengeId
+      );
+
+      challengeData.players = challengeData.players.filter(
+        (pl: Player) => pl.uid !== uid
+      );
+
+      let newChallengeArray: ChallengeData[] = [];
+
+      challengeArray.map((ch: ChallengeData) => {
+        if (ch.id === challengeId) {
+          newChallengeArray.push(challengeData);
+        } else {
+          newChallengeArray.push(ch);
+        }
+      });
+
+      challengeArray = newChallengeArray;
+      setChallengeInfo(challengeData);
+
+      if (!res.success) {
+        toast.error("Quit Successfully!");
+        return;
+      }
+      updateChallenges({ challenges: challengeArray }).then((resUpdate) => {
+        if (!resUpdate.success) {
+          toast.error("Couldn't  join challenge");
+          return;
+        }
+        setTimeout(() => {
+          window.location.reload();
+        }, 300);
+      });
+    });
+  };
+
+  const handleStartChallenge = () => {
+    getDocument("wordle", "challenges").then((res) => {
+      if (!res.success) {
+        toast.error("Couldn't load the previous challenges");
+        return;
+      }
+      let challengeArray = res.data.challenges;
+      const challengeData = challengeArray.find(
+        (ch: ChallengeData) => ch.id === challengeId
+      );
+      let playersArray = challengeData.players;
+
+      const playerData = playersArray.find(
+        (player: Player) => player.uid === uid
+      );
+
+      let newPlayersArray: Player[] = [];
+      playerData.timeline.push(new Date());
+
+      playersArray.map((player: Player) => {
+        if (player.uid === uid) {
+          newPlayersArray.push(playerData);
+        } else {
+          newPlayersArray.push(player);
+        }
+      });
+
+      playersArray = newPlayersArray;
+
+      challengeData.players = playersArray;
+
+      let newChallengeArray: ChallengeData[] = [];
+
+      challengeArray.map((ch: ChallengeData) => {
+        if (ch.id === challengeId) {
+          newChallengeArray.push(challengeData);
+        } else {
+          newChallengeArray.push(ch);
+        }
+      });
+
+      challengeArray = newChallengeArray;
+      setChallengeInfo(challengeData);
+
+      if (!res.success) {
+        toast.error("Couldn't get started");
+        return;
+      }
+      updateChallenges({ challenges: challengeArray }).then((resUpdate) => {
+        if (!resUpdate.success) {
+          toast.error("Couldn't  update challenge");
+          return;
+        }
+        setTimeout(() => {
+          window.location.reload();
+        }, 300);
+      });
+    });
+  };
+
+  const handleWinChallenge = () => {
+    getDocument("wordle", "challenges").then((res) => {
+      if (!res.success) {
+        toast.error("Couldn't load the previous challenges");
+        return;
+      }
+      let challengeArray = res.data.challenges;
+      const challengeData = challengeArray.find(
+        (ch: ChallengeData) => ch.id === challengeId
+      );
+      let playersArray = challengeData.players;
+
+      const playerData = playersArray.find(
+        (player: Player) => player.uid === uid
+      );
+
+      let newPlayersArray: Player[] = [];
+      playerData.timeline.push(new Date());
+      playerData.score = playerData.score + 1;
+
+      playersArray.map((player: Player) => {
+        if (player.uid === uid) {
+          newPlayersArray.push(playerData);
+        } else {
+          newPlayersArray.push(player);
+        }
+      });
+
+      playersArray = newPlayersArray;
+
+      challengeData.players = playersArray;
+
+      let newChallengeArray: ChallengeData[] = [];
+
+      challengeArray.map((ch: ChallengeData) => {
+        if (ch.id === challengeId) {
+          newChallengeArray.push(challengeData);
+        } else {
+          newChallengeArray.push(ch);
+        }
+      });
+
+      challengeArray = newChallengeArray;
+      setChallengeInfo(challengeData);
+
+      if (!res.success) {
+        toast.error("Couldn't get started");
+        return;
+      }
+      updateChallenges({ challenges: challengeArray }).then((res) => {});
+    });
+  };
+
+  const handleLoseChallenge = () => {
+    getDocument("wordle", "challenges").then((res) => {
+      if (!res.success) {
+        toast.error("Couldn't load the previous challenges");
+        return;
+      }
+      let challengeArray = res.data.challenges;
+      const challengeData = challengeArray.find(
+        (ch: ChallengeData) => ch.id === challengeId
+      );
+      let playersArray = challengeData.players;
+
+      const playerData = playersArray.find(
+        (player: Player) => player.uid === uid
+      );
+
+      let newPlayersArray: Player[] = [];
+      playerData.fails.push(word);
+
+      playersArray.map((player: Player) => {
+        if (player.uid === uid) {
+          newPlayersArray.push(playerData);
+        } else {
+          newPlayersArray.push(player);
+        }
+      });
+
+      playersArray = newPlayersArray;
+
+      challengeData.players = playersArray;
+
+      let newChallengeArray: ChallengeData[] = [];
+
+      challengeArray.map((ch: ChallengeData) => {
+        if (ch.id === challengeId) {
+          newChallengeArray.push(challengeData);
+        } else {
+          newChallengeArray.push(ch);
+        }
+      });
+
+      challengeArray = newChallengeArray;
+      setChallengeInfo(challengeData);
+
+      if (!res.success) {
+        toast.error("Couldn't get started");
+        return;
+      }
+      updateChallenges({ challenges: challengeArray }).then((res) => {});
+    });
+  };
+
   return (
     <div className="wordle-container">
-      <SearchParamWatcher
-        setFilterBooks={setFilterBooks}
-        setFilterLevels={setFilterLevels}
-        setFilterUnits={setFilterUnits}
-      />
+      {!challengeId && (
+        <SearchParamWatcher
+          setFilterBooks={setFilterBooks}
+          setFilterLevels={setFilterLevels}
+          setFilterUnits={setFilterUnits}
+        />
+      )}
       <ToastContainer
         position="top-center"
         autoClose={1000}
@@ -587,22 +978,41 @@ const WordleGame: React.FC = () => {
 
       {/* Guess and Feedback Button */}
       <div className="wordle-buttons">
-        <button
-          className="wordle-button"
-          onClick={() => {
-            setLeaderboard(true);
-          }}
-        >
-          <GiRank3 />
-        </button>
-        <button
-          className="wordle-button"
-          onClick={() => {
-            setViewSettings(true);
-          }}
-        >
-          <IoSettingsOutline />
-        </button>
+        {!challengeId && (
+          <button
+            className="wordle-button"
+            onClick={() => {
+              setLeaderboard(true);
+            }}
+          >
+            <GiRank3 />
+          </button>
+        )}
+        {!challengeId && (
+          <button
+            className="wordle-button"
+            onClick={() => {
+              if (uid) {
+                setViewChallengeForm(true);
+              } else {
+                toast.warn("Please Log in first");
+              }
+            }}
+          >
+            <GiFrankensteinCreature />
+          </button>
+        )}
+
+        {!challengeId && (
+          <button
+            className="wordle-button"
+            onClick={() => {
+              setViewSettings(true);
+            }}
+          >
+            <IoSettingsOutline />
+          </button>
+        )}
 
         <button
           className={`wordle-button ${hint ? "disabled" : ""}`}
@@ -610,24 +1020,51 @@ const WordleGame: React.FC = () => {
         >
           <FaRegLightbulb />
         </button>
-        {!isGameOver ? (
+
+        <>
+          {!isGameOver ? (
+            <button
+              className="wordle-button"
+              onClick={() => {
+                setIsGameOver(true);
+                setToggleFeedback(true);
+                if (challengeId) {
+                  handleLoseChallenge();
+                }
+              }}
+            >
+              Give Up
+            </button>
+          ) : (
+            <button
+              className="wordle-button"
+              onClick={() => {
+                window.location.reload();
+              }}
+            >
+              New Game
+            </button>
+          )}{" "}
+        </>
+
+        {window.sessionStorage.getItem("WordleUID") ? (
           <button
             className="wordle-button"
             onClick={() => {
-              setIsGameOver(true);
-              setToggleFeedback(true);
+              window.sessionStorage.setItem("WordleUID", "");
+              window.location.reload();
             }}
           >
-            Give Up
+            Logout
           </button>
         ) : (
           <button
             className="wordle-button"
             onClick={() => {
-              window.location.reload();
+              setToggleAuth(true);
             }}
           >
-            New Game
+            Login
           </button>
         )}
       </div>
@@ -636,6 +1073,91 @@ const WordleGame: React.FC = () => {
         className="wordle-word-grid"
         style={{ gridTemplateColumns: `repeat( ${word.length}, 1fr)` }}
       >
+        {toggleChallengeIntro && (
+          <div className="div-intro-container">
+            <div className="div-intro-head">
+              <sub>Welcome to the challenge</sub>
+              <h2>{challengeInfo?.name}</h2>
+            </div>
+            <div className="div-intro-body">
+              <p className="div-intro-message">
+                This isn’t a marathon; it’s a sprint
+              </p>
+              <div className="div-buttons">
+                <button
+                  className="wordle-button btn-center  wordle-start-challenge"
+                  onClick={() => {
+                    navigator.clipboard.writeText(window.location.href);
+                    toast.success("Share Link Copied to the Clipboard");
+                  }}
+                >
+                  <p>Share</p>
+                  <FaShareAlt />
+                </button>
+
+                <button
+                  className="wordle-button btn-center create-wordle-challenge-button wordle-start-challenge"
+                  onClick={handleStartChallenge}
+                >
+                  <p>Start</p>
+                  <FaPlay />
+                </button>
+              </div>
+              <div className="div-intro-instructions">
+                <p>
+                  <strong>How to play: </strong>
+                  Use the clues to guess the word as quickly as you can. Scores
+                  don’t matter—as long as you get it right within 6 guesses.
+                  What truly counts is how fast you can do it!
+                </p>
+                <p>
+                  <strong>Be aware: </strong>
+                  Once you start the game, you can't stop the timer.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {toggleJoinChallenge && (
+          <div className="div-intro-container">
+            <div className="div-intro-head">
+              <sub>Welcome to the challenge</sub>
+              <h2>{challengeInfo?.name}</h2>
+            </div>
+            <div className="div-intro-body">
+              <div className="div-button">
+                <button
+                  className="wordle-button btn-center create-wordle-challenge-button wordle-start-challenge"
+                  onClick={handleJoinChallenge}
+                >
+                  <p>Join</p>
+                  <BiSolidJoystick />
+                </button>
+              </div>
+              <div className="div-intro-instructions">
+                <p>
+                  <strong>How to play: </strong>
+                  Use the clues to guess the word as quickly as you can. Scores
+                  don’t matter—as long as you get it right within 6 guesses.
+                  What truly counts is how fast you can do it!
+                </p>
+
+                <p>
+                  {" "}
+                  <strong>How time is measured: </strong> Time starts as soon as
+                  you click "Start." Each correct answer is logged with a
+                  timestamp. The winner is the player who completes the
+                  challenge in the shortest time from their starting point.{" "}
+                </p>
+                <p>
+                  <strong>Be aware: </strong>
+                  Once you start the game, you can't stop the timer.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
         {Array.from({ length: 6 }).map((_, guessIndex) => {
           const guess = guesses[guessIndex] || "";
 
@@ -702,7 +1224,7 @@ const WordleGame: React.FC = () => {
 
       {/* Input Area (Keyboard) */}
 
-      {!isGameOver && (
+      {!isGameOver && !toggleChallengeIntro && !toggleJoinChallenge && (
         <KeystrokeKeyboard
           handleLetterInput={handleLetterInput}
           checkGuess={checkGuess}
@@ -713,13 +1235,60 @@ const WordleGame: React.FC = () => {
         />
       )}
 
+      {toggleAuth && (
+        <>
+          <div
+            className="wordle-log-in-closer"
+            onClick={() => {
+              setToggleAuth(false);
+            }}
+          ></div>
+          <div className="wordle-log-in-container">
+            <div className="wordle-log-in-header">
+              <h3>Log in</h3>
+              <div className="wordle-log-in-main">
+                <div className="wordle-users">
+                  <label htmlFor="">User Name</label>
+                  <select
+                    name=""
+                    id=""
+                    defaultValue={"-"}
+                    value={globalUid}
+                    onChange={(e) => {
+                      setGlobalUid(e.target.value);
+                    }}
+                  >
+                    <option value="-" defaultChecked>
+                      -
+                    </option>
+                    {users.map((usr) => (
+                      <option key={usr.uid} value={usr.uid}>
+                        {usr.userName}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <Password password={password} setPassword={setPassword} />
+                <button
+                  className="wordle-login-button"
+                  onClick={() => {
+                    handleLogin();
+                  }}
+                >
+                  Log in
+                </button>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
       {toggleViewSettings && (
         <Settings
           setViewSettings={setViewSettings}
           db={db}
-          filterBooks={filterBooks}
-          filterLevels={filterLevels}
-          filterUnits={filterUnits}
+          filterBooks={filterBooks || []}
+          filterLevels={filterLevels || []}
+          filterUnits={filterUnits || []}
         />
       )}
 
@@ -863,7 +1432,11 @@ const WordleGame: React.FC = () => {
               )}
 
               {toggleViewImg ? (
-                <PexelsSearch query={definition} query2={word} />
+                filterBooks?.includes("Cambridge") ? (
+                  <PexelsSearch query={word} query2={word} />
+                ) : (
+                  <PexelsSearch query={definition} query2={word} />
+                )
               ) : (
                 <div
                   className="div-view-more"
@@ -922,48 +1495,64 @@ const WordleGame: React.FC = () => {
             }}
           ></div>
           <div className="feedback-bg">
-            {guesses[guesses.length - 1] === word ? (
+            {guesses[guesses.length - 1] === word || isChallengeOver ? (
               <>
-                <h3 className="correct">Well Done!</h3>
-                <h2>
-                  {" "}
-                  <CountUp end={score + 1} duration={1} delay={0.1} /> / 10
-                </h2>
-                <div className="point-deduction">
-                  {guesses.length > 1 && (
-                    <>
-                      <p>
-                        {guesses.length - 1} Wrong Guess
-                        {guesses.length > 2 && "es"}:{" "}
-                      </p>
-                      <p>
-                        -{guesses.length - 1} point{guesses.length > 2 && "s"}
-                      </p>
-                    </>
-                  )}
-                  {deductions.map((dd: Deduction) => {
-                    return (
+                {!challengeId ? (
+                  <>
+                    <h3 className="correct">Well Done!</h3>
+                    <h2>
+                      {" "}
+                      <CountUp end={score + 1} duration={1} delay={0.1} /> / 10
+                    </h2>
+                    <div className="point-deduction">
+                      {guesses.length > 1 && (
+                        <>
+                          <p>
+                            {guesses.length - 1} Wrong Guess
+                            {guesses.length > 2 && "es"}:{" "}
+                          </p>
+                          <p>
+                            -{guesses.length - 1} point
+                            {guesses.length > 2 && "s"}
+                          </p>
+                        </>
+                      )}
+                      {deductions.map((dd: Deduction) => {
+                        return (
+                          <>
+                            <p>{dd.name} :</p>
+                            <p>{dd.value} point</p>
+                          </>
+                        );
+                      })}
+                    </div>
+                    {!uid && (
                       <>
-                        <p>{dd.name} :</p>
-                        <p>{dd.value} point</p>
+                        <div className="div-name-input">
+                          <input
+                            type="text"
+                            placeholder="Your Name"
+                            value={name}
+                            onChange={(e) => {
+                              setName(e.target.value);
+                            }}
+                          />
+                          <button onClick={handleAddToScoreBoard}>
+                            Submit
+                          </button>
+                        </div>
+                        <WordleAuth
+                          password={password}
+                          setPassword={setPassword}
+                        />
                       </>
-                    );
-                  })}
-                </div>
-                {!uid && (
-                  <div className="div-name-input">
-                    <input
-                      type="text"
-                      placeholder="Your Name"
-                      value={name}
-                      onChange={(e) => {
-                        setName(e.target.value);
-                      }}
-                    />
-                    <button onClick={handleAddToScoreBoard}>Submit</button>
-                  </div>
+                    )}
+                  </>
+                ) : (
+                  <>
+                    <BunnyRace challengeInfo={challengeInfo} />
+                  </>
                 )}
-
                 <div className="game-win-buttons">
                   <button
                     onClick={() => {
@@ -972,16 +1561,25 @@ const WordleGame: React.FC = () => {
                   >
                     New Game
                   </button>
-
+                  {challengeId && (
+                    <button
+                      className="wordle-button btn-center"
+                      onClick={() => {
+                        handleQuitChallenge();
+                      }}
+                    >
+                      Quit Challenge
+                    </button>
+                  )}
                   <button
                     className=" btn-share"
                     onClick={() => {
                       navigator.clipboard.writeText(window.location.href);
-                      toast.success("Url copied successfully");
+                      toast.success("Share Link Copied to the Clipboard");
                     }}
                   >
                     <IoMdShare />
-                    <p>Challenge a friend</p>
+                    <p>Share with a friend</p>
                   </button>
                 </div>
               </>
@@ -994,6 +1592,17 @@ const WordleGame: React.FC = () => {
                   <span className="absent"> {word}</span>
                 </p>
                 <div className="lose-buttons">
+                  {challengeId && (
+                    <button
+                      className="wordle-button btn-center"
+                      onClick={() => {
+                        handleQuitChallenge();
+                      }}
+                    >
+                      Quit Challenge
+                    </button>
+                  )}
+
                   <button
                     className="wordle-button btn-center"
                     onClick={() => {
@@ -1020,6 +1629,18 @@ const WordleGame: React.FC = () => {
           <LeaderBoard table={scoreboard} personalUid={uid} />
         </div>
       )}
+
+      {toggleViewChallengeForm && (
+        <CreateChallengeForm
+          setViewChallenge={setViewChallengeForm}
+          user={
+            users.find((usr) => usr.uid === uid) && {
+              userName: users.find((usr) => usr.uid === uid)?.userName || "",
+              uid: uid || "",
+            }
+          }
+        />
+      )}
     </div>
   );
 };
@@ -1028,7 +1649,7 @@ const WordleApp: React.FC = () => {
   return (
     <div>
       <WordleGame />
-      <h3>
+      <h3 className="below-wordle-message">
         If you love the game, you'll absolutely enjoy my private English
         lessons!
       </h3>

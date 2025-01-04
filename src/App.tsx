@@ -19,6 +19,9 @@ import YoungLearners from "./pages/courses/YoungLearners";
 import EnglishForTeenagers from "./pages/courses/EnglishForTeenagers";
 import GrammarEssentials from "./pages/courses/GrammarEssentials";
 
+import { Schedule } from "./components/schedule/Schedule";
+import { NotFound } from "./components/NotFound";
+
 function App() {
   return (
     <div className="App">
@@ -28,10 +31,16 @@ function App() {
           <Route path="/" element={<Home />}></Route>
           <Route path="/about" element={<About />}></Route>
           <Route path="/wordle" element={<WordlePage />}></Route>
+          <Route
+            path="/wordle/challenges/:challengeId"
+            element={<WordlePage />}
+          />
           <Route path="/quote" element={<GetQuote />}></Route>
           <Route path="/blog" element={<Blog />}></Route>
 
           <Route path="/contact" element={<ContactMe />}></Route>
+          <Route path="/schedule" element={<Schedule />}></Route>
+
           <Route
             path="/courses/refreshment-english"
             element={<RefreshmentEnglishCourse />}
@@ -59,6 +68,7 @@ function App() {
             path="/courses/grammar-essentials"
             element={<GrammarEssentials />}
           ></Route>
+          <Route path="*" element={<NotFound />}></Route>
         </Routes>
         <Footer></Footer>
       </BrowserRouter>

@@ -125,6 +125,24 @@ export const updateScoreBoard = (data) => {
   });
 };
 
+export const updateChallenges = (data) => {
+  return new Promise((resolve, reject) => {
+    updateDoc(doc(firestore, "wordle", "challenges"), data)
+      .then((res) => {
+        resolve({
+          success: true,
+          message: res,
+        });
+      })
+      .catch((error) => {
+        reject({
+          success: false,
+          message: error,
+        });
+      });
+  });
+};
+
 export const deleteDocument = (col, docId, user) => {
   return new Promise((resolve, reject) => {
     // Assuming user.uid is the user's unique identifier, you can customize this based on your authentication setup

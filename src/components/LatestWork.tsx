@@ -3,6 +3,7 @@ import { ProjectCard } from "./Card";
 import { getFile } from "../firebase/storage";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { translation } from "../utils/translation";
 
 export const LatestWork = (props: { title: string }) => {
   const [businessEnglishHeader, setBusinessEnglishHeader] =
@@ -70,49 +71,55 @@ export const LatestWork = (props: { title: string }) => {
 
       <div className="projects-container">
         <ProjectCard
-          title="Refreshment English"
-          subtitle="Perfect for those who’ve studied English but need a boost. Refresh your vocabulary, polish speaking skills, and regain fluency."
+          link="refreshment-english"
+          title={translation.tr_refreshment_english.en}
+          subtitle={translation.tr_perfect_for_those.en}
           imageSource={refreshEnglishHeader}
           index={1}
           isDisabled={false}
         />
         <ProjectCard
-          title="English for Daily Life"
-          subtitle="Learning tools for every situation. Build confidence in everyday conversations, from ordering food to making new friends!"
+          title={translation.tr_english_for_daily.en}
+          subtitle={translation.tr_learning_tools_for.en}
           imageSource={englishFileHeader}
           index={1}
           isDisabled={false}
+          link="english-for-daily-life"
         />
 
         <ProjectCard
-          title="Business English Essentials"
-          subtitle="Practice language that is relevant to your work context, so you can use what you learn in real work situations."
+          title={translation.tr_business_english_essentials.en}
+          subtitle={translation.tr_practice_language_that.en}
           imageSource={businessEnglishHeader}
           index={2}
           isDisabled={false}
+          link="business-english-essentials"
         />
 
         <ProjectCard
-          title="English for Young Learners"
-          subtitle="Fun, foundational English lessons using various tools to build core language skills through stories, activities, and exercises."
+          title={translation.tr_english_for_young.en}
+          subtitle={translation.tr_fun_foundational_english.en}
           imageSource={kidsEnglishHeader}
           index={4}
           isDisabled={false}
+          link="english-for-young-learners"
         />
         <ProjectCard
-          title="English for Teenagers"
-          subtitle="Engaging, relevant conversations using Oxford Discover Futures to boost confidence and critical thinking for real-world English skills."
+          title={translation.tr_english_for_teenagers.en}
+          subtitle={translation.tr_engaging_relevant_conversations.en}
           imageSource={discoverHeader}
           index={4}
           isDisabled={false}
+          link="english-for-teenagers"
         />
 
         <ProjectCard
-          title="Grammar Essentials"
-          subtitle="Strengthen your English from the ground up with this focused course. Learn essential grammar rules, fix common mistakes, and gain confidence in writing."
+          title={translation.tr_grammar_essentials.en}
+          subtitle={translation.tr_strengthen_your_english.en}
           imageSource={grammarHeader}
           index={6}
           isDisabled={false}
+          link="grammar-essentials"
         />
       </div>
     </div>

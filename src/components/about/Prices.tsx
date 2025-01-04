@@ -1,9 +1,16 @@
 import { FaBahtSign } from "react-icons/fa6";
 import "./About.css";
 import { FaLine } from "react-icons/fa";
+import { translation } from "../../utils/translation";
 interface PriceBox {
   price: string;
   hours: number;
+  color: string;
+  pointers: string[];
+}
+interface PriceBoxWithTitle {
+  price: string;
+  title: string;
   color: string;
   pointers: string[];
 }
@@ -16,7 +23,7 @@ export const PriceBox = (props: PriceBox) => {
     >
       <div className="hours-container">
         <h3 style={{ backgroundColor: props.color, color: "white" }}>
-          {props.hours} hours
+          {props.hours} {translation.tr_hours.en}
         </h3>
       </div>
 
@@ -40,7 +47,46 @@ export const PriceBox = (props: PriceBox) => {
         style={{ backgroundColor: props.color, color: "white" }}
       >
         <a href="https://line.me/ti/p/Jq_GQiOr3e">
-          <FaLine /> <p>Free trial</p>
+          <FaLine /> <p>{translation.tr_free_trial.en}</p>
+        </a>
+      </div>
+    </div>
+  );
+};
+
+export const PriceBoxWithTitle = (props: PriceBoxWithTitle) => {
+  return (
+    <div
+      className="price-box-container"
+      style={{ backgroundColor: "white", border: "solid 1px " + props.color }}
+    >
+      <div className="hours-container">
+        <h3 style={{ backgroundColor: props.color, color: "white" }}>
+          {props.title}
+        </h3>
+      </div>
+
+      <div
+        className="price-container"
+        style={{ color: "white", backgroundColor: props.color }}
+      >
+        <h3>
+          <FaBahtSign />
+          {props.price}
+        </h3>
+      </div>
+
+      <ul style={{ color: props.color }}>
+        {props.pointers.map((text) => {
+          return <li key={props.price + "-" + text}>{text}</li>;
+        })}
+      </ul>
+      <div
+        className="div-link"
+        style={{ backgroundColor: props.color, color: "white" }}
+      >
+        <a href="https://line.me/ti/p/Jq_GQiOr3e">
+          <FaLine /> <p>{translation.tr_free_trial.en}</p>
         </a>
       </div>
     </div>
@@ -50,109 +96,100 @@ export const PriceBox = (props: PriceBox) => {
 export const Prices = () => {
   return (
     <div className="prices-container">
-      <h1>Monthly Subscriptions</h1>
-      <h3>All Classes are private lessons. Students only share course fees.</h3>
-      <div className="price-box-grid">
-        <PriceBox
-          price={"3,500"}
-          hours={8}
-          color="#545454"
-          pointers={["2 hours / week", "One-Time Payment", "1 student"]}
-        />
+      <h1> {translation.tr_monthly_subscriptions.en} </h1>
+      <h3>{translation.tr_all_classes_are.en}</h3>
 
-        <PriceBox
-          price={"6,500"}
-          hours={16}
-          color="#6257e3"
-          pointers={[
-            "4 hours / week",
-            "2 payment installments",
-            "Up to 2  students",
-          ]}
-        />
+      <div className="prices-container schedule-prices-container">
+        <div className="price-box-grid">
+          <PriceBoxWithTitle
+            price="3,000"
+            title="Business Hours"
+            pointers={[
+              "Weekdays 08.00 - 17.00",
+              "3 hours a week",
+              "Min 12 hours a month",
+              "Study first, pay next",
+            ]}
+            color="#1d4856"
+          />
 
-        <PriceBox
-          price={"8,500"}
-          hours={24}
-          color="#a359a0"
-          pointers={[
-            "6 hours / week + 1 hr",
-            "2 payment installments",
-            "Up to 3 students",
-          ]}
-        />
+          <PriceBoxWithTitle
+            price="2,000"
+            title="Night Owl"
+            pointers={[
+              "Everyday 21.00 - 22.00",
+              "2 hours a week",
+              "Min 8 hours a month",
+              "Study first, pay next",
+            ]}
+            color="#545454"
+          />
 
-        <PriceBox
-          price={"11,000"}
-          hours={32}
-          color="#ef3a5d"
-          pointers={[
-            "8 hours / week + 1 hr",
-            "3 payment installments",
-            "Up to 4 students",
-          ]}
-        />
+          <PriceBoxWithTitle
+            price="2,400"
+            title="After School"
+            pointers={[
+              "Weekdays 17.00 - 19.00",
+              "2 hours a week",
+              "Min 8 hours a month",
+              "Study first, pay next",
+            ]}
+            color="#a359a0"
+          />
 
-        <PriceBox
-          price={"13,000"}
-          hours={40}
-          color="#00bf63"
-          pointers={[
-            "10 hours / week + 2 hr",
-            "3 payment installments",
-            "Up to 5 students",
-          ]}
-        />
+          <PriceBoxWithTitle
+            price="2,800"
+            title="After Work"
+            pointers={[
+              "Weekdays 19.00 - 21.00",
+              "2 hours a week",
+              "Min 8 hours a month",
+              "Study first, pay next",
+            ]}
+            color="#ef3a5d"
+          />
 
-        <PriceBox
-          price={"18,500"}
-          hours={60}
-          color="#1d4856"
-          pointers={[
-            "15 hours / week + 3 hr",
-            "4 payment installments",
-            "Up to 6 students",
-            "2 dedicated teachers",
-          ]}
-        />
+          <PriceBoxWithTitle
+            price="3,600"
+            title="Weekend Bird"
+            pointers={[
+              "Weekends 08.00 - 12.00",
+              "3 hours a week",
+              "Min 12 hours a month",
+              "Study first, pay next",
+            ]}
+            color="#00bf63"
+          />
 
-        <PriceBox
-          price={"23,500"}
-          hours={80}
-          color="#ff914d"
-          pointers={[
-            "20 hours / week + 3 hr",
-            "4 payment installments",
-            "Up to 7 students",
-            "4 dedicated teachers",
-          ]}
-        />
-
-        <PriceBox
-          price={"28,500"}
-          hours={100}
-          color="#c6b79b"
-          pointers={[
-            "25 hours / week + 4 hr",
-            "4 payment installments",
-            "Up to 15 students",
-            "5 dedicated teachers",
-          ]}
-        />
+          <PriceBoxWithTitle
+            price="4,200"
+            title="Power Hours"
+            pointers={[
+              "Weekends 13.00 - 21.00",
+              "3 hours a week",
+              "Min 12 hours a month",
+              "Study first, pay next",
+            ]}
+            color="#6257e3"
+          />
+        </div>
       </div>
 
-      <h1>Popular Private Courses</h1>
-
+      <h1> {translation.tr_popular_private_courses.en}</h1>
+      <h3>
+        These classes are for flexible-hour students. Students can decide the
+        time and day.
+      </h3>
       <div className="price-box-grid">
         <PriceBox
           price={"3,500"}
           hours={10}
           color="#545454"
           pointers={[
-            "1 hour free trial",
-            "Pay on Salary",
-            "Free Digital Book",
-            "Postpone up to 3 times",
+            translation.tr_1_hour_free.en,
+            translation.tr_pay_on_salary.en,
+            translation.tr_free_digital_book.en,
+            translation.tr_postpone_up_to.en,
           ]}
         />
 
@@ -161,10 +198,10 @@ export const Prices = () => {
           hours={20}
           color="#6257e3"
           pointers={[
-            "1 hour free trial",
-            "Pay on Salary",
-            "2 payment installments",
-            "Postpone up to 3 times",
+            translation.tr_1_hour_free.en,
+            translation.tr_pay_on_salary.en,
+            translation.tr_2_payment_installments.en,
+            translation.tr_postpone_up_to.en,
           ]}
         />
 
@@ -173,10 +210,10 @@ export const Prices = () => {
           hours={40}
           color="#a359a0"
           pointers={[
-            "1 hour free trial",
-            "Pay on Salary",
-            "Postpone up to 3 times",
-            "2 payment installments",
+            translation.tr_1_hour_free.en,
+            translation.tr_pay_on_salary.en,
+            translation.tr_postpone_up_to.en,
+            translation.tr_2_payment_installments.en,
           ]}
         />
 
@@ -185,17 +222,17 @@ export const Prices = () => {
           hours={100}
           color="#c6b79b"
           pointers={[
-            "1 hour free trial",
-            "Pay on Salary",
-            "Free Digital Book",
-            "3 payment installments",
+            translation.tr_1_hour_free.en,
+            translation.tr_pay_on_salary.en,
+            translation.tr_free_digital_book.en,
+            translation.tr_3_payment_installments.en,
           ]}
         />
       </div>
 
       <div className="quote-button-container">
-        <h3>Looking for something else?</h3>
-        <a href="/quote">Get a Quote</a>
+        <h3>{translation.tr_looking_for_something.en}</h3>
+        <a href="/quote">{translation.tr_get_a_quote.en}</a>
       </div>
     </div>
   );

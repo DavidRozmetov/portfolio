@@ -6,6 +6,7 @@ interface ProjectCardProps {
   imageSource: string;
   index: number;
   isDisabled: boolean;
+  link: string;
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -14,17 +15,14 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   imageSource,
   index,
   isDisabled,
+  link,
 }) => {
   return (
     <a
       data-aos="fade-right"
       data-aos-duration="150"
       data-aos-delay={index * 50 + ""}
-      href={
-        isDisabled
-          ? "https://line.me/ti/p/Jq_GQiOr3e"
-          : `/courses/${title.replaceAll(" ", "-").toLocaleLowerCase()}`
-      }
+      href={isDisabled ? "https://line.me/ti/p/Jq_GQiOr3e" : `/courses/${link}`}
       className="project-card-container"
     >
       <div className="div-img">

@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import "./Courses.css";
 import { PriceBox, Prices } from "../../components/about/Prices";
 import { LatestWork } from "../../components/LatestWork";
+import { translation } from "../../utils/translation";
 
 const GrammarEssentials: React.FC = () => {
   const [img1, setImg1] = useState<string>("");
@@ -55,17 +56,10 @@ const GrammarEssentials: React.FC = () => {
     <div className="course-container">
       <section className="section-main">
         <div className="div-text">
-          <h1>Grammar Essentials</h1>
+          <h1>{translation.tr_grammar_essentials.en}</h1>
 
-          <h2>Overview</h2>
-          <p>
-            Grammar is the backbone of any language, and mastering it is key to
-            effective communication. The Grammar Essentials course is designed
-            to help learners strengthen their foundation in English grammar,
-            making it easier to write clearly, speak confidently, and understand
-            the language better. Whether you're a beginner or someone looking to
-            polish your grammar skills, this course has something for everyone.
-          </p>
+          <h2>{translation.tr_overview.en}</h2>
+          <p>{translation.tr_grammar_is_the.en}</p>
         </div>
         <div className="div-img-main">
           <img src={img1} alt="Refreshment Course Main Image" />
@@ -77,45 +71,40 @@ const GrammarEssentials: React.FC = () => {
           <img src={img2} alt="Refreshment Course Secondary Image" />
         </div>
         <div className="div-text">
-          <h2>Who is it for?</h2>
+          <h2>{translation.tr_who_is_it.en}</h2>
           <ul>
-            <li>Students of all ages who struggle with English grammar.</li>
-            <li>Adults aiming to improve their professional communication.</li>
-            <li>
-              Language learners preparing for exams like IELTS, TOEFL, or
-              ADFELPS.
-            </li>
-            <li>
-              Anyone who wants to refine their grammar for speaking and writing.
-            </li>
+            <li> {translation.tr_students_of_all.en}</li>
+            <li> {translation.tr_adults_aiming_to.en}</li>
+            <li> {translation.tr_language_learners_preparing.en}</li>
+            <li> {translation.tr_anyone_who_wants_refine.en}</li>
           </ul>
         </div>
       </section>
 
       <section className="section-main section-secondary">
         <div className="div-text">
-          <h2>Key Features</h2>
+          <h2>{translation.tr_key_features.en}</h2>
 
           <ul>
             <li>
-              <strong>Comprehensive Coverage:</strong> Lessons on tenses,
-              sentence structures, parts of speech, and punctuation.
+              <strong> {translation.tr_comprehensive_coverage.en}:</strong>
+              {translation.tr_lessons_on_tenses.en}
             </li>
             <li>
-              <strong>Practical Application:</strong> Exercises and examples to
-              apply grammar rules in real-life situations.
+              <strong> {translation.tr_practical_application.en}:</strong>
+              {translation.tr_exercises_and_examples.en}
             </li>
             <li>
-              <strong>Error Correction:</strong> Focused feedback on common
-              mistakes and how to avoid them.
+              <strong> {translation.tr_error_correction.en}:</strong>
+              {translation.tr_focused_feedback_on.en}
             </li>
             <li>
-              <strong>Interactive Learning:</strong> Activities and quizzes to
-              make grammar learning engaging and fun.
+              <strong> {translation.tr_interactive_learning.en}:</strong>
+              {translation.tr_activities_and_quizzes.en}
             </li>
             <li>
-              <strong>Flexible Pace:</strong> Tailored lessons to fit your
-              learning speed and goals.
+              <strong> {translation.tr_flexible_pace.en}:</strong>
+              {translation.tr_tailored_lessons_to.en}
             </li>
           </ul>
         </div>
@@ -130,15 +119,13 @@ const GrammarEssentials: React.FC = () => {
           <img src={img4} alt="Refreshment Course Secondary Image" />
         </div>
         <div className="div-text">
-          <h2>What You’ll Learn</h2>
+          <h2>{translation.tr_what_youll_learn.en}What You’ll Learn</h2>
           <ul>
-            <li>Mastery of verb tenses and how to use them correctly.</li>
-            <li>Proper sentence construction for clear communication.</li>
-            <li>Accurate use of articles, prepositions, and conjunctions.</li>
-            <li>Understanding and avoiding common grammar pitfalls.</li>
-            <li>
-              Confidence in speaking and writing English with proper grammar.
-            </li>
+            <li> {translation.tr_mastery_of_verb.en}</li>
+            <li> {translation.tr_proper_sentence_construction.en}</li>
+            <li> {translation.tr_accurate_use_of.en}</li>
+            <li> {translation.tr_understanding_and_avoiding.en}</li>
+            <li> {translation.tr_confidence_in_speaking.en}</li>
           </ul>
         </div>
       </section>
@@ -147,16 +134,11 @@ const GrammarEssentials: React.FC = () => {
         <div className="div-text">
           <h2>Why Choose Grammar Essentials?</h2>
           <ul>
-            <li>
-              Strengthens your foundation for all areas of English learning.
-            </li>
-            <li>Helps you sound more professional and articulate.</li>
-            <li>
-              Improves accuracy in exams, presentations, and daily
-              communication.
-            </li>
-            <li>Offers engaging lessons with practical applications.</li>
-            <li>Tailored to your current level and future goals.</li>
+            <li> {translation.tr_strengthen_your_english.en}</li>
+            <li> {translation.tr_helps_you_sound.en}</li>
+            <li> {translation.tr_improve_conversational_fluency.en}</li>
+            <li> {translation.tr_offers_engaging_lessons.en}</li>
+            <li> Tailored to your current level and future goals.</li>
           </ul>
         </div>
         <div className="div-img-main div-fifth-img ">
@@ -165,17 +147,20 @@ const GrammarEssentials: React.FC = () => {
       </section>
 
       <div className="prices-container">
-        <h1>Custom Courses</h1>
+        <h1>
+          {translation.tr_prepares_teens_for.en}
+          {translation.tr_custom_courses.en}
+        </h1>
         <div className="price-box-grid">
           <PriceBox
             price={"4,300"}
             hours={10}
             color="#545454"
             pointers={[
-              "1 hour free trial",
-              "Pay on Salary",
-              "Free Digital Book",
-              "Postpone up to 3 times",
+              translation.tr_1_hour_free.en,
+              translation.tr_pay_on_salary.en,
+              translation.tr_free_digital_book.en,
+              translation.tr_postpone_up_to.en,
             ]}
           />
 
@@ -184,22 +169,22 @@ const GrammarEssentials: React.FC = () => {
             hours={20}
             color="#6257e3"
             pointers={[
-              "1 hour free trial",
-              "Pay on Salary",
-              "2 payment installments",
-              "Postpone up to 3 times",
+              translation.tr_1_hour_free.en,
+              translation.tr_pay_on_salary.en,
+              translation.tr_2_payment_installments.en,
+              translation.tr_postpone_up_to.en,
             ]}
           />
 
           <PriceBox
             price={"17,250"}
-            hours={50}
+            hours={40}
             color="#a359a0"
             pointers={[
-              "1 hour free trial",
-              "Pay on Salary",
-              "Postpone up to 3 times",
-              "2 payment installments",
+              translation.tr_1_hour_free.en,
+              translation.tr_pay_on_salary.en,
+              translation.tr_postpone_up_to.en,
+              translation.tr_2_payment_installments.en,
             ]}
           />
 
@@ -208,10 +193,10 @@ const GrammarEssentials: React.FC = () => {
             hours={100}
             color="#c6b79b"
             pointers={[
-              "1 hour free trial",
-              "Pay on Salary",
-              "Free Digital Book",
-              "3 payment installments",
+              translation.tr_1_hour_free.en,
+              translation.tr_pay_on_salary.en,
+              translation.tr_free_digital_book.en,
+              translation.tr_3_payment_installments.en,
             ]}
           />
         </div>
@@ -219,22 +204,15 @@ const GrammarEssentials: React.FC = () => {
 
       <section className="section-main section-1-line">
         <div className="div-text">
-          <h2>Take the Next Step</h2>
+          <h2>{translation.tr_take_the_next.en}</h2>
+          <p>{translation.tr_take_charge_of.en}</p>
           <p>
-            Take charge of your English journey by mastering the rules of
-            grammar. With the Grammar Essentials course, you'll gain the skills
-            and confidence to use English correctly and effectively in any
-            setting.
-          </p>
-          <p>
-            <strong>
-              Enroll today and start building a solid foundation in English
-              grammar!
-            </strong>
+            {translation.tr_prepares_teens_for.en}
+            <strong> {translation.tr_enroll_today_and.en}</strong>
           </p>
         </div>
       </section>
-      <LatestWork title="More Courses" />
+      <LatestWork title={translation.tr_more_courses.en} />
     </div>
   );
 };

@@ -71,6 +71,7 @@ const PexelsSearch: React.FC<{ query: string; query2: string }> = ({
 
   useEffect(() => {
     fetchPexelsImage();
+
     fetchPexelsImage2();
   }, [query]);
 
@@ -83,11 +84,13 @@ const PexelsSearch: React.FC<{ query: string; query2: string }> = ({
             alt={`Pexels result for ${query}`}
             style={{ marginTop: "20px", maxWidth: "100%" }}
           />
-          <img
-            src={image2 || ""}
-            alt={`Pexels result for ${query2}`}
-            style={{ marginTop: "20px", maxWidth: "100%" }}
-          />
+          {query !== query2 && (
+            <img
+              src={image2 || ""}
+              alt={`Pexels result for ${query2}`}
+              style={{ marginTop: "20px", maxWidth: "100%" }}
+            />
+          )}
           <p className="p-thanks-pexels">
             {" "}
             Special thanks to{" "}

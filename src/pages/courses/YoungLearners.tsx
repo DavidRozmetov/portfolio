@@ -5,6 +5,7 @@ import "./Courses.css";
 import { PriceBox, Prices } from "../../components/about/Prices";
 import { LatestWork } from "../../components/LatestWork";
 import "./../../SCSS/app.scss";
+import { translation } from "../../utils/translation";
 
 const YoungLearners: React.FC = () => {
   const [img1, setImg1] = useState<string>("");
@@ -56,15 +57,9 @@ const YoungLearners: React.FC = () => {
     <div className="course-container">
       <section className="section-main">
         <div className="div-text">
-          <h1>English for Young Learners</h1>
-          <h2>Overview</h2>
-          <p>
-            The English for Young Learners course is designed to make language
-            learning fun, engaging, and effective for children. Through
-            interactive lessons, games, and creative activities, we help young
-            learners build a strong foundation in English, focusing on
-            listening, speaking, reading, and writing skills.
-          </p>
+          <h1>{translation.tr_english_for_young.en}</h1>
+          <h2>{translation.tr_overview.en}</h2>
+          <p>{translation.tr_the_english_for_young.en}</p>
         </div>
         <div className="div-img-main">
           <img src={img1} alt="Refreshment Course Main Image" />
@@ -76,43 +71,40 @@ const YoungLearners: React.FC = () => {
           <img src={img2} alt="Refreshment Course Secondary Image" />
         </div>
         <div className="div-text">
-          <h2>Who is it for?</h2>
+          <h2>{translation.tr_who_is_it.en}</h2>
           <ul>
-            <li>Children aged 4 to 12 years old.</li>
-            <li>Young learners starting their journey in English.</li>
-            <li>Kids needing extra support with school English assignments.</li>
-            <li>
-              Parents looking to boost their child's confidence in English.
-            </li>
+            <li>{translation.tr_children_aged_4.en}</li>
+            <li>{translation.tr_young_learners_starting.en}</li>
+            <li>{translation.tr_kids_needing_extra.en}</li>
+            <li>{translation.tr_parents_looking_to.en}</li>
           </ul>
         </div>
       </section>
 
       <section className="section-main section-secondary">
         <div className="div-text">
-          <h2>Key Features</h2>
+          <h2>{translation.tr_key_features.en}</h2>
 
           <ul>
             <li>
-              <strong>Interactive Learning:</strong> Lessons include
-              storytelling, songs, games, and activities to keep children
-              engaged and excited.
+              <strong>{translation.tr_individualized_learning.en}:</strong>{" "}
+              {translation.tr_lessons_include_storytelling.en}
             </li>
             <li>
-              <strong>Phonics and Vocabulary:</strong> Focus on building a
-              strong base in pronunciation, spelling, and vocabulary.
+              <strong>{translation.tr_phonics_and_vocabulary.en}:</strong>
+              {translation.tr_focus_on_building.en}
             </li>
             <li>
-              <strong>Creative Activities:</strong> Use art, music, and
-              role-playing to make language learning enjoyable.
+              <strong>{translation.tr_creative_activities.en}:</strong>
+              {translation.tr_use_art_music.en}
             </li>
             <li>
-              <strong>Tailored Curriculum:</strong> Lessons are adapted to each
-              child’s age, skill level, and learning pace.
+              <strong>{translation.tr_tailored_curriculum.en}:</strong>{" "}
+              {translation.tr_lessons_are_adapted.en}
             </li>
             <li>
-              <strong>Parent Involvement:</strong> Regular progress updates and
-              tips to support learning at home.
+              <strong>{translation.tr_parent_involvement.en}:</strong>{" "}
+              {translation.tr_regular_progress_updates.en}
             </li>
           </ul>
         </div>
@@ -127,30 +119,26 @@ const YoungLearners: React.FC = () => {
           <img src={img4} alt="Refreshment Course Secondary Image" />
         </div>
         <div className="div-text">
-          <h2>What You’ll Learn</h2>
+          <h2>{translation.tr_what_youll_learn.en}</h2>
           <ul>
-            <li>Basic conversational English for everyday interactions.</li>
-            <li>Improved pronunciation and confidence in speaking.</li>
-            <li>Foundational grammar and sentence-building skills.</li>
-            <li>Reading and comprehension skills through engaging stories.</li>
-            <li>
-              Creative expression in writing simple sentences and paragraphs.
-            </li>
+            <li>{translation.tr_basic_conversational_english.en}</li>
+            <li>{translation.tr_improved_pronunciation_and.en}</li>
+            <li>{translation.tr_foundational_grammar_and.en}</li>
+            <li>{translation.tr_reading_and_comprehension.en}</li>
+            <li>{translation.tr_creative_expression_in.en}</li>
           </ul>
         </div>
       </section>
 
       <section className="section-main ">
         <div className="div-text">
-          <h2>Why Choose Business English?</h2>
+          <h2> Why Choose English for Young Learners?</h2>
           <ul>
-            <li>Fun and engaging lessons tailored to young learners.</li>
-            <li>
-              Boosts confidence and builds a love for the English language.
-            </li>
-            <li>Interactive and creative methods ensure maximum engagement.</li>
-            <li>Flexible learning options to suit your child’s needs.</li>
-            <li>Regular updates and feedback for parents to track progress.</li>
+            <li>{translation.tr_fun_and_engaging.en}</li>
+            <li>{translation.tr_boosts_confidence_and.en}</li>
+            <li>{translation.tr_interactive_and_creative.en}</li>
+            <li>{translation.tr_flexible_learning_options.en}</li>
+            <li>{translation.tr_regular_updates_and.en}</li>
           </ul>
         </div>
         <div className="div-img-main div-fifth-img ">
@@ -159,17 +147,17 @@ const YoungLearners: React.FC = () => {
       </section>
 
       <div className="prices-container">
-        <h1>Custom Courses</h1>
+        <h1>{translation.tr_custom_courses.en}</h1>
         <div className="price-box-grid">
           <PriceBox
             price={"3,400"}
             hours={10}
             color="#545454"
             pointers={[
-              "1 hour free trial",
-              "Pay on Salary",
-              "Free Digital Book",
-              "Postpone up to 3 times",
+              translation.tr_1_hour_free.en,
+              translation.tr_pay_on_salary.en,
+              translation.tr_free_digital_book.en,
+              translation.tr_postpone_up_to.en,
             ]}
           />
 
@@ -178,10 +166,10 @@ const YoungLearners: React.FC = () => {
             hours={20}
             color="#6257e3"
             pointers={[
-              "1 hour free trial",
-              "Pay on Salary",
-              "2 payment installments",
-              "Postpone up to 3 times",
+              translation.tr_1_hour_free.en,
+              translation.tr_pay_on_salary.en,
+              translation.tr_2_payment_installments.en,
+              translation.tr_postpone_up_to.en,
             ]}
           />
 
@@ -190,10 +178,10 @@ const YoungLearners: React.FC = () => {
             hours={40}
             color="#a359a0"
             pointers={[
-              "1 hour free trial",
-              "Pay on Salary",
-              "Postpone up to 3 times",
-              "2 payment installments",
+              translation.tr_1_hour_free.en,
+              translation.tr_pay_on_salary.en,
+              translation.tr_postpone_up_to.en,
+              translation.tr_2_payment_installments.en,
             ]}
           />
 
@@ -202,10 +190,10 @@ const YoungLearners: React.FC = () => {
             hours={100}
             color="#c6b79b"
             pointers={[
-              "1 hour free trial",
-              "Pay on Salary",
-              "Free Digital Book",
-              "3 payment installments",
+              translation.tr_1_hour_free.en,
+              translation.tr_pay_on_salary.en,
+              translation.tr_free_digital_book.en,
+              translation.tr_3_payment_installments.en,
             ]}
           />
         </div>
@@ -213,20 +201,16 @@ const YoungLearners: React.FC = () => {
 
       <section className="section-main section-1-line">
         <div className="div-text">
-          <h2>Take the Next Step</h2>
+          <h2>{translation.tr_take_the_next.en}</h2>
+          <p>{translation.tr_help_your_child.en}</p>
           <p>
-            Help your child shine in English! Enroll in the English for Young
-            Learners course today and set them up for success in school and
-            beyond. With engaging lessons and a nurturing approach, we make
-            learning fun and effective.
-          </p>
-          <p>
-            <strong>Contact us now to book a free trial class!</strong>
+            {translation.tr_english_for_young.en}
+            <strong>{translation.tr_contact_us_now.en}</strong>
           </p>
         </div>
       </section>
       <div className="projects-container">
-        <LatestWork title="More Courses" />
+        <LatestWork title={translation.tr_more_courses.en} />
       </div>
     </div>
   );

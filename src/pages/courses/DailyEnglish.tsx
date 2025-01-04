@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import "./Courses.css";
 import { PriceBox, Prices } from "../../components/about/Prices";
 import { LatestWork } from "../../components/LatestWork";
+import { translation } from "../../utils/translation";
 
 const DailyEnglish: React.FC = () => {
   const [img1, setImg1] = useState<string>("");
@@ -55,15 +56,9 @@ const DailyEnglish: React.FC = () => {
     <div className="course-container">
       <section className="section-main">
         <div className="div-text">
-          <h1>English for Daily Life</h1>
-          <h2>Overview</h2>
-          <p>
-            The English for Daily Life course is perfect for individuals who
-            want to enhance their communication skills for everyday situations.
-            From casual conversations to handling day-to-day tasks confidently,
-            this course ensures you are equipped to use English comfortably in
-            real-life scenarios.
-          </p>
+          <h1>{translation.tr_english_for_daily.en}</h1>
+          <h2>{translation.tr_overview.en}</h2>
+          <p>{translation.tr_the_english_for_daily.en}</p>
         </div>
         <div className="div-img-main">
           <img src={img1} alt="Refreshment Course Main Image" />
@@ -75,52 +70,43 @@ const DailyEnglish: React.FC = () => {
           <img src={img2} alt="Refreshment Course Secondary Image" />
         </div>
         <div className="div-text">
-          <h2>Who is it for?</h2>
+          <h2>{translation.tr_who_is_it.en}</h2>
           <ul>
-            <li>Beginners looking to establish practical English skills.</li>
-            <li>
-              Intermediate learners wanting to boost their fluency in daily
-              contexts.
-            </li>
-            <li>Travelers preparing for international trips or relocation.</li>
-            <li>
-              Anyone who wants to feel more confident using English in casual
-              and functional settings.
-            </li>
+            <li>{translation.tr_beginners_looking_to.en}</li>
+            <li>{translation.tr_intermediate_learners_wanting.en}</li>
+            <li>{translation.tr_travelers_preparing_for.en}</li>
+            <li>{translation.tr_anyone_who_wants_feel.en}</li>
           </ul>
         </div>
       </section>
 
       <section className="section-main section-secondary">
         <div className="div-text">
-          <h2>Key Features</h2>
+          <h2>{translation.tr_key_features.en}</h2>
 
           <ul>
             <li>
-              <strong>Practical Focus:</strong> The course emphasizes real-world
-              scenarios like:
+              <strong>{translation.tr_practical_focus.en}:</strong>{" "}
+              {translation.tr_the_course_emphasizes.en}:
               <ul>
-                <li>Shopping and handling transactions.</li>
-                <li>Ordering food at restaurants or cafes.</li>
-                <li>Introducing yourself and meeting new people.</li>
-                <li>Making appointments or reservations.</li>
-                <li>
-                  Asking for directions and transportation-related
-                  conversations.
-                </li>
+                <li>{translation.tr_shopping_and_handling.en}</li>
+                <li>{translation.tr_ordering_food_at.en}</li>
+                <li>{translation.tr_introducing_yourself_and.en}</li>
+                <li>{translation.tr_making_appointments_or.en}</li>
+                <li>{translation.tr_asking_for_directions.en}</li>
               </ul>
             </li>
             <li>
-              <strong>Interactive Learning:</strong> Role-playing, dialogues,
-              and interactive activities simulate real-life situations.
+              <strong>{translation.tr_interactive_learning.en}:</strong>
+              {translation.tr_role_playing_dialogues_and.en}
             </li>
             <li>
-              <strong>Pronunciation Practice:</strong> Gain confidence in
-              speaking clearly and understanding native speakers.
+              <strong>{translation.tr_pronunciation_practice.en}:</strong>{" "}
+              {translation.tr_gain_confidence_in_speaking.en}
             </li>
             <li>
-              <strong>Customized Lessons:</strong> Tailored content to match
-              your skill level and personal objectives.
+              <strong>{translation.tr_customized_lessons.en}:</strong>{" "}
+              {translation.tr_tailored_content_to.en}
             </li>
           </ul>
         </div>
@@ -135,37 +121,25 @@ const DailyEnglish: React.FC = () => {
           <img src={img4} alt="Refreshment Course Secondary Image" />
         </div>
         <div className="div-text">
-          <h2>What You’ll Learn</h2>
+          <h2>{translation.tr_what_youll_learn.en}</h2>
           <ul>
-            <li>Improve conversational fluency for everyday interactions.</li>
-            <li>
-              Expand vocabulary for common situations like shopping, dining, and
-              traveling.
-            </li>
-            <li>Understand and use common expressions and idioms.</li>
-            <li>
-              Build confidence to engage with native and non-native English
-              speakers.
-            </li>
-            <li>Learn cultural tips for more effective communication.</li>
+            <li>{translation.tr_improve_conversational_fluency.en}</li>
+            <li>{translation.tr_expand_vocabulary_for.en}</li>
+            <li>{translation.tr_understand_and_use.en}</li>
+            <li>{translation.tr_build_confidence_for.en}</li>
+            <li>{translation.tr_learn_cultural_tips.en}</li>
           </ul>
         </div>
       </section>
 
       <section className="section-main ">
         <div className="div-text">
-          <h2>Why Choose English for Daily Life?</h2>
+          <h2>{translation.tr_why_choose_english.en}</h2>
           <ul>
-            <li>
-              Learn English that’s immediately applicable in real-life
-              situations.
-            </li>
-            <li>Build confidence with engaging and interactive lessons.</li>
-            <li>
-              Focus on improving speaking and listening skills for practical
-              communication.
-            </li>
-            <li>Get personalized feedback to ensure consistent improvement.</li>
+            <li>{translation.tr_learn_english_thats.en}</li>
+            <li>{translation.tr_build_confidence_with.en}</li>
+            <li>{translation.tr_focus_on_improving.en}</li>
+            <li>{translation.tr_get_personalized_feedback_improvement.en}</li>
           </ul>
         </div>
         <div className="div-img-main div-fifth-img ">
@@ -174,17 +148,17 @@ const DailyEnglish: React.FC = () => {
       </section>
 
       <div className="prices-container">
-        <h1>Custom Courses</h1>
+        <h1>{translation.tr_custom_courses.en}</h1>
         <div className="price-box-grid">
           <PriceBox
             price={"3,400"}
             hours={10}
             color="#545454"
             pointers={[
-              "1 hour free trial",
-              "Pay on Salary",
-              "Free Digital Book",
-              "Postpone up to 3 times",
+              translation.tr_1_hour_free.en,
+              translation.tr_pay_on_salary.en,
+              translation.tr_free_digital_book.en,
+              translation.tr_postpone_up_to.en,
             ]}
           />
 
@@ -193,10 +167,10 @@ const DailyEnglish: React.FC = () => {
             hours={20}
             color="#6257e3"
             pointers={[
-              "1 hour free trial",
-              "Pay on Salary",
-              "2 payment installments",
-              "Postpone up to 3 times",
+              translation.tr_1_hour_free.en,
+              translation.tr_pay_on_salary.en,
+              translation.tr_2_payment_installments.en,
+              translation.tr_postpone_up_to.en,
             ]}
           />
 
@@ -205,10 +179,10 @@ const DailyEnglish: React.FC = () => {
             hours={40}
             color="#a359a0"
             pointers={[
-              "1 hour free trial",
-              "Pay on Salary",
-              "Postpone up to 3 times",
-              "2 payment installments",
+              translation.tr_1_hour_free.en,
+              translation.tr_pay_on_salary.en,
+              translation.tr_postpone_up_to.en,
+              translation.tr_2_payment_installments.en,
             ]}
           />
 
@@ -217,10 +191,10 @@ const DailyEnglish: React.FC = () => {
             hours={100}
             color="#c6b79b"
             pointers={[
-              "1 hour free trial",
-              "Pay on Salary",
-              "Free Digital Book",
-              "3 payment installments",
+              translation.tr_1_hour_free.en,
+              translation.tr_pay_on_salary.en,
+              translation.tr_free_digital_book.en,
+              translation.tr_3_payment_installments.en,
             ]}
           />
         </div>
@@ -228,19 +202,14 @@ const DailyEnglish: React.FC = () => {
 
       <section className="section-main section-1-line">
         <div className="div-text">
-          <h2>Take the Next Step</h2>
+          <h2>{translation.tr_take_the_next.en}</h2>
+          <p>{translation.tr_enroll_in_the_daily.en}</p>
           <p>
-            Enroll in the English for Daily Life course today and start using
-            English with confidence in your everyday activities. Whether you’re
-            a beginner or looking to refine your skills, this course will help
-            you achieve your communication goals.
-          </p>
-          <p>
-            <strong>Contact us now to book a free trial class!</strong>
+            <strong>{translation.tr_contact_us_now.en}</strong>
           </p>
         </div>
       </section>
-      <LatestWork title="More Courses" />
+      <LatestWork title={translation.tr_more_courses.en} />
     </div>
   );
 };

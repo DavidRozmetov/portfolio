@@ -2,9 +2,9 @@ import React, { useState, useEffect, SetStateAction } from "react";
 import { toast } from "react-toastify";
 
 interface FilterProps {
-  setFilterBooks: React.Dispatch<SetStateAction<string[]>>;
-  setFilterLevels: React.Dispatch<SetStateAction<string[]>>;
-  setFilterUnits: React.Dispatch<SetStateAction<string[]>>;
+  setFilterBooks: React.Dispatch<SetStateAction<string[] | undefined>>;
+  setFilterLevels: React.Dispatch<SetStateAction<string[] | undefined>>;
+  setFilterUnits: React.Dispatch<SetStateAction<string[] | undefined>>;
 }
 
 const SearchParamWatcher: React.FC<FilterProps> = ({
@@ -14,6 +14,17 @@ const SearchParamWatcher: React.FC<FilterProps> = ({
 }) => {
   const [searchParams, setSearchParams] = useState(window.location.search);
 
+  const updateFilters = () => {
+    const params = new URLSearchParams(window.location.search);
+
+    const books = params.get("books")?.split(",") || [];
+    const levels = params.get("levels")?.split(",") || [];
+    const units = params.get("units")?.split(",") || [];
+
+    setFilterBooks(books);
+    setFilterLevels(levels);
+    setFilterUnits(units);
+  };
   useEffect(() => {
     const handlePopState = () => {
       setSearchParams(window.location.search);
@@ -32,22 +43,12 @@ const SearchParamWatcher: React.FC<FilterProps> = ({
       handlePushState();
     };
 
+    updateFilters();
     return () => {
       window.removeEventListener("popstate", handlePopState);
     };
   }, []);
 
-  const updateFilters = () => {
-    const params = new URLSearchParams(window.location.search);
-
-    const books = params.get("books")?.split(",") || [];
-    const levels = params.get("levels")?.split(",") || [];
-    const units = params.get("units")?.split(",") || [];
-
-    setFilterBooks(books);
-    setFilterLevels(levels);
-    setFilterUnits(units);
-  };
   useEffect(() => {
     if (searchParams) {
       updateFilters();

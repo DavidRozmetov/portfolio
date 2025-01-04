@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { translation } from "../utils/translation";
 import EnglishIcon1 from "../assets/svg/book-closed.svg";
 import EnglishIcon2 from "../assets/svg/chat-chat.svg";
 import EnglishIcon3 from "../assets/svg/chinese-noodles-2.svg";
@@ -102,12 +103,17 @@ export const Landing = () => {
           data-aos-duration="3s"
           data-aos-delay="2s"
         >
-          <h1>English</h1>
+          <h1>{translation.tr_english.en}</h1>
           <p>
-            Guiding students to{" "}
-            <span style={{ color: "#0693e3", fontWeight: 800 }}>English </span>{" "}
-            fluency with a proven track record of success over{" "}
-            <span style={{ color: "#0693e3", fontWeight: 800 }}>7 years</span>.
+            {translation.tr_guiding_students_to.en}{" "}
+            <span style={{ color: "#0693e3", fontWeight: 800 }}>
+              {translation.tr_english.en}{" "}
+            </span>{" "}
+            {translation.tr_fluency_with_a.en}
+            <span style={{ color: "#0693e3", fontWeight: 800 }}>
+              {translation.tr_seven_years.en}
+            </span>
+            .
           </p>
           {calculateImageIndex(mouseX) < 3 && (
             <div className="div-english-courses">
@@ -136,20 +142,20 @@ export const Landing = () => {
               </div>
               <div className="div-courses-container">
                 <div className="div-course div-course-1">
-                  <h3>Exam Preperation</h3>
+                  <h3>{translation.tr_exam_preperation.en}</h3>
                 </div>
                 <div className="div-course div-course-2">
-                  <h3>English for Daily Life</h3>
+                  <h3>{translation.tr_english_for_daily.en}</h3>
                 </div>
                 <div className="div-course div-course-3">
-                  <h3>Business English Essentials</h3>
+                  <h3>{translation.tr_business_english_essentials.en}</h3>
                 </div>
                 <div className="div-course div-course-4">
-                  <h3>Conversational English Practice</h3>
+                  <h3>{translation.tr_conversational_english_practice.en}</h3>
                 </div>
 
                 <div className="div-course div-course-5">
-                  <h3>Reading & Phonics for Young Learners</h3>
+                  <h3>{translation.tr_reading_phonics.en}</h3>
                 </div>
               </div>
             </div>
@@ -162,11 +168,8 @@ export const Landing = () => {
           data-aos-duration="250"
           data-aos-delay="500"
         >
-          <h1>IT</h1>
-          <p>
-            From Scratch to Python, empowering young learners with essential IT
-            skills.
-          </p>
+          <h1>{translation.tr_it.en}</h1>
+          <p>{translation.tr_from_scratch_to.en}</p>
           {calculateImageIndex(mouseX) > 17 && (
             <div className="div-it-courses">
               <div className="div-icons-container div-it-icons-container">
@@ -209,20 +212,20 @@ export const Landing = () => {
               </div>
               <div className="div-courses-container div-it-courses-container">
                 <div className="div-course div-it-course-1">
-                  <h3>Scratch</h3>
+                  <h3>{translation.tr_scratch.en}</h3>
                 </div>
                 <div className="div-course div-it-course-2">
-                  <h3>Robotics</h3>
+                  <h3>{translation.tr_robotics.en} </h3>
                 </div>
                 <div className="div-course div-it-course-3">
-                  <h3>Python</h3>
+                  <h3>{translation.tr_python.en}</h3>
                 </div>
                 <div className="div-course div-it-course-4">
-                  <h3>Web Design</h3>
+                  <h3>{translation.tr_web_design.en}</h3>
                 </div>
 
                 <div className="div-course div-it-course-5">
-                  <h3>Roblox Game Development</h3>
+                  <h3>{translation.tr_roblox_game_development.en}</h3>
                 </div>
               </div>
             </div>
@@ -230,10 +233,14 @@ export const Landing = () => {
         </div>
       </div>
       {window.innerWidth > 768 && (
-        <SpinningPortfolio i={calculateImageIndex(mouseX)} />
+        <div style={{ opacity: 0 }}>
+          <SpinningPortfolio i={calculateImageIndex(mouseX)} />
+        </div>
       )}
+      <div></div>
       <div className="image-container" style={imgPostionStyle}>
         <div className="div-cover">
+          <></>
           <div
             className="div-img div-regular"
             data-aos="fade-right"

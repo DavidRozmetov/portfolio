@@ -81,7 +81,15 @@ const KeystrokeKeyboard: React.FC<KeystrokeKeyboardProps> = ({
           <button
             key={letter}
             className={`wordle-input-button ${getKeyClass(letter)}`}
-            onClick={() => handleLetterInput(letter)}
+            onClick={() => {
+              if (word.split("")[currentGuess.length + 1] === " ") {
+                handleLetterInput(letter + " ");
+              } else if (word.split("")[currentGuess.length + 1] === "-") {
+                handleLetterInput(letter + "-");
+              } else {
+                handleLetterInput(letter);
+              }
+            }}
           >
             {letter.toUpperCase()}
           </button>
@@ -92,7 +100,15 @@ const KeystrokeKeyboard: React.FC<KeystrokeKeyboardProps> = ({
           <button
             key={letter}
             className={`wordle-input-button ${getKeyClass(letter)}`}
-            onClick={() => handleLetterInput(letter)}
+            onClick={() => {
+              if (word.split("")[currentGuess.length + 1] === " ") {
+                handleLetterInput(letter + " ");
+              } else if (word.split("")[currentGuess.length + 1] === "-") {
+                handleLetterInput(letter + "-");
+              } else {
+                handleLetterInput(letter);
+              }
+            }}
           >
             {letter.toUpperCase()}
           </button>
@@ -111,7 +127,15 @@ const KeystrokeKeyboard: React.FC<KeystrokeKeyboardProps> = ({
           <button
             key={letter}
             className={`wordle-input-button ${getKeyClass(letter)}`}
-            onClick={() => handleLetterInput(letter)}
+            onClick={() => {
+              if (word.split("")[currentGuess.length + 1] === " ") {
+                handleLetterInput(letter + " ");
+              } else if (word.split("")[currentGuess.length + 1] === "-") {
+                handleLetterInput(letter + "-");
+              } else {
+                handleLetterInput(letter);
+              }
+            }}
           >
             {letter.toUpperCase()}
           </button>

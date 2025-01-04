@@ -1,8 +1,10 @@
+import { translation } from "../../utils/translation";
+
 export const Philosophy = () => {
   return (
     <div className="philosophy-container">
-      <p>My Philosophy</p>
-      <h2>"Get students talking — the rest can wait."</h2>
+      <p>{translation.tr_my_philosophy.en}</p>
+      <h2>{translation.tr_get_students_talking.en}</h2>
     </div>
   );
 };
